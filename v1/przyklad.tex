@@ -1,0 +1,77 @@
+% Opcje klasy 'iithesis' opisane sa w komentarzach w pliku klasy. Za ich pomoca
+% ustawia sie przede wszystkim jezyk oraz rodzaj (lic/inz/mgr) pracy.
+\documentclass[shortabstract]{iithesis}
+
+\usepackage[utf8]{inputenc}
+
+%%%%% DANE DO STRONY TYTUŁOWEJ
+% Niezaleznie od jezyka pracy wybranego w opcjach klasy, tytul i streszczenie
+% pracy nalezy podac zarowno w jezyku polskim, jak i angielskim.
+% Pamietaj o madrym (zgodnym z logicznym rozbiorem zdania oraz estetyka) recznym
+% zlamaniu wierszy w temacie pracy, zwlaszcza tego w jezyku pracy. Uzyj do tego
+% polecenia \fmlinebreak.
+\polishtitle    {Projektowanie i implementacja \fmlinebreak systemu magazynowego\fmlinebreak ze wspomaganiem procesu produkcji \fmlinebreak i zarządzaniem zasobami}
+\englishtitle   {Design and implementation of a warehouse system \fmlinebreak supporting the production process and resource management}
+\polishabstract {\ldots}
+\englishabstract{\ldots}
+% w pracach wielu autorow nazwiska mozna oddzielic poleceniem \and
+\author         {Jakub Kopystiański}
+% w przypadku kilku promotorow, lub koniecznosci podania ich afiliacji, linie
+% w ponizszym poleceniu mozna zlamac poleceniem \fmlinebreak
+\advisor        {dr Marcin Młotkowski}
+%\date          {}                     % Data zlozenia pracy
+% Dane do oswiadczenia o autorskim wykonaniu
+%\transcriptnum {}                     % Numer indeksu
+%\advisorgen    {dr. Jana Kowalskiego} % Nazwisko promotora w dopelniaczu
+%%%%%
+
+%%%%% WLASNE DODATKOWE PAKIETY
+%
+%\usepackage{graphicx,listings,amsmath,amssymb,amsthm,amsfonts,tikz}
+%
+%%%%% WŁASNE DEFINICJE I POLECENIA
+%
+%\theoremstyle{definition} \newtheorem{definition}{Definition}[chapter]
+%\theoremstyle{remark} \newtheorem{remark}[definition]{Observation}
+%\theoremstyle{plain} \newtheorem{theorem}[definition]{Theorem}
+%\theoremstyle{plain} \newtheorem{lemma}[definition]{Lemma}
+%\renewcommand \qedsymbol {\ensuremath{\square}}
+% ...
+%%%%%
+
+\begin{document}
+
+%%%%% POCZĄTEK ZASADNICZEGO TEKSTU PRACY
+
+\chapter{Wprowadzenie}
+
+\section{Motywacja}
+	Motywacją do stworzenia takiego systemu jest realny problem z życia.  Prowadzę gospodarstwo rolne, którego głównym kierunkiem produkcji są jaja kurze. W związku z tym produkuję paszę dla kur niosek. Pasza składa się z około 10 różnych składników, a ich liczba jest uzależniona od dostępności niektórych surowców. Niektóre składniki takie jak pszenżyto, jęczmień, owies pochodzą z gospodarstwa, inne (np. śruta rzepakowa, kukurydza) są zamawiane z zewnętrznych firm. Cenną informacją jest to ile jakiego półproduktu jest obecnie w magazynie, aby przed przystąpieniem do procesu produkcji zgromadzić potrzebne materiały.
+
+	Z takiego systemu również łatwo mógłbym wydedukować ile przykładowo pszenżyta zebrałem ze swoich pól . System będzie też w stanie obliczyć różnice między deklarowaną a rzeczywistą wielkością dostawy. 
+
+\section {Moje oczekiwania od systemu}
+
+\begin{itemize}
+  \item Sprawdzanie ilości dostępnych półproduktów w magazynie
+  \item Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej
+  \item Obliczanie wielkości zbiorów - Jeśli mam "dostawę" z mojego gospodarstwa o nieznanej masie mogę policzyć tę masę uwzględniająć zużycie zasobu z tej dostawy 
+  \item  Wprowadzanie dostaw
+  \item  Wprowadzanie strat
+  \item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów
+  \item  Wprowadzanie receptur na paszę
+  \item  Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji
+\end{itemize} 
+
+\section {Architektura}
+	System będzie w formie aplikacji Web-owej.
+
+
+
+%%%%% BIBLIOGRAFIA
+
+%\begin{thebibliography}{1}
+%\bibitem{example} \ldots
+%\end{thebibliography}
+
+\end{document}

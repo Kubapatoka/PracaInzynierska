@@ -1,0 +1,17 @@
+Pomysł nr 2: Aplikacja do zarządzania Magazynem oraz przeprowadzaniu produkcji paszy dla kur.
+Zajmuję się produkcją paszy dla kur. Pasza składa się w zależnoći od receptury z 9-12 składników. 
+Każdy składnik mam zmagazynowany w gospodarstwie i każdy ma swoją cenę. 
+Chciałbym żeby program podpowiadał jakiej receptury użyć w zależności od stanu magazynowego i cen produtków.
+Żeby wyliczał intelignetnie cenę paszy - przykładowo potrzebuję użyć 100kg słonecznika. 
+Posiadam 30kg słonecznika z starej dostawy (koszt 1zł) a resztę muszę dołożyć z nowej (2zł). 
+Chciałbym żeby program policzył koszt słonecznika w paszy 30*2zł + 70*1zł.
+
+Dodatkowo do paszy dodaję zboża z mojego gospodarstwa. 
+Przykładowo chciałbym wpisać że zaczynam korzystać z pszenżyta z zbioru 2023. Po jakimś czasie chciałbym odnotować koniec korzystania z tej dostawy/zbioru.
+Wtedy oczekuję że system podliczy ile wynosił zbiór pszenżyta z 2023 roku. 
+
+Ewentualnie zamiast systemu Magazynowego możnaby zrobić optymalizator do obliczania receptury pasz. 
+Mielibyśmy bazę składników. Każdy składnik miałby różne parametry takie jak cena, zawartość białka, zaolejenie, zawartości poszczeególnych białek (lizyna itp)
+Niektóre parametry w widełkach najpewniej były by podawane.
+Pasza powinna zawierać od do danego parametru...
+Trzeba to zoptymalizować żeby wyszło jak najtaniej przy zachowaniu jakości. - robust optimization
