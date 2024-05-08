@@ -48,7 +48,9 @@
 \section{Motywacja}
 	Motywacją do stworzenia takiego systemu jest realny problem z życia.  Prowadzę gospodarstwo rolne, którego głównym kierunkiem produkcji są jaja kurze. W związku z tym produkuję paszę dla kur niosek. Pasza składa się z około 10 różnych składników, a ich liczba jest uzależniona od dostępności niektórych surowców. Niektóre składniki takie jak pszenżyto, jęczmień, owies pochodzą z gospodarstwa, inne (np. śruta rzepakowa, kukurydza) są zamawiane z zewnętrznych firm. Cenną informacją jest to ile jakiego półproduktu jest obecnie w magazynie, aby przed przystąpieniem do procesu produkcji zgromadzić potrzebne materiały.
 
-	Z takiego systemu również łatwo mógłbym wydedukować ile przykładowo pszenżyta zebrałem ze swoich pól . System będzie też w stanie obliczyć różnice między deklarowaną a rzeczywistą wielkością dostawy. 
+	Z takiego systemu również łatwo mógłbym wydedukować ile przykładowo pszenżyta zebrałem ze swoich pól . System będzie też w stanie obliczyć różnice między deklarowaną a rzeczywistą wielkością dostawy.
+	
+	System powinien również pomóc optymalizować koszty produkcji. 
 
 \section {Moje oczekiwania od systemu}
 
@@ -64,7 +66,27 @@
 \end{itemize} 
 
 \section {Architektura}
-	System będzie w formie aplikacji Web-owej.
+	System będzie w formie aplikacji Web-owej. Planuję użyć frameworku Django oraz bazy danych PostgreSQL. Użyję również konteneryzacji (Docker)
+
+\chapter{Plan pracy}
+	\begin{enumerate}
+		\item  Zapoznanie się z frameworkiem Django
+			\begin{itemize}
+				\item Wykonanie tutorialu 'Writing your first Django app', czyli utworzenie "basic poll aplication"
+				\item Przegląd dostępych materiałów w serwisie Youtube w celu zdobycia praktycznych wskazówek przydatnych przy pisaniu programu.
+			\end{itemize}
+		\item Weryfikacja dotychczasowej wiedzy na temat produkcji pasz na podstawie książki "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu" praca zbiorowa pod redakcją Stefanii Smulikowskiej i Andrzeja Rutkowskiego 2018.
+		\item Zaplanowanie funkcjonalności programu
+		\item Zaprojektowanie modeli, jest to równoznaczne z projektem bazy danych
+		\item WIP
+	\end{enumerate}
+	
+\chapter{Wiadomości z  książki "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu"}
+	Parametry do skomponowania idealnej mieszanki paszowej to:
+	\begin{tabular}{|c|c|}
+
+\chapter{Projektowanie Modeli}
+
 
 
 
