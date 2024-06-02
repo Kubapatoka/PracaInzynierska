@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.5.4)  4 MAY 2024 11:16
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.5.4)  2 JUN 2024 14:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -362,31 +362,66 @@ Rozdzia\l  2..
 
 ]
 Rozdzia\l  3..
-[11] (przyklad.aux)
+[11] [12
+
+]
+Rozdzia\l  4..
+[13] [14
+
+]
+Rozdzia\l  5..
+
+LaTeX Warning: Command \. invalid in math mode on input line 138.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 138.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 138.
+
+
+LaTeX Warning: Command \k invalid in math mode on input line 138.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 138.
+
+
+LaTeX Warning: Command \' invalid in math mode on input line 138.
+
+Missing character: There is no » in font cmmi10!
+Missing character: There is no ± in font cmmi10!
+Missing character: There is no ¢ in font cmmi10!
+Missing character: There is no ¡ in font cmmi10!
+Missing character: There is no ± in font cmmi10!
+Missing character: There is no ¢ in font cmmi10!
+[15] [16] (przyklad.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
 Package rerunfilecheck Info: File `przyklad.out' has not changed.
-(rerunfilecheck)             Checksum: 656DCDF67B5D721007B551197F8F3ECF;756.
+(rerunfilecheck)             Checksum: 37B59A4708B4202D2FF3C7E2C0E53D96;1353.
  ) 
 Here is how much of TeX's memory you used:
- 9888 strings out of 474425
- 156726 string characters out of 5746496
+ 9898 strings out of 474425
+ 156815 string characters out of 5746496
  1931493 words of memory out of 5000000
- 32100 multiletter control sequences out of 15000+600000
+ 32103 multiletter control sequences out of 15000+600000
  568611 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,6n,93p,693b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jakub/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095
-.pk></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/plbx10.pfb></home
-/jakub/.miktex/texmfs/install/fonts/type1/public/pl/plbx12.pfb></home/jakub/.mi
-ktex/texmfs/install/fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs
-/install/fonts/type1/public/pl/plr12.pfb></home/jakub/.miktex/texmfs/install/fo
-nts/type1/public/pl/plsl10.pfb>
-Output written on przyklad.pdf (11 pages, 71017 bytes).
+.pk></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.p
+fb></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb
+></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb><
+/home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/plbx10.pfb></home/jaku
+b/.miktex/texmfs/install/fonts/type1/public/pl/plbx12.pfb></home/jakub/.miktex/
+texmfs/install/fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs/inst
+all/fonts/type1/public/pl/plr12.pfb></home/jakub/.miktex/texmfs/install/fonts/t
+ype1/public/pl/plsl10.pfb>
+Output written on przyklad.pdf (16 pages, 114104 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 24 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 174 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 65 words of extra memory for PDF output out of 10000 (max. 10000000)
 

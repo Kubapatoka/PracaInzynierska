@@ -4,7 +4,8 @@ from django.db import models
 class Product(models.Model):
     product_name = models.CharField(max_length=1024)
     #params
-    #Lizyna, Metionina, Metionina+cystyna, Treonina, Tryptofan, Arginina, Walina, Izoleucyna, Białko ogólne, Wapń, Fosfor_przyswajalny, Sód, kwas_linolowy 
+    #Lizyna, Metionina, Metionina+cystyna, Treonina, Tryptofan, Arginina, Walina, Izoleucyna, Białko ogólne, Wapń, 
+    #Fosfor_przyswajalny, Sód, kwas_linolowy 
 
 class Delivery(models.Model):
     product_name = models.CharField(max_length=1024)

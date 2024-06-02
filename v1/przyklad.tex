@@ -81,11 +81,81 @@
 		\item WIP
 	\end{enumerate}
 	
-\chapter{Wiadomości z  książki "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu"}
-	Parametry do skomponowania idealnej mieszanki paszowej to:
+\chapter{Wiadomości z  książki Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}
+	Parametry do skomponowania przykładowej$^*$ mieszanki paszowej to:
+	
 	\begin{tabular}{|c|c|}
+		\hline
+		Lizyna &0,698 \\
+		\hline
+		Metionina &0,344 \\
+		\hline
+		Metionina + cystyna &0,629 \\
+		\hline
+		Treonina &0,551 \\
+		\hline
+		Tryptofan &0,147 \\
+		\hline
+		Arginina &0,732 \\
+		\hline
+		Walina &0,603 \\
+		\hline
+		Izoleucyna &0,569 \\
+		\hline
+	\end{tabular}
+	
+	
+	* - Dla grupy wiekowej kur niosek która dopiero co weszła w okres nieśności (od około $5\%$ nieśności w stadzie do około 45 tygodnia życia)
+	
+
+
+\chapter{Funkcje systemu}
+	\begin{itemize}
+  		\item  Wprowadzanie dostaw
+  		\item  Wprowadzanie strat
+  		\item  Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji
+  		\item  Sprawdzanie ilości dostępnych półproduktów w magazynie
+  		\item  Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej
+  		\item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów
+  		\item  Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie - optymalizacja kosztów
+  		\item  Wprowadzanie receptur na paszę
+	\end{itemize} 
+
 
 \chapter{Projektowanie Modeli}
+Podstawową jednostką w systemie jest dostawa. To dostawy będą zapisane w bazie danych i na ich podstawie będą oblczane stany magazynowe.
+Dostawa składa się z:
+\begin{itemize}
+	\item wskazanie na produkt
+	\item cena
+	\item data
+	\item początkowa ilość
+	\item zużyta ilość
+	\item strata
+	\item wartość boolowska czy dostawa się zakończyła
+\end{itemize}
+
+Jeśli dostawa jest zakończona to powinien zachodzić warunek $$strata + zużyta ilość = początkowa ilość$$
+
+Nie wyjaśniłem jeszcze czym jest wskazanie na produkt i czym jest produkt. Produkt jest zdefiniowany jako lista parametrów oraz nazwa.
+Lista znaczących parametrów w produkcji paszy dla drobiu według "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu" to:
+\begin{itemize}
+	\item	Lizyna, 
+	\item	Metionina,
+	\item 	Metionina+cystyna, 
+	\item	Treonina, 
+	\item	Tryptofan, 
+	\item	Arginina, 
+	\item	Walina, 
+	\item	Izoleucyna, 
+	\item	Białko ogólne, 
+	\item	Wapń, 
+    	\item 	Fosfor przyswajalny, 
+    	\item	Sód, 
+    	\item	Kwas Linolowy 
+\end{itemize}
+
+
 
 
 

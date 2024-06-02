@@ -14,4 +14,6 @@
 \contentsline {section}{\numberline {1.2.}Moje oczekiwania od systemu}{7}{section.1.2}%
 \contentsline {section}{\numberline {1.3.}Architektura}{8}{section.1.3}%
 \contentsline {chapter}{\numberline {2.}Plan pracy}{9}{chapter.2}%
-\contentsline {chapter}{\numberline {3.}Projektowanie Modeli}{11}{chapter.3}%
+\contentsline {chapter}{\numberline {3.}Wiadomości z książki Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}{11}{chapter.3}%
+\contentsline {chapter}{\numberline {4.}Funkcje systemu}{13}{chapter.4}%
+\contentsline {chapter}{\numberline {5.}Projektowanie Modeli}{15}{chapter.5}%
