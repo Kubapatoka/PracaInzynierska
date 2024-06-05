@@ -82,6 +82,92 @@
 	\end{enumerate}
 	
 \chapter{Wiadomości z  książki Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}
+
+\section{Układ książki}
+Zalecenia podzielone są na 15 rozdziałów i są opisane szczegółowo na ponad 130 stronach. 
+Pierwsze trzy rozdziały zawierają wiedzę ogólną na temat składników materiałów paszowych.
+Rozdziały od 4. do 13. włącznie są szczegółowymi zaleceniami dla różnych gatunków drobiu ("Zalecenia żywienia perlic", "Zalecenia żywienia kur", "Zalecenia żywienia gęsi").
+Rozdział 14-sty "Zawartość składników pokarmowych w materiałach paszowych w żywieniu drobiu" zawiera uporządkowane w tabelach informacje.
+Postaram się streścić najważniejsze informacje w kontekście bilansowania mieszanki paszowej.
+
+\section{Wilgotność}
+W tabelach określa się zawartości poszczególnych składników pokarmowych przy założeniu $12\%$ wilgotności. Jest to częsta wilgotność w jakiej przechowuje się zboża. 
+Jeśli zawartość suchej masy w kilogramie materiału paszowego jest inna niż w tabeli (zazwyczaj w tabeli widnieje 880g/kg), zawartość składników pokarmowych należy przeliczyć zgodnie ze wzorem: 
+
+$$ S(g/kg) = S(tabela) * \frac{SuchaMasaNowa}{Sucha Masa Tabela}  $$
+ 
+ 
+ \section{Energia}
+ Zawartość energii jest wyrażana w jednostkach pozornej energii metabolicznej - $EM_n$. Jest to różnica energii brutto (ciepło spalania) i energii odchodów (kałomoczu w przypadku drobiu) i gazów.
+ Energię tradycyjnie mierzono i wyrażano w kaloriach, ale obecnie powinniśmy stosować się do Międzynarodowego Układu Jednostek Miar i wyrażać tę energię w dżulach. 
+ W opisywanym opracowaniu energia jest wyrażana zarówno w kilokaloriach (kcal) jak i megadżulach (MJ)
+ 
+$$1 kcal = 0,004184 MJ$$
+$$1 MJ = 239 kcal$$ 
+
+Potrzeby energetyczne są określone dla każdego gatunku i stadium rozwoju, ponieważ różnią się między sobą. Jeśli mieszanka paszowa będzie miała niedobór energii, objawi się to większym spożyciem paszy.
+Natomiast z nadmiarem energii w paszy idzie w parze otłuszczenie ptaków.
+
+\section{Białko i Aminokwasy}
+W białkach ciała i jaj ptaków znajdują się $22$ aminokwasy, które dzielimy na trzy kategorie:
+\begin{itemize}
+\item aminokwasy niezbędne (egzogenne)
+\item aminokwasy względnie egzogenne
+\item aminokwasy nie-niezbędne (endogenne)
+\end{itemize}
+
+Aminokwasy niezbędne muszą być dostarczane w paszy w odpowiednich proporcjach. Najlepiej zbadane jest zapotrzebowanie na te aminokwasy u kurczątk brojlerów i indyków. 
+W omawianym opracowaniu dla każdego gatunku podano zapotrzebowanie tylko na te aminokwasy egzogenne, których niedobór może wystąpić w mieszankach paszowych tradycyjnych.
+Na pozostałych aminokwasach nie ma potrzeby skupiania swojej uwagi przez zależność: Jeśli poprzednie aminokwasy są w wystarczających ilościach, to pozostałe również.
+
+\subsection{Aminokwasy niezbędne (egzogenne)}
+Aminokwasy egzogenne to takie których ptaki nie mogą syntetyzować. Są to dokładnie:
+\begin{itemize}
+\item lizyna
+\item metionina
+\item treonina
+\item tryptofan
+\item arginina
+\item fenyloalanina
+\item histydyna
+\item izoleucyna
+\item leucyna
+\item walina
+\end{itemize}
+
+\subsection{Aminokwasy względnie egzogenne}
+Te aminokwasy są względnie syntetyzowane w organizmie z aminokwasów egzogennych np. cysteina z metioniny.
+
+\subsection{Aminokwasy nie-niezbędne (endogenne)}
+Aminokwasy endogenne są syntezowane w organizmie. Są to takie aminokwasy jak:
+\begin{itemize}
+\item alanina
+\item asparagina
+\item glutamina
+\item kwas asparaginowy
+\item kwas glutaminowy
+\item prolina
+\item seryna
+\item hydroksyprolina
+\item glicyna
+\end{itemize}
+
+
+\section{Tłuszcz}
+Dodatek tłuszczu pozwala na zwiększenie wartości energetycznej mieszanki paszowej, aby wyrównać ją do zapotrzebowania na energię.
+Oprócz tego ptaki potrzebują określonej ilości tzw. niezbędnych nienasyconych kwasów tłuszczowych (NNKT). Są to kwasy linolowy i kwas $\alpha-$linolenowy.
+W tabelach występuje zapotrzebowanie tylko na kwas linolowy, ponieważ zapotrzebowanie na kwas $\alpha-$linolenowy jest około 10-krotnie mniejsze.
+
+
+\section{Składniki mineralne}
+
+\subsection{Wapń}
+
+
+ 
+
+\section{Przykładowa pasza}
+
 	Parametry do skomponowania przykładowej$^*$ mieszanki paszowej to:
 	
 	\begin{tabular}{|c|c|}
@@ -102,7 +188,17 @@
 		\hline
 		Izoleucyna &0,569 \\
 		\hline
+		Wapń &3,110 \\
+		\hline
+		Fosfor przyswajalny &0,319 \\
+		\hline
+		Sód &0,137 \\
+		\hline
 	\end{tabular}
+	
+	Dane wyrażone są w jednostce g/$1$ MJ EM.
+	
+	Poziom EM w paszy powinien wynosić $11,5-11,7$ MJ/kg paszy
 	
 	
 	* - Dla grupy wiekowej kur niosek która dopiero co weszła w okres nieśności (od około $5\%$ nieśności w stadzie do około 45 tygodnia życia)
@@ -123,6 +219,8 @@
 
 
 \chapter{Projektowanie Modeli}
+
+\section{Dostawa}
 Podstawową jednostką w systemie jest dostawa. To dostawy będą zapisane w bazie danych i na ich podstawie będą oblczane stany magazynowe.
 Dostawa składa się z:
 \begin{itemize}
@@ -137,9 +235,11 @@ Dostawa składa się z:
 
 Jeśli dostawa jest zakończona to powinien zachodzić warunek $$strata + zużyta ilość = początkowa ilość$$
 
+\section{Produkt}
 Nie wyjaśniłem jeszcze czym jest wskazanie na produkt i czym jest produkt. Produkt jest zdefiniowany jako lista parametrów oraz nazwa.
 Lista znaczących parametrów w produkcji paszy dla drobiu według "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu" to:
 \begin{itemize}
+	\item 	Wilgotność,
 	\item	Lizyna, 
 	\item	Metionina,
 	\item 	Metionina+cystyna, 
@@ -155,6 +255,16 @@ Lista znaczących parametrów w produkcji paszy dla drobiu według "Zalecenia ż
     	\item	Kwas Linolowy 
 \end{itemize}
 
+Tutaj pojawiła się opcja rozszerzenia możliwości systemu o inne parametry. Przykładowo inne białka i właściwości danych produktów mogą odgrywać znaczącą rolę w produkcji pasz dla bydła, trzody lub hodowli ryb. Póki co zdecydowałem wpisać wymienione wyżej parametry "na sztywno".
+
+\subsection{Przypadek użycia}
+Gospodarz posiał dwa pola Łubinu żółtego, odmianę "Mister" na działce numer $12$ oraz odmianę "Salut" na działce numer $72$. Po zbiorach Łubinu żółtego gospodarz wysyła próbkę z każdego pola do badań w laboratorium. Otrzymuje następujące wyniki:
+
+\begin{tabular}{|c|c|c|}
+\hline
+cecha &Mister &Salut \\
+\hline
+\end{tabular}
 
 
 

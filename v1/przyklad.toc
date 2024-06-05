@@ -15,5 +15,19 @@
 \contentsline {section}{\numberline {1.3.}Architektura}{8}{section.1.3}%
 \contentsline {chapter}{\numberline {2.}Plan pracy}{9}{chapter.2}%
 \contentsline {chapter}{\numberline {3.}Wiadomości z książki Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}{11}{chapter.3}%
-\contentsline {chapter}{\numberline {4.}Funkcje systemu}{13}{chapter.4}%
-\contentsline {chapter}{\numberline {5.}Projektowanie Modeli}{15}{chapter.5}%
+\contentsline {section}{\numberline {3.1.}Układ książki}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2.}Wilgotność}{11}{section.3.2}%
+\contentsline {section}{\numberline {3.3.}Energia}{12}{section.3.3}%
+\contentsline {section}{\numberline {3.4.}Białko i Aminokwasy}{12}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1.}Aminokwasy niezbędne (egzogenne)}{12}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2.}Aminokwasy względnie egzogenne}{13}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3.}Aminokwasy nie-niezbędne (endogenne)}{13}{subsection.3.4.3}%
+\contentsline {section}{\numberline {3.5.}Tłuszcz}{14}{section.3.5}%
+\contentsline {section}{\numberline {3.6.}Składniki mineralne}{14}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1.}Wapń}{14}{subsection.3.6.1}%
+\contentsline {section}{\numberline {3.7.}Przykładowa pasza}{14}{section.3.7}%
+\contentsline {chapter}{\numberline {4.}Funkcje systemu}{15}{chapter.4}%
+\contentsline {chapter}{\numberline {5.}Projektowanie Modeli}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1.}Dostawa}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2.}Produkt}{17}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1.}Przypadek użycia}{18}{subsection.5.2.1}%
