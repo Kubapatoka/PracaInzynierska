@@ -1,7 +1,6 @@
 from django.contrib import admin
 
-from .models import Delivery
-from .models import Product, Composition
+from .models import Delivery, Product, Composition
 
 admin.site.register(Delivery)
 admin.site.register(Product)

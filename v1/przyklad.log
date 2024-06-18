@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.5.4)  5 JUN 2024 09:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.3) (preloaded format=pdflatex 2024.5.4)  18 JUN 2024 06:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -346,15 +346,15 @@ ex/texmfs/install/fonts/enc/dvips/pl/plrm.enc}] [2
 ] (przyklad.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 13.
-)
+ [5])
 \tf@toc=\write4
 \openout4 = `przyklad.toc'.
 
- [5] [6
-
-]
+ [6]
 Rozdzia\l  1..
-[7] [8]
+[7
+
+] [8]
 Rozdzia\l  2..
 [9
 
@@ -415,7 +415,17 @@ Missing character: There is no ¢ in font cmmi10!
 Missing character: There is no ¡ in font cmmi10!
 Missing character: There is no ± in font cmmi10!
 Missing character: There is no ¢ in font cmmi10!
-[17] [18] (przyklad.aux)
+[17]
+Overfull \hbox (6.11243pt too wide) in paragraph at lines 276--277
+\OT4/cmr/m/n/10.95 wiony w po-staci za-kresu. Po-zo-staªe pa-ra-me-try (li-zyna
+, me-tio-nina, cy-styna+metionina,
+ []
+
+[18] [19] [20
+
+]
+Rozdzia\l  6..
+[21] (przyklad.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -427,14 +437,14 @@ Package rerunfilecheck Warning: File `przyklad.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `przyklad.out':
-(rerunfilecheck)             Before: 0DEDDE7FFE64395044F544F0E278B850;3126
-(rerunfilecheck)             After:  B8FF26E985EA42C88DA6FE117FC347F7;3367.
+(rerunfilecheck)             Before: B8FF26E985EA42C88DA6FE117FC347F7;3367
+(rerunfilecheck)             After:  0C9BF27BF199C5AA090B8A8679B578DC;3655.
  ) 
 Here is how much of TeX's memory you used:
- 9932 strings out of 474425
- 157268 string characters out of 5746496
+ 9940 strings out of 474425
+ 157351 string characters out of 5746496
  1933493 words of memory out of 5000000
- 32121 multiletter control sequences out of 15000+600000
+ 32123 multiletter control sequences out of 15000+600000
  568611 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,6n,93p,693b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -449,9 +459,9 @@ miktex/texmfs/install/fonts/type1/public/pl/plbx12.pfb></home/jakub/.miktex/tex
 mfs/install/fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs/install
 /fonts/type1/public/pl/plr12.pfb></home/jakub/.miktex/texmfs/install/fonts/type
 1/public/pl/plsl10.pfb>
-Output written on przyklad.pdf (18 pages, 155762 bytes).
+Output written on przyklad.pdf (21 pages, 160974 bytes).
 PDF statistics:
- 258 PDF objects out of 1000 (max. 8388607)
- 47 named destinations out of 1000 (max. 500000)
- 161 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 283 PDF objects out of 1000 (max. 8388607)
+ 53 named destinations out of 1000 (max. 500000)
+ 177 words of extra memory for PDF output out of 10000 (max. 10000000)
 
