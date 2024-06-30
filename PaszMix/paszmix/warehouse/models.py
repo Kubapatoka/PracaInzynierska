@@ -10,9 +10,9 @@ PERCENTAGE_VALIDATOR = [MinValueValidator(0), MaxValueValidator(100)]
 class Product(models.Model):
     product_name = models.CharField(max_length=1024)
     #params
-    wilgotnosc = models.DecimalField(max_digits=3, decimal_places=2, default=12, validators=PERCENTAGE_VALIDATOR)
+    wilgotnosc = models.DecimalField(max_digits=3, decimal_places=1, default=12, validators=PERCENTAGE_VALIDATOR)
     energia_metaboliczna = models.FloatField() 
-    bialko_ogolne = models.DecimalField(max_digits=3, decimal_places=2, default=12, validators=PERCENTAGE_VALIDATOR)
+    bialko_ogolne = models.DecimalField(max_digits=3, decimal_places=1, default=12, validators=PERCENTAGE_VALIDATOR)
     lizyna = models.FloatField()
     metionina = models.FloatField()
     cystyna = models.FloatField()
@@ -21,14 +21,17 @@ class Product(models.Model):
     arginina = models.FloatField()
     walina = models.FloatField()
     izoleucyna = models.FloatField()
-    wapń = models.FloatField() 
+    wapń = models.FloatField(default=0) 
     fosfor_przyswajalny = models.FloatField() 
     sod = models.FloatField()
-    kwas_linolowy = models.FloatField() 
+    kwas_linolowy = models.FloatField()
+    
+    def __str__(self):
+        return self.product_name
 
 
 class Delivery(models.Model):
-    product_name = models.ForeignKey(Product, models.CASCADE)
+    product = models.ForeignKey(Product, models.CASCADE)
     price = MoneyField(max_digits=19, decimal_places=4, default_currency='PLN')
     date = models.DateTimeField
     initial_quantity = models.FloatField()
@@ -36,8 +39,12 @@ class Delivery(models.Model):
     waste = models.FloatField()
     is_finished = models.BooleanField()
 
+    def __str__(self):
+        return self.product + " " + self.date.__str__ + " " +  self.price + " " + self.initial_quantity.__str__
+
 
 class Composition(models.Model):
+    composition_name = models.CharField(max_length=1024)
     energia_metaboliczna_min = models.FloatField()
     energia_metaboliczna_max = models.FloatField()
     lizyna = models.FloatField()
@@ -52,5 +59,29 @@ class Composition(models.Model):
     fosfor_przyswajalny = models.FloatField() 
     sod = models.FloatField()
 
-# class Recipe(models.model):
-#     mixture_list = VectorField()
+    def __str__(self):
+        return self.composition_name
+
+
+
+class Recipe(models.Model):
+    composition = models.ForeignKey(Composition, models.SET_NULL, null= True, blank = True)
+    name = models.CharField(max_length= 255)
+    type = models.CharField(max_length= 255)
+
+
+class RecipeElement(models.Model):
+    recipe_ref = models.ForeignKey(Recipe, models.CASCADE)
+    product = models.ForeignKey(Product, models.CASCADE)
+    quantity = models.FloatField()
+
+class Production(models.Model):
+    recipe = models.ForeignKey(Recipe, models.SET_NULL, null= True)
+    date = models.DateTimeField()
+    name_of_final_product = models.CharField(max_length=255)
+
+class ProductionElement(models.Model):
+    production_ref = models.ForeignKey(Production, models.CASCADE)
+    delivery_ref = models.ForeignKey(Delivery, models.CASCADE)
+    quantity = models.FloatField()
+
