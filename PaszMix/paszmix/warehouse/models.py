@@ -1,6 +1,7 @@
 from djmoney.models.fields import MoneyField
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils import timezone    
 #from pgvector.django import VectorField
 #https://github.com/pgvector/pgvector-python
 
@@ -21,7 +22,7 @@ class Product(models.Model):
     arginina = models.FloatField()
     walina = models.FloatField()
     izoleucyna = models.FloatField()
-    wapń = models.FloatField(default=0) 
+    wapn = models.FloatField(default=0) 
     fosfor_przyswajalny = models.FloatField() 
     sod = models.FloatField()
     kwas_linolowy = models.FloatField()
@@ -33,14 +34,15 @@ class Product(models.Model):
 class Delivery(models.Model):
     product = models.ForeignKey(Product, models.CASCADE)
     price = MoneyField(max_digits=19, decimal_places=4, default_currency='PLN')
-    date = models.DateTimeField
+    date = models.DateTimeField(default=timezone.now)
     initial_quantity = models.FloatField()
     used_quantity = models.FloatField()
     waste = models.FloatField()
     is_finished = models.BooleanField()
 
     def __str__(self):
-        return self.product + " " + self.date.__str__ + " " +  self.price + " " + self.initial_quantity.__str__
+        result = self.product.__str__() + " " + self.date.__str__() + " " +  self.price + " " + self.initial_quantity.__str__()
+        return result
 
 
 class Composition(models.Model):
@@ -77,7 +79,7 @@ class RecipeElement(models.Model):
 
 class Production(models.Model):
     recipe = models.ForeignKey(Recipe, models.SET_NULL, null= True)
-    date = models.DateTimeField()
+    date = models.DateTimeField(default=timezone.now)
     name_of_final_product = models.CharField(max_length=255)
 
 class ProductionElement(models.Model):
