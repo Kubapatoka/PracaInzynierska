@@ -5,46 +5,72 @@
     <title>Paszmix</title>
     <meta name="description" content="System magazynowy wspomagający produkcję pasz dla drobiu" />
     <meta name="author" content="Jakub Kopystiański" />
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'warehouse/style.css' %}"/>
   </head>
 
   <body>
-    <h1>Produkt</h1>
-    {% if product %}
-    <ul>
-    {{product.product_name}}
-    <br>
-    {{product.wilgotnosc}}
-    <br>
-    Energia Metaboliczna: {{product.energia_metaboliczna}}
-    <br>
-    Białko Ogólne: {{product.bialko_ogolne}}
-    <br>
-    {{product.lizyna}}
-    <br>
-    {{product.metionina}}
-    <br>
-    {{product.cystyna}}
-    <br>
-    {{product.treonina}}
-    <br>
-    {{product.tryptofan}}
-    <br>
-    {{product.arginina}}
-    <br>
-    {{product.walina}}
-    <br>
-    {{product.izoleucyna}}
-    <br>
-    {{product.wapn}}
-    <br>
-    {{product.fosfor_przyswajalny}}
-    <br>
-    {{product.sod}}
-    <br>
-    {{product.kwas_linolowy}}
-    </ul>
-{% else %}
-    <p>product id is incorrect</p>
-{% endif %}
+    <div id="container">
+
+      <div id="logo">
+        <h1>Strona Główna</h1>
+      </div>
+  
+      <div id="navigation">
+  
+      </div>
+  
+      <div id="content">
+        <h1>Produkt</h1>
+        {% if product %}
+        <ul>
+        {{product.product_name}}
+        <br>
+        {{product.wilgotnosc}}
+        <br>
+        Energia Metaboliczna: {{product.energia_metaboliczna}}
+        <br>
+        Białko Ogólne: {{product.bialko_ogolne}}
+        <br>
+        {{product.lizyna}}
+        <br>
+        {{product.metionina}}
+        <br>
+        {{product.cystyna}}
+        <br>
+        {{product.treonina}}
+        <br>
+        {{product.tryptofan}}
+        <br>
+        {{product.arginina}}
+        <br>
+        {{product.walina}}
+        <br>
+        {{product.izoleucyna}}
+        <br>
+        {{product.wapn}}
+        <br>
+        {{product.fosfor_przyswajalny}}
+        <br>
+        {{product.sod}}
+        <br>
+        {{product.kwas_linolowy}}
+        </ul>
+        {% else %}
+        <p>product id is incorrect</p>
+        {% endif %}
+      </div>
+  
+      <div id="additions">
+  
+      </div>
+  
+      <div id="footer">
+  
+      </div>
+  
+  
+    </div>
   </body>
 </html>

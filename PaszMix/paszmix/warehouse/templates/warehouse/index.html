@@ -5,50 +5,9 @@
   <title>Paszmix</title>
   <meta name="description" content="System magazynowy wspomagający produkcję pasz dla drobiu" />
   <meta name="author" content="Jakub Kopystiański" />
-
-  <style>
-    #container
-    {
-      width: 1000px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #logo
-    {
-      background-color: burlywood;
-      color: black;
-      text-align: center;
-      padding: 15px;
-    }
-
-    #navigation
-    {
-      float: left;
-
-    }
-
-    #content
-    {
-      float: left;
-
-    }
-
-    #additions
-    {
-      float: left;
-
-
-    }
-
-    #footer
-    {
-      clear: both;
-
-    }
-
-  </style>
-
+  
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'warehouse/style.css' %}"/>
 </head>
 
 <body>
@@ -64,7 +23,15 @@
     </div>
 
     <div id="content">
-
+      {% if latest_deliveries_list %}
+      <ul>
+      {% for delivery in latest_deliveries_list %}
+        <li><a href="/warehouse/delivery/{{ delivery.id }}/">{{ delivery.product.product_name }} {{delivery.date}} {{delivery.price}} {{delivery.initial_quantity }}</a></li>
+      {% endfor %}
+      </ul>
+      {% else %}
+        <p>No deliveries are available.</p>
+      {% endif %}
     </div>
 
     <div id="additions">
@@ -78,16 +45,5 @@
 
   </div>
 
-  
-    
-  {% if latest_deliveries_list %}
-  <ul>
-  {% for delivery in latest_deliveries_list %}
-    <li><a href="/warehouse/delivery/{{ delivery.id }}/">{{ delivery.product.product_name }} {{delivery.date}} {{delivery.price}} {{delivery.initial_quantity }}</a></li>
-  {% endfor %}
-  </ul>
-{% else %}
-    <p>No deliveries are available.</p>
-{% endif %}
 </body>
 </html>

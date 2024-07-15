@@ -5,42 +5,68 @@
     <title>Paszmix</title>
     <meta name="description" content="System magazynowy wspomagający produkcję pasz dla drobiu" />
     <meta name="author" content="Jakub Kopystiański" />
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'warehouse/style.css' %}"/>
   </head>
 
   <body>
-    <h1>Skład</h1>
-    {% if composition %}
-    <ul>
-    Skład: 
-    <br>
-    Nazwa: {{composition.composition_name}}
-    <br>
-    Energia metaboliczna min: {{composition.energia_metaboliczna_min}}
-    <br>
-    {{composition.energia_metaboliczna_max}}
-    <br>
-    {{composition.lizyna}}
-    <br>
-    {{composition.metionina}}
-    <br>
-    {{composition.cystyna_metionina}}
-    <br>
-    {{composition.treonina}}
-    <br>
-    {{composition.arginina}}    
-    <br>
-    {{composition.walina}}
-    <br>
-    {{composition.izoleucyna}} 
-    <br>
-    {{composition.wapn}}
-    <br>
-    {{composition.fosfor_przyswajalny}}
-    <br>
-    {{composition.sod}}
-    </ul>
-{% else %}
-    <p>composition id is incorrect</p>
-{% endif %}
+    <div id="container">
+
+      <div id="logo">
+        <h1>Strona Główna</h1>
+      </div>
+  
+      <div id="navigation">
+  
+      </div>
+  
+      <div id="content">
+        <h1>Skład</h1>
+        {% if composition %}
+        <ul>
+        Skład: 
+        <br>
+        Nazwa: {{composition.composition_name}}
+        <br>
+        Energia metaboliczna min: {{composition.energia_metaboliczna_min}}
+        <br>
+        {{composition.energia_metaboliczna_max}}
+        <br>
+        {{composition.lizyna}}
+        <br>
+        {{composition.metionina}}
+        <br>
+        {{composition.cystyna_metionina}}
+        <br>
+        {{composition.treonina}}
+        <br>
+        {{composition.arginina}}    
+        <br>
+        {{composition.walina}}
+        <br>
+        {{composition.izoleucyna}} 
+        <br>
+        {{composition.wapn}}
+        <br>
+        {{composition.fosfor_przyswajalny}}
+        <br>
+        {{composition.sod}}
+        </ul>
+        {% else %}
+        <p>composition id is incorrect</p>
+        {% endif %}
+      </div>
+  
+      <div id="additions">
+  
+      </div>
+  
+      <div id="footer">
+  
+      </div>
+  
+  
+    </div>
   </body>
 </html>
