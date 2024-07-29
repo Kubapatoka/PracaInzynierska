@@ -5,9 +5,18 @@ from django.template import loader
 from .models import Delivery, Product, Composition, Production, Recipe
 
 def index(request):
-    latest_deliveries_list = Delivery.objects.all()
+    latest_deliveries_list      = Delivery.objects.all()
+    latest_products_list        = Product.objects.all()
+    latest_compositions_list    = Composition.objects.all()
+    latest_productions_list     = Production.objects.all()
+    latest_recipes_list         = Recipe.objects.all()
+
     context = {
         "latest_deliveries_list": latest_deliveries_list,
+        "latest_products_list": latest_products_list,
+        "latest_compositions_list": latest_compositions_list,
+        "latest_productions_list": latest_productions_list,
+        "latest_recipes_list": latest_recipes_list,
     }
     return render(request, "warehouse/index.html", context)
 

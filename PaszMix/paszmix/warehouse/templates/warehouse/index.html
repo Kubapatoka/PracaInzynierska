@@ -11,16 +11,77 @@
 </head>
 
 <body>
+  <div id="logo">
+    <h1>Strona Główna</h1>
+  </div>
+
+  <div id="menu">
+    <ol id="menuol">
+      <li><a href="/warehouse/">Strona Główna</a></li>
+      <li><a href="#">Produkty</a>
+        <ul>
+          {% if latest_products_list %}
+          {% for product in latest_products_list %}
+            <li><a href="/warehouse/product/{{ product.id }}/">{{ product.product_name }}</a></li>
+          {% endfor %}
+          {% else %}
+            <li class="brak_dostepnych">Brak produktów.</li>
+          {% endif %}
+        </ul>
+      </li>
+      <li><a href="#">Dostawy</a>
+        <ul>
+          {% if latest_deliveries_list %}
+          {% for delivery in latest_deliveries_list %}
+            <li><a href="/warehouse/delivery/{{ delivery.id }}/">Dostawa produktu: {{ delivery.product.product_name }} z {{delivery.date}}</a></li>
+          {% endfor %}
+          {% else %}
+            <li class="brak_dostepnych">Brak dostaw.</li>
+          {% endif %}
+        </ul>
+      </li>
+      <li><a href="#">Składy</a>
+        <ul>
+          {% if latest_compositions_list %}
+          {% for s in latest_compositions_list %}
+            <li><a href="/warehouse/composition/{{ s.id }}/">{{ s.composition_name }}</a></li>
+          {% endfor %}
+          {% else %}
+            <li class="brak_dostepnych">Brak dostępnych składów.</li>
+          {% endif %}
+        </ul>
+      </li>
+      <li><a href="#">Receptury</a>
+        <ul>
+          {% if latest_recipes_list %}
+          {% for r in latest_recipes_list %}
+            <li><a href="/warehouse/recipe/{{ r.id }}/">{{ r.name }}</a></li>
+          {% endfor %}
+          {% else %}
+            <li class="brak_dostepnych">Brak dostępnych receptur.</li>
+          {% endif %}
+        </ul>
+      </li>
+      <li><a href="#">Zlecenia Produkcji</a>
+        <ul>
+          {% if latest_productions_list %}
+          {% for p in latest_productions_list %}
+            <li><a href="/warehouse/production/{{ p.id }}/">Produkcja {{p.name_of_final_product}} z {{ p.date }}</a></li>
+          {% endfor %}
+          {% else %}
+            <li class="brak_dostepnych">Brak dostępnych zleceń produckji.</li>
+          {% endif %}
+        </ul>
+      </li>
+      <div style="clear: both;"></div>
+    </ol>
+  </div>
+      
+  <div id="navigation">
+
+  </div>
 
   <div id="container">
-
-    <div id="logo">
-      <h1>Strona Główna</h1>
-    </div>
-
-    <div id="navigation">
-
-    </div>
 
     <div id="content">
       {% if latest_deliveries_list %}
@@ -32,17 +93,92 @@
       {% else %}
         <p>No deliveries are available.</p>
       {% endif %}
+
+
+
+
+
+
+<span style="font-size: 28px;">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean accumsan mattis urna sit amet suscipit. <br/>
+Duis tortor orci, imperdiet ut interdum eget, posuere at neque. <br/>
+Donec et nisi erat. Donec lacinia turpis nec nulla faucibus pulvinar. <br/>
+Cras pellentesque diam in ultricies pellentesque. Etiam interdum orci a tortor laoreet malesuada. <br/>
+Maecenas non commodo enim, in finibus massa. Praesent dictum faucibus diam eget varius. <br/>
+Integer pellentesque purus lacus, vel sagittis ex lacinia vel. Sed placerat tempor lacus, sed ullamcorper sem rhoncus nec.<br/>
+<br/>
+Aenean a finibus odio, ac pretium augue. In a est ut purus iaculis finibus et eleifend urna. <br/>
+Vestibulum semper nisl nulla, at volutpat sem feugiat at. Fusce placerat dapibus finibus. <br/>
+Ut arcu odio, mollis hendrerit fringilla ultrices, condimentum id quam. Cras mattis efficitur dignissim. <br/> 
+Sed interdum, odio commodo malesuada venenatis, velit diam convallis lorem, in pulvinar lorem justo a nulla.<br/>
+ Praesent aliquam odio sit amet massa lobortis, ut convallis libero dictum.<br/>
+ <br/>
+Aliquam ut auctor purus. In id sem eget eros cursus blandit. <br/>
+Sed at ex lobortis, pretium elit a, sodales ex. Aliquam semper vehicula dui suscipit consequat. <br/>
+Aliquam scelerisque iaculis sapien, ac pharetra lorem rutrum ac. <br/>
+Maecenas fermentum sem ipsum, et mattis urna ornare et. Praesent eget ex est. Nulla non egestas neque. <br/>
+Etiam et tincidunt nisi.<br/>
+<br/>
+Ut sed commodo leo. Nulla vitae mollis risus, sed ornare lacus. <br/>
+Nullam ac ante quis nunc faucibus finibus fermentum non dui. In ullamcorper facilisis quam at scelerisque. <br/>
+Nulla gravida scelerisque velit. Curabitur rutrum volutpat hendrerit. Praesent vestibulum iaculis enim facilisis scelerisque.<br/>
+ Nullam condimentum risus eu viverra blandit. Donec eu turpis sollicitudin, facilisis lacus sed, ornare ex. <br/>
+ Curabitur fermentum pulvinar dictum. Vestibulum vitae posuere orci. Phasellus quis purus neque.<br/>
+ <br/>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. <br/>
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. <br/>
+Phasellus suscipit justo est, id faucibus sem eleifend non. Donec dapibus purus mattis, mattis lacus at, imperdiet felis. <br/>
+Nunc id malesuada diam. Duis eu felis scelerisque, pellentesque ligula vitae, lobortis dui. <br/>
+Nunc id mi non ante tempor blandit. Phasellus ipsum nisl, tincidunt sed placerat condimentum, consectetur sed neque. <br/>
+Morbi ullamcorper sollicitudin risus in dignissim. Integer molestie rhoncus risus eget convallis. <br/>
+Nam ac lacus sodales orci gravida maximus in a metus. Suspendisse id quam tempus dui rutrum congue. <br/>
+Donec rutrum massa sit amet consectetur mattis. Nullam ultrices fermentum risus nec laoreet. <br/>
+<br/>
+</span>
     </div>
 
-    <div id="additions">
+  </div>
 
-    </div>
+  <div id="additions">
+    <a href="add_product/" class="addlink">
+      <div class="additem">
+        Dodaj Produkt
+      </div>
+    </a>
 
-    <div id="footer">
 
-    </div>
+    <a href="add_recipe/" class="addlink">
+      <div class="additem">
+        Dodaj Recepturę
+      </div>
+    </a>
 
 
+    <a href="add_delivery/" class="addlink">
+      <div class="additem">
+        Dodaj dostawę
+      </div>
+    </a>
+
+
+    <a href="add_composition/" class="addlink">
+      <div class="additem">
+        Dodaj skład
+      </div>
+    </a>
+
+    <a href="add_production/" class="addlink">
+      <div class="additem">
+        Dodaj Produkcję
+      </div>
+    </a>
+  </div>
+
+  <div id="footer">
+    System Magazynowy wspomagający produkcję pasz dla drobiu. Author: Jakub Kopystiański.
+    <br/>
+    Link do Githuba
   </div>
 
 </body>
