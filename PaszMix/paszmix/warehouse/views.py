@@ -21,7 +21,20 @@ def index(request):
     return render(request, "warehouse/index.html", context)
 
 def new_product(request):
-    return HttpResponse("Tu będzie formularz do dodania nowego produktu")
+    latest_deliveries_list      = Delivery.objects.all()
+    latest_products_list        = Product.objects.all()
+    latest_compositions_list    = Composition.objects.all()
+    latest_productions_list     = Production.objects.all()
+    latest_recipes_list         = Recipe.objects.all()
+
+    context = {
+        "latest_deliveries_list": latest_deliveries_list,
+        "latest_products_list": latest_products_list,
+        "latest_compositions_list": latest_compositions_list,
+        "latest_productions_list": latest_productions_list,
+        "latest_recipes_list": latest_recipes_list,
+    }
+    return render(request, "warehouse/add_product.html", context)
 
 def product(request, product_id):
     product = Product.objects.get(pk = product_id)
@@ -31,7 +44,20 @@ def product(request, product_id):
     return render(request, "warehouse/product.html", context)
 
 def new_delivery(request):
-    return HttpResponse("Tu będzie formularz do dodania nowej dostawy")
+    latest_deliveries_list      = Delivery.objects.all()
+    latest_products_list        = Product.objects.all()
+    latest_compositions_list    = Composition.objects.all()
+    latest_productions_list     = Production.objects.all()
+    latest_recipes_list         = Recipe.objects.all()
+
+    context = {
+        "latest_deliveries_list": latest_deliveries_list,
+        "latest_products_list": latest_products_list,
+        "latest_compositions_list": latest_compositions_list,
+        "latest_productions_list": latest_productions_list,
+        "latest_recipes_list": latest_recipes_list,
+    }
+    return render(request, "warehouse/add_delivery.html", context)
 
 def delivery(request, delivery_id):
     delivery = Delivery.objects.get(pk = delivery_id)
