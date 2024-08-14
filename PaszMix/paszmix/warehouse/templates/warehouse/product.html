@@ -10,7 +10,8 @@
   {% endif %}
   {% if product %}
   <div>
-      
+    <form method="POST">
+      {% csrf_token %}
       <label for="product_name">Nazwa Produktu:</label>
       <input type="text" id="product_name" name="product_name" value={{product.product_name}} {% if readonly %} readonly {% endif %}>
 
@@ -105,6 +106,11 @@
     %
 
     <br/><br/>
+
+    {% if not readonly %}
+    <input type="submit" name="save" value="Zapisz zmianę"/>
+    {% endif %}
+  </form>
   </div>
 
   {% if readonly %}
@@ -116,11 +122,6 @@
   <form method="POST">
     {% csrf_token %}
     <input type="submit" name="edit" value="Edytuj"/>
-  </form>
-  {% else %}
-  <form method="POST">
-    {% csrf_token %}
-    <input type="submit" name="save" value="Zapisz zmianę"/>
   </form>
   {% endif %}
 

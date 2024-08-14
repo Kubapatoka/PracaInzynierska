@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 
@@ -63,6 +63,7 @@ def new_product(request):
                                    sod = sod, 
                                    kwas_linolowy = kwas_linolowy)
             product = Product.objects.last()
+            
             context = {
                 "latest_deliveries_list": latest_deliveries_list,
                 "latest_products_list": latest_products_list,
