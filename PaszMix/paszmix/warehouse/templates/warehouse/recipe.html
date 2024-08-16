@@ -3,11 +3,11 @@
 {% block title %}Receptura{% endblock %}
 
 {% block content %}
-  <h1>Receptura</h1>
   {% if recipe %}
-    <ul>
-      recipe
-    </ul>
+    {{recipe.name}}
+    <br/>
+    {{recipe.type}}
+
   {% else %}
     <p>recipe id is incorrect</p>
   {% endif %}

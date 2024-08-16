@@ -33,8 +33,8 @@ class Product(models.Model):
 
 class Delivery(models.Model):
     product = models.ForeignKey(Product, models.CASCADE)
-    price = MoneyField(max_digits=19, decimal_places=4, default_currency='PLN')
-    date = models.DateTimeField(default=timezone.now)
+    price = models.DecimalField(max_digits=19, decimal_places=4)
+    date = models.DateField(default=timezone.now)
     initial_quantity = models.FloatField()
     used_quantity = models.FloatField()
     waste = models.FloatField()

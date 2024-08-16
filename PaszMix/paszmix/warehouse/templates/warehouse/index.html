@@ -3,13 +3,5 @@
 {% block title %}Strona Główna{% endblock %}
 
 {% block content %}
-  {% if latest_deliveries_list %}
-    <ul>
-      {% for delivery in latest_deliveries_list %}
-        <li><a href="/warehouse/delivery/{{ delivery.id }}/">{{ delivery.product.product_name }} {{delivery.date}} {{delivery.price}} {{delivery.initial_quantity }}</a></li>
-      {% endfor %}
-    </ul>
-  {% else %}
-      <p>No deliveries are available.</p>
-  {% endif %}
+  Tu będzie coś ciekawego. Instrukcja i kilka przycisków do różnych przejść - może okienko z podsumowaniami jakimiś
 {% endblock %}

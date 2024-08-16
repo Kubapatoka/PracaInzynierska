@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Delivery, Product, Composition, Production, Recipe
+from .models import Delivery, Product, Composition, Production, Recipe, RecipeElement
 
 def index(request):
     latest_deliveries_list      = Delivery.objects.all()
@@ -102,6 +102,21 @@ def product(request, product_id):
         if "save" in request.POST:
             obj = Product.objects.get(pk = product_id)
             obj.product_name = request.POST.get('product_name')
+            obj.wilgotnosc = request.POST.get('wilgotnosc')
+            obj.energia_metaboliczna = request.POST.get('energia_metaboliczna')
+            obj.bialko_ogolne = request.POST.get('bialko_ogolne')
+            obj.lizyna = request.POST.get('lizyna')
+            obj.metionina = request.POST.get('metionina')
+            obj.cystyna = request.POST.get('cystyna')
+            obj.treonina = request.POST.get('treonina')
+            obj.tryptofan = request.POST.get('tryptofan')
+            obj.arginina = request.POST.get('arginina')
+            obj.walina = request.POST.get('walina')
+            obj.izoleucyna = request.POST.get('izoleucyna')
+            obj.wapn = request.POST.get('wapn')
+            obj.fosfor_przyswajalny = request.POST.get('fosfor_przyswajalny')
+            obj.sod = request.POST.get('sod')
+            obj.kwas_linolowy = request.POST.get('kwas_linolowy')
             obj.save()
     
     if Product.objects.filter(pk=product_id).exists():
@@ -128,6 +143,37 @@ def new_delivery(request):
     latest_productions_list     = Production.objects.all()
     latest_recipes_list         = Recipe.objects.all()
 
+    if request.method == "POST":
+        product = Product.objects.get(pk = request.POST.get('product'))
+        price = request.POST.get('price')
+        date = request.POST.get('date')
+        initial_quantity = request.POST.get('initial_quantity')
+        used_quantity = request.POST.get('used_quantity')
+        waste = request.POST.get('waste')
+        is_finished = request.POST.get('is_finished')
+        
+        if product:
+            Delivery.objects.create(product = product, 
+                                   price = price, 
+                                   date = date, 
+                                   initial_quantity = initial_quantity, 
+                                   used_quantity = used_quantity,
+                                   waste = waste, 
+                                   is_finished = (is_finished=="True"))
+            delivery = Delivery.objects.last()
+            
+            context = {
+                "latest_deliveries_list": latest_deliveries_list,
+                "latest_products_list": latest_products_list,
+                "latest_compositions_list": latest_compositions_list,
+                "latest_productions_list": latest_productions_list,
+                "latest_recipes_list": latest_recipes_list,
+                "delivery": delivery,
+                "newly_created" : True,
+                "readonly" : True
+             }
+            return render(request, "warehouse/delivery.html", context)
+
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
@@ -143,8 +189,30 @@ def delivery(request, delivery_id):
     latest_compositions_list    = Composition.objects.all()
     latest_productions_list     = Production.objects.all()
     latest_recipes_list         = Recipe.objects.all()
-    delivery = Delivery.objects.get(pk = delivery_id)
 
+    readonly = True
+
+    if request.method == "POST":
+        if "delete" in request.POST:
+            Delivery.objects.get(pk = delivery_id).delete()
+        if "edit" in request.POST:
+            readonly = False
+        if "save" in request.POST:
+            obj = Delivery.objects.get(pk = delivery_id)
+            obj.product = product = Product.objects.get(pk = request.POST.get('product'))
+            obj.price = request.POST.get('price')
+            obj.date = request.POST.get('date')
+            obj.initial_quantity = request.POST.get('initial_quantity')
+            obj.used_quantity = request.POST.get('used_quantity')
+            obj.waste = request.POST.get('waste')
+            obj.is_finished = (request.POST.get('is_finished')=="True")
+            obj.save()
+
+    if Delivery.objects.filter(pk=delivery_id).exists():
+        delivery = Delivery.objects.get(pk = delivery_id)
+    else:
+        delivery = False
+    
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
@@ -152,7 +220,13 @@ def delivery(request, delivery_id):
         "latest_productions_list": latest_productions_list,
         "latest_recipes_list": latest_recipes_list,
         "delivery": delivery,
+        "newly_created" : False,
+        "readonly" : readonly,
     }
+
+    print("aa\n")
+    print(delivery.date)
+    print("aa\n")
 
     return render(request, "warehouse/delivery.html", context)
 
@@ -173,13 +247,33 @@ def new_recipe(request):
     return render(request, "warehouse/add_recipe.html", context)
 
 def recipe(request, recipe_id):
-    recipe = Recipe.objects.get(pk = recipe_id)
     latest_deliveries_list      = Delivery.objects.all()
     latest_products_list        = Product.objects.all()
     latest_compositions_list    = Composition.objects.all()
     latest_productions_list     = Production.objects.all()
     latest_recipes_list         = Recipe.objects.all()
 
+    readonly = True
+
+    # if request.method == "POST":
+    #     if "delete" in request.POST:
+    #         Recipe.objects.get(pk = recipe_id).delete()
+    #     if "edit" in request.POST:
+    #         readonly = False
+    #     if "save" in request.POST:
+    #         obj = Recipe.objects.get(pk = recipe_id)
+    #         obj.composition = request.POST.get('composition')
+    #         obj.name = request.POST.get('name')
+    #         obj.type = request.POST.get('type')
+    #         obj.save()
+    
+    if Recipe.objects.filter(pk=recipe_id).exists():
+        recipe = Recipe.objects.get(pk = recipe_id)
+        recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe_id)
+    else:
+        recipe = False
+        recipe_elems = False
+    
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
@@ -187,7 +281,11 @@ def recipe(request, recipe_id):
         "latest_productions_list": latest_productions_list,
         "latest_recipes_list": latest_recipes_list,
         "recipe": recipe,
+        "recipe_elems": recipe_elems,
+        "newly_created" : False,
+        "readonly" : readonly,
     }
+
     return render(request, "warehouse/recipe.html", context)
 
 def new_composition(request):
@@ -196,6 +294,51 @@ def new_composition(request):
     latest_compositions_list    = Composition.objects.all()
     latest_productions_list     = Production.objects.all()
     latest_recipes_list         = Recipe.objects.all()
+
+    if request.method == "POST":
+        composition_name = request.POST.get('composition_name')
+        energia_metaboliczna_min = request.POST.get('energia_metaboliczna_min')
+        energia_metaboliczna_max = request.POST.get('energia_metaboliczna_max')
+        lizyna = request.POST.get('lizyna')
+        metionina = request.POST.get('metionina')
+        cystyna_metionina = request.POST.get('cystyna_metionina')
+        treonina = request.POST.get('treonina')
+        tryptofan = request.POST.get('tryptofan')
+        arginina = request.POST.get('arginina')
+        walina = request.POST.get('walina')
+        izoleucyna = request.POST.get('izoleucyna')
+        wapn = request.POST.get('wapn')
+        fosfor_przyswajalny = request.POST.get('fosfor_przyswajalny')
+        sod = request.POST.get('sod')
+
+        if composition_name != "":
+            Composition.objects.create(composition_name = composition_name, 
+                                   energia_metaboliczna_min = energia_metaboliczna_min,
+                                   energia_metaboliczna_max = energia_metaboliczna_max, 
+                                   lizyna = lizyna,
+                                   metionina = metionina, 
+                                   cystyna_metionina = cystyna_metionina, 
+                                   treonina = treonina, 
+                                   tryptofan = tryptofan, 
+                                   arginina = arginina, 
+                                   walina = walina, 
+                                   izoleucyna = izoleucyna, 
+                                   wapn = wapn, 
+                                   fosfor_przyswajalny = fosfor_przyswajalny, 
+                                   sod = sod)
+            composition = Composition.objects.last()
+
+            context = {
+                "latest_deliveries_list": latest_deliveries_list,
+                "latest_products_list": latest_products_list,
+                "latest_compositions_list": latest_compositions_list,
+                "latest_productions_list": latest_productions_list,
+                "latest_recipes_list": latest_recipes_list,
+                "composition": composition,
+                "newly_created" : True,
+                "readonly" : True
+             }
+            return render(request, "warehouse/composition.html", context)
 
     context = {
         "latest_deliveries_list": latest_deliveries_list,
@@ -214,6 +357,36 @@ def composition(request, composition_id):
     latest_productions_list     = Production.objects.all()
     latest_recipes_list         = Recipe.objects.all()
 
+    readonly = True
+
+    if request.method == "POST":
+        if "delete" in request.POST:
+            Composition.objects.get(pk = composition_id).delete()
+        if "edit" in request.POST:
+            readonly = False
+        if "save" in request.POST:
+            obj = Composition.objects.get(pk = composition_id)
+            obj.composition_name = request.POST.get('composition_name')
+            obj.energia_metaboliczna_min = request.POST.get('energia_metaboliczna_min')
+            obj.energia_metaboliczna_max = request.POST.get('energia_metaboliczna_max')
+            obj.lizyna = request.POST.get('lizyna')
+            obj.metionina = request.POST.get('metionina')
+            obj.cystyna_metionina = request.POST.get('cystyna_metionina')
+            obj.treonina = request.POST.get('treonina')
+            obj.tryptofan = request.POST.get('tryptofan')
+            obj.arginina = request.POST.get('arginina')
+            obj.walina = request.POST.get('walina')
+            obj.izoleucyna = request.POST.get('izoleucyna')
+            obj.wapn = request.POST.get('wapn')
+            obj.fosfor_przyswajalny = request.POST.get('fosfor_przyswajalny')
+            obj.sod = request.POST.get('sod')
+            obj.save()
+    
+    if Composition.objects.filter(pk=composition_id).exists():
+        composition = Composition.objects.get(pk = composition_id)
+    else:
+        composition = False
+    
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
@@ -221,6 +394,8 @@ def composition(request, composition_id):
         "latest_productions_list": latest_productions_list,
         "latest_recipes_list": latest_recipes_list,
         "composition": composition,
+        "newly_created" : False,
+        "readonly" : readonly,
     }
     return render(request, "warehouse/composition.html", context)
 

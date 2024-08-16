@@ -6,74 +6,78 @@
   <form method="POST">
     {% csrf_token %}
 
-    <label for="product_name">Nazwa Produktu:</label>
-    <input type="text" id="product_name" name="product_name" placeholder="Twoja nazwa nowego produktu">
+    <fieldset><legend>Dane Ogólne</legend>
+      <label for="product_name">Nazwa Produktu:</label>
+      <input type="text" id="product_name" name="product_name" placeholder="Twoja nazwa nowego produktu">
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="wilgotnosc">Wilgotność:</label>
-    <input type="number" id="wilgotnosc" name="wilgotnosc" min="0,0" max="100,0" step="0.1" value="12,0">
-    %
+      <label for="wilgotnosc">Wilgotność:</label>
+      <input type="number" id="wilgotnosc" name="wilgotnosc" min="0,0" max="100,0" step="0.1" value="12,0">
+      %
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="energia_metaboliczna">Energia Metaboliczna:</label>
-    <input type="number" id="energia_metaboliczna" name="energia_metaboliczna" min="0,0"  step="0.01" value="10,00">
-    MJ
+      <label for="energia_metaboliczna">Energia Metaboliczna:</label>
+      <input type="number" id="energia_metaboliczna" name="energia_metaboliczna" min="0,0"  step="0.01" value="10,00">
+      MJ
+      
+      <br/><br/>
+
+      <label for="bialko_ogolne">Białḱo Ogólne</label>
+      <input type="number" id="bialko_ogolne" name="bialko_ogolne" min="0,0"  step="0.1" value="12,0">
+      %
+    </fieldset>
     
     <br/><br/>
 
-    <label for="bialko_ogolne">Białḱo Ogólne</label>
-    <input type="number" id="bialko_ogolne" name="bialko_ogolne" min="0,0"  step="0.1" value="12,0">
-    %
+    <fieldset><legend>Aminokwasy</legend>
+      <label for="lizyna">Lizyna</label>
+      <input type="number" id="lizyna" name="lizyna" min="0,00"  step="0.01" value="2,00">
+      %
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="lizyna">Lizyna</label>
-    <input type="number" id="lizyna" name="lizyna" min="0,00"  step="0.01" value="2,00">
-    %
+      <label for="metionina">Metionina</label>
+      <input type="number" id="metionina" name="metionina" min="0,00"  step="0.01" value="2,00">
+      %
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="metionina">Metionina</label>
-    <input type="number" id="metionina" name="metionina" min="0,00"  step="0.01" value="2,00">
-    %
+      <label for="cystyna">Cystyna</label>
+      <input type="number" id="cystyna" name="cystyna" min="0,00"  step="0.01" value="2,00">
+      %
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="cystyna">Cystyna</label>
-    <input type="number" id="cystyna" name="cystyna" min="0,00"  step="0.01" value="2,00">
-    %
+      <label for="treonina">Treonina</label>
+      <input type="number" id="treonina" name="treonina" min="0,00"  step="0.01" value="2,00">
+      %
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="treonina">Treonina</label>
-    <input type="number" id="treonina" name="treonina" min="0,00"  step="0.01" value="2,00">
-    %
+      <label for="tryptofan">Tryptofan</label>
+      <input type="number" id="tryptofan" name="tryptofan" min="0,00"  step="0.01" value="2,00">
+      %
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="tryptofan">Tryptofan</label>
-    <input type="number" id="tryptofan" name="tryptofan" min="0,00"  step="0.01" value="2,00">
-    %
+      <label for="arginina">Arginina</label>
+      <input type="number" id="arginina" name="arginina" min="0,00"  step="0.01" value="2,00">
+      %
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="arginina">Arginina</label>
-    <input type="number" id="arginina" name="arginina" min="0,00"  step="0.01" value="2,00">
-    %
+      <label for="walina">Walina</label>
+      <input type="number" id="walina" name="walina" min="0,00"  step="0.01" value="2,00">
+      %
 
-    <br/><br/>
+      <br/><br/>
 
-    <label for="walina">Walina</label>
-    <input type="number" id="walina" name="walina" min="0,00"  step="0.01" value="2,00">
-    %
-
-    <br/><br/>
-
-    <label for="izoleucyna">Izoleucyna</label>
-    <input type="number" id="izoleucyna" name="izoleucyna" min="0,00"  step="0.01" value="2,00">
-    %
+      <label for="izoleucyna">Izoleucyna</label>
+      <input type="number" id="izoleucyna" name="izoleucyna" min="0,00"  step="0.01" value="2,00">
+      %
+    </fieldset>
 
     <br/><br/>
 
