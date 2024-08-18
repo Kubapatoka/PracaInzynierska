@@ -3,10 +3,90 @@
 {% block title %}Receptura{% endblock %}
 
 {% block content %}
+{% if newly_created %}
+<div id="success_add">
+  Pomyślnie dodano nową recepturę!
+</div>
+{% endif %}
+
   {% if recipe %}
-    {{recipe.name}}
-    <br/>
-    {{recipe.type}}
+  <form method="POST">
+  <fieldset><legend>Receptura - dane podstawowe</legend>
+        {% csrf_token %}
+        <label for="name">Nazwa Receptury:</label>
+        <input type="text" id="name" name="name" {% if readonly %} readonly {% endif %} value={{recipe.name}}>
+
+        <br/><br/>
+
+        <label for="composition">Realizowany skład:</label>
+        <select id="composition" name="composition" {% if readonly %} disabled {% endif %}>
+            {% for c in latest_compositions_list %}
+            <option value={{c.pk}} {% if c.pk == recipe.composition.pk %} selected {% endif %}>{{c.composition_name}}</option>
+            {% endfor %}
+        </select>
+
+        <br/><br/>
+
+        <label for="number_of_positions">Liczba pozycji w recepturze</label>
+        <input type="number" id="number_of_positions" name="number_of_positions" value={{recipe.number_of_positions}} min="1" step="1" {% if readonly %} readonly {% endif %}>
+
+        <br/><br/>
+
+        <label for="type">Typ Receptury:</label>
+        <input type="text" id="type" name="type" value={{recipe.type}} {% if readonly %} readonly {% endif %}>
+</fieldset>
+
+<br>
+text
+    {{ recipe.number_of_positions }}
+<br>
+{{ recipe_elems }}
+
+<fieldset><legend>Składniki</legend>
+        {% for i in recipe_elems %}
+        <div><fieldset>
+          {% with elem_id=forloop.counter0|stringformat:"d" %}
+          {% with product_name="product"|add:elem_id %}
+          
+            <label for={{product_name}}>Produkt:</label>
+            <select id={{product_name}} name={{product_name}} {% if readonly %} disabled {% endif %}>
+                {% for prod in latest_products_list %}
+                <option value={{prod.pk}} {% if prod.pk == i.product.pk %} selected {% endif %}>{{prod.product_name}}</option>
+                {% endfor %}
+            </select>
+          {% endwith %}
+
+          {% with quantity_name="quantity"|add:elem_id %}
+            <br/><br/>
+            <label for={{quantity_name}}>Ilość początkowa</label>
+            <input type="number" id={{quantity_name}} name={{quantity_name}} value={{i.quantity}} step="0.1" {% if readonly %} readonly {% endif %}>
+            kg
+
+            <!--{% endwith %}
+            {% with delete_name="delete"|add:elem_id %}
+            <input type="submit" name="delete_elem"+{{i}} value="Usuń produkt"/>-->
+
+            {% endwith %}{% endwith %}
+        </fieldset></div>
+        {% endfor %}
+        <br/><br/>
+        {% if not readonly %}
+        <input type="submit" name="save" value="Zapisz zmianę"/>
+        {% endif %}
+</fieldset>
+</form>
+
+{% if readonly %}
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" name="delete" value="Usuń recepturę"/>
+</form>
+
+<form method="POST">
+  {% csrf_token %}
+  <input type="submit" name="edit" value="Edytuj"/>
+</form>
+{% endif %}
 
   {% else %}
     <p>recipe id is incorrect</p>

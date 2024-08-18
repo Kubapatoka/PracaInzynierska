@@ -68,6 +68,7 @@ class Composition(models.Model):
 
 class Recipe(models.Model):
     composition = models.ForeignKey(Composition, models.SET_NULL, null= True, blank = True)
+    number_of_positions = models.IntegerField()
     name = models.CharField(max_length= 255)
     type = models.CharField(max_length= 255)
 

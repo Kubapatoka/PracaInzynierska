@@ -199,7 +199,7 @@ def delivery(request, delivery_id):
             readonly = False
         if "save" in request.POST:
             obj = Delivery.objects.get(pk = delivery_id)
-            obj.product = product = Product.objects.get(pk = request.POST.get('product'))
+            obj.product = Product.objects.get(pk = request.POST.get('product'))
             obj.price = request.POST.get('price')
             obj.date = request.POST.get('date')
             obj.initial_quantity = request.POST.get('initial_quantity')
@@ -237,12 +237,69 @@ def new_recipe(request):
     latest_productions_list     = Production.objects.all()
     latest_recipes_list         = Recipe.objects.all()
 
+    if request.method == "POST":
+        if "create_recipe" in request.POST:
+            name = request.POST.get('name')
+            type = request.POST.get('type')
+            number_of_positions = int(request.POST.get('number_of_positions'))
+
+            if name != "":
+                Recipe.objects.create( composition = Composition.objects.get(pk = request.POST.get('composition')), 
+                                    name = name,
+                                    type = type,
+                                    number_of_positions = number_of_positions)
+                recipe = Recipe.objects.last()
+                
+                context = {
+                    "latest_deliveries_list": latest_deliveries_list,
+                    "latest_products_list": latest_products_list,
+                    "latest_compositions_list": latest_compositions_list,
+                    "latest_productions_list": latest_productions_list,
+                    "latest_recipes_list": latest_recipes_list,
+                    "recipe": recipe,
+                    "number_of_positions": range(number_of_positions),
+                }
+                return render(request, "warehouse/add_recipe.html", context)
+            
+        if "add_recipe_elements" in request.POST:
+            recipe = Recipe.objects.last()
+
+            for i in range(recipe.number_of_positions):
+                print("dodajemy recipe elem")
+                pname = 'product'+str(i)
+                print(pname)
+                p = request.POST.get(pname)
+                print(p)
+                prod = Product.objects.get(pk = p)
+                print(prod)
+                quan = request.POST.get('quantity'+str(i))
+                print(quan)
+                RecipeElement.objects.create(recipe_ref = recipe, product = prod, quantity = quan)
+
+            recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe.pk)
+
+            context = {
+            "latest_deliveries_list": latest_deliveries_list,
+            "latest_products_list": latest_products_list,
+            "latest_compositions_list": latest_compositions_list,
+            "latest_productions_list": latest_productions_list,
+            "latest_recipes_list": latest_recipes_list,
+            "recipe": recipe,
+            "recipe_elems": recipe_elems,
+            "newly_created" : True,
+            "readonly" : True,
+            }
+
+            return render(request, "warehouse/recipe.html", context)
+
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
         "latest_compositions_list": latest_compositions_list,
         "latest_productions_list": latest_productions_list,
         "latest_recipes_list": latest_recipes_list,
+        "number_of_positions": -1,
+        "recipe": False,
     }
     return render(request, "warehouse/add_recipe.html", context)
 
@@ -255,21 +312,26 @@ def recipe(request, recipe_id):
 
     readonly = True
 
-    # if request.method == "POST":
-    #     if "delete" in request.POST:
-    #         Recipe.objects.get(pk = recipe_id).delete()
-    #     if "edit" in request.POST:
-    #         readonly = False
-    #     if "save" in request.POST:
-    #         obj = Recipe.objects.get(pk = recipe_id)
-    #         obj.composition = request.POST.get('composition')
-    #         obj.name = request.POST.get('name')
-    #         obj.type = request.POST.get('type')
-    #         obj.save()
+    if request.method == "POST":
+        if "delete" in request.POST:
+            Recipe.objects.get(pk = recipe_id).delete()
+        if "edit" in request.POST:
+            readonly = False
+        if "save" in request.POST:
+            obj = Recipe.objects.get(pk = recipe_id)
+            obj.composition = Composition.objects.get(pk=request.POST.get('composition'))
+            obj.number_of_positions = request.POST.get('number_of_positions')
+            obj.name = request.POST.get('name')
+            obj.type = request.POST.get('type')
+            obj.save()
+
+            recipe_elems = RecipeElement.objects.filter(recipe_ref = obj)
     
     if Recipe.objects.filter(pk=recipe_id).exists():
         recipe = Recipe.objects.get(pk = recipe_id)
-        recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe_id)
+        recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe)
+        print(recipe_elems)
+        print(RecipeElement.objects.all())
     else:
         recipe = False
         recipe_elems = False
