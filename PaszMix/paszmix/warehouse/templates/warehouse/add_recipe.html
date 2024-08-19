@@ -28,7 +28,7 @@
             <br/><br/>
 
             <label for="type">Typ Receptury:</label>
-            <input type="text" id="type" name="type" placeholder="nieobowiązkowe pole">
+            <input type="text" id="type" name="type" placeholder="nieobowiązkowe pole" value="">
             
             <br/><br/>
             <input type="submit" id="submit" name="create_recipe" value="Przejdź do dodania elementów receptury">
@@ -69,7 +69,6 @@
                 {% with elem_id=i|stringformat:"d" %}
                 {% with product_name="product"|add:elem_id %}
 
-                {{product_name}}
                 <label for={{product_name}}>Produkt:</label>
                 <select id={{product_name}} name={{product_name}}>
                     {% for prod in latest_products_list %}
@@ -80,7 +79,7 @@
                 
                 <br/><br/>
                 {% with quantity_name="quantity"|add:elem_id %}
-                {{quantity_name}}
+                
                 <label for={{quantity_name}}>Ilość początkowa</label>
                 <input type="number" id={{quantity_name}} name={{quantity_name}}  step="0.1">
                 kg

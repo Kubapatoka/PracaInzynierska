@@ -272,7 +272,7 @@ def new_recipe(request):
                 print(p)
                 prod = Product.objects.get(pk = p)
                 print(prod)
-                quan = request.POST.get('quantity'+str(i))
+                quan = float(request.POST.get('quantity'+str(i)))
                 print(quan)
                 RecipeElement.objects.create(recipe_ref = recipe, product = prod, quantity = quan)
 
@@ -288,6 +288,7 @@ def new_recipe(request):
             "recipe_elems": recipe_elems,
             "newly_created" : True,
             "readonly" : True,
+            "how_many_empty" : False,
             }
 
             return render(request, "warehouse/recipe.html", context)
@@ -317,25 +318,53 @@ def recipe(request, recipe_id):
             Recipe.objects.get(pk = recipe_id).delete()
         if "edit" in request.POST:
             readonly = False
+        obj = Recipe.objects.get(pk = recipe_id)
+        recipe_elems = RecipeElement.objects.filter(recipe_ref = obj)
+        for i in range(obj.number_of_positions):
+            del_nam = "delete"+str(i)
+            if del_nam in request.POST:
+                print("usuwansko")
+                recipe_elems[i].delete()
+
         if "save" in request.POST:
-            obj = Recipe.objects.get(pk = recipe_id)
             obj.composition = Composition.objects.get(pk=request.POST.get('composition'))
-            obj.number_of_positions = request.POST.get('number_of_positions')
+            old_number_of_positions = obj.number_of_positions
+            obj.number_of_positions = int(request.POST.get('number_of_positions'))
             obj.name = request.POST.get('name')
             obj.type = request.POST.get('type')
             obj.save()
 
             recipe_elems = RecipeElement.objects.filter(recipe_ref = obj)
+
+            for i,j in enumerate(recipe_elems):
+                pname = 'product'+str(i)
+                j.product = Product.objects.get(pk=request.POST.get(pname))
+                j.quantity = float(request.POST.get('quantity'+str(i)))
+                j.save()
+
+            for i in range(recipe_elems.count(), old_number_of_positions):
+                pname = 'product'+str(i)
+                product = Product.objects.get(pk=request.POST.get(pname))
+                quantity = float(request.POST.get('quantity'+str(i)))
+                RecipeElement.objects.create(recipe_ref = obj, product = product, quantity = quantity)
     
     if Recipe.objects.filter(pk=recipe_id).exists():
         recipe = Recipe.objects.get(pk = recipe_id)
-        recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe)
-        print(recipe_elems)
-        print(RecipeElement.objects.all())
+        recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe)    
+        how_many_empty = range(recipe_elems.count(), recipe.number_of_positions)
+
     else:
         recipe = False
         recipe_elems = False
+        how_many_empty = False
     
+    print("how many empty:")
+    print(how_many_empty)
+    if how_many_empty:
+        for i in how_many_empty:
+            print(i)
+        print("end")
+
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
@@ -346,6 +375,7 @@ def recipe(request, recipe_id):
         "recipe_elems": recipe_elems,
         "newly_created" : False,
         "readonly" : readonly,
+        "how_many_empty" : how_many_empty,
     }
 
     return render(request, "warehouse/recipe.html", context)
