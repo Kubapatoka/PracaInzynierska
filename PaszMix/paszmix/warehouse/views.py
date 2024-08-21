@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import Delivery, Product, Composition, Production, Recipe, RecipeElement
+from .models import Delivery, Product, Composition, Production, Recipe, RecipeElement, ProductionElement
 
 def index(request):
     latest_deliveries_list      = Delivery.objects.all()
@@ -314,8 +314,6 @@ def recipe(request, recipe_id):
     readonly = True
 
     if request.method == "POST":
-        if "delete" in request.POST:
-            Recipe.objects.get(pk = recipe_id).delete()
         if "edit" in request.POST:
             readonly = False
         obj = Recipe.objects.get(pk = recipe_id)
@@ -323,9 +321,10 @@ def recipe(request, recipe_id):
         for i in range(obj.number_of_positions):
             del_nam = "delete"+str(i)
             if del_nam in request.POST:
-                print("usuwansko")
                 recipe_elems[i].delete()
 
+        if "delete" in request.POST:
+            Recipe.objects.get(pk = recipe_id).delete()
         if "save" in request.POST:
             obj.composition = Composition.objects.get(pk=request.POST.get('composition'))
             old_number_of_positions = obj.number_of_positions
@@ -340,31 +339,26 @@ def recipe(request, recipe_id):
                 pname = 'product'+str(i)
                 j.product = Product.objects.get(pk=request.POST.get(pname))
                 j.quantity = float(request.POST.get('quantity'+str(i)))
-                j.save()
+                if j.quantity > 0:
+                    j.save()
+                else: j.delete()
 
             for i in range(recipe_elems.count(), old_number_of_positions):
                 pname = 'product'+str(i)
                 product = Product.objects.get(pk=request.POST.get(pname))
                 quantity = float(request.POST.get('quantity'+str(i)))
-                RecipeElement.objects.create(recipe_ref = obj, product = product, quantity = quantity)
+                if quantity > 0:
+                    RecipeElement.objects.create(recipe_ref = obj, product = product, quantity = quantity)
     
     if Recipe.objects.filter(pk=recipe_id).exists():
         recipe = Recipe.objects.get(pk = recipe_id)
         recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe)    
         how_many_empty = range(recipe_elems.count(), recipe.number_of_positions)
-
     else:
         recipe = False
         recipe_elems = False
         how_many_empty = False
-    
-    print("how many empty:")
-    print(how_many_empty)
-    if how_many_empty:
-        for i in how_many_empty:
-            print(i)
-        print("end")
-
+        
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
@@ -498,29 +492,103 @@ def new_production(request):
     latest_productions_list     = Production.objects.all()
     latest_recipes_list         = Recipe.objects.all()
 
+    if request.method == "POST":
+        if "create_production" in request.POST:
+            recipe = Recipe.objects.get(pk = request.POST.get('recipe'))
+            date = request.POST.get('date')
+            name_of_final_product = request.POST.get('name_of_final_product')
+            Production.objects.create(recipe = recipe, date = date, name_of_final_product = name_of_final_product)
+            production = Production.objects.last()
+            recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe.pk).filter(quantity__gt=0)
+
+            context = {
+                "latest_deliveries_list": latest_deliveries_list,
+                "latest_products_list": latest_products_list,
+                "latest_compositions_list": latest_compositions_list,
+                "latest_productions_list": latest_productions_list,
+                "latest_recipes_list": latest_recipes_list,
+                "production" : production,
+                "recipe_elems" : enumerate(recipe_elems),
+            }
+            return render(request, "warehouse/add_production.html", context)
+        
+        if "add_productions_elements" in request.POST:
+            production = Production.objects.last()
+            recipe_elems = RecipeElement.objects.filter(recipe_ref = production.recipe.pk).filter(quantity__gt=0)
+            for i in range(recipe_elems.count()):
+                delivery_name = "delivery"+str(i)
+                quantity_name = "quantity"+str(i)
+                delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
+                quantity = float(request.POST.get(quantity_name))
+                if quantity > 0:
+                    ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
+
+                delivery_name = "2delivery"+str(i)
+                quantity_name = "2quantity"+str(i)
+                delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
+                quantity = float(request.POST.get(quantity_name))
+                if quantity > 0:
+                    ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
+
+                delivery_name = "3delivery"+str(i)
+                quantity_name = "3quantity"+str(i)
+                delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
+                quantity = float(request.POST.get(quantity_name))
+                if quantity > 0:
+                    ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
+
+                production_elements = ProductionElement.objects.filter(production_ref = production.pk)
+
+                context = {
+                    "latest_deliveries_list": latest_deliveries_list,
+                    "latest_products_list": latest_products_list,
+                    "latest_compositions_list": latest_compositions_list,
+                    "latest_productions_list": latest_productions_list,
+                    "latest_recipes_list": latest_recipes_list,
+                    "newly_created" : True,
+                    "production" : production,
+                    "production_elements" : production_elements,
+                }
+
+                return render(request, "warehouse/production.html", context)
+
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
         "latest_compositions_list": latest_compositions_list,
         "latest_productions_list": latest_productions_list,
         "latest_recipes_list": latest_recipes_list,
+        "production" : False
     }
     return render(request, "warehouse/add_production.html", context)
 
 def production(request, production_id):
-    production = Production.objects.get(pk = production_id)
     latest_deliveries_list      = Delivery.objects.all()
     latest_products_list        = Product.objects.all()
     latest_compositions_list    = Composition.objects.all()
     latest_productions_list     = Production.objects.all()
     latest_recipes_list         = Recipe.objects.all()
+
+    if request.method == "POST":
+        if "delete" in request.POST:
+            Production.objects.get(pk = production_id).delete()
+
+    if Production.objects.filter(pk=production_id).exists():
+        production = Production.objects.get(pk = production_id)
+        production_elements = ProductionElement.objects.filter(production_ref = production.pk)
+    else:
+        production = False
+        production_elements = False
+
     context = {
         "latest_deliveries_list": latest_deliveries_list,
         "latest_products_list": latest_products_list,
         "latest_compositions_list": latest_compositions_list,
         "latest_productions_list": latest_productions_list,
         "latest_recipes_list": latest_recipes_list,
+        "newly_created" : False,
         "production": production,
+        "production_elements" : production_elements,
     }
     return render(request, "warehouse/production.html", context)
 

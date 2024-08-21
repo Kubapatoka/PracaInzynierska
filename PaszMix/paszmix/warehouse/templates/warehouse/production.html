@@ -3,11 +3,63 @@
 {% block title %}Produkcja{% endblock %}
 
 {% block content %}
+  {% if newly_created %}
+    <div id="success_add">
+      Pomyślnie dodano nową produkcję!
+    </div>
+  {% endif %}
+
   {% if production %}
-    <ul>
-    Production
-    </ul>
+
+
+  
+    <div>
+      <fieldset><legend>Podstawowe dane</legend>
+          <label for="recipe">Realizowana receptura:</label>
+          <select id="recipe" name="recipe" disabled>
+              {% for c in latest_recipes_list %}
+              <option value={{c.pk}}  {% if c.pk == production.recipe.pk %} selected {% endif %}>{{c.name}}</option>
+              {% endfor %}
+          </select>
+          <br>
+          <label for="date">Data:</label>
+          <input type="date" id="date" name="date" value="{{production.date|date:'Y-m-d'}}" readonly>
+          <br>
+          <label for="name_of_final_product">Nazwa finalnego produktu:</label>
+          <input type="text" id="name_of_final_product" name="name_of_final_product" placeholder="Typ paszy" readonly value={{production.name_of_final_product}}>
+      </fieldset>
+    </div>
+
+    <div><fieldset><legend>Rozpiska</legend>
+        {% for pe in production_elements %}
+
+        <a href="/warehouse/delivery/{{ pe.delivery_ref.id }}/">
+          <label>
+            Produkt:
+            <input type="text" value={{pe.delivery_ref.product}} readonly>
+          </label>
+
+          <label>
+            w ilości
+            <input type="number" value={{pe.quantity}} readonly>
+          </label>
+          kg
+
+          <label>
+            z:
+            <input type="date" value="{{pe.delivery_ref.date|date:'Y-m-d'}}" readonly>
+          </label>
+        </a>
+          <br>
+        {% endfor %}
+
+    </fieldset></div>
+
+    <form method="POST">{% csrf_token %}
+      <input type="submit" id="submit" name="delete" value="Usuń Produkcję">    
+    </form>
+
   {% else %}
-    <p>production id is incorrect</p>
+  <div id="failed">Produkcja nie istnieje</div>
   {% endif %}
 {% endblock %}
