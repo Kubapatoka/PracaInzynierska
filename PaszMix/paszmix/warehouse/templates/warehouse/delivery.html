@@ -13,65 +13,74 @@
   <div>
     <form method="POST">
     {% csrf_token %}
-      <label for="product">Nazwa Produktu:</label>
-      <select id="product" name="product" {% if readonly %} disabled {% endif %}>
-        {% for prod in latest_products_list %}
-        <option value={{prod.pk}} {% if prod.pk == delivery.product.pk %} selected {% endif %}>{{prod.product_name}}</option>
-        {% endfor %}
-      </select>
-
-      <br/><br/>
-
-      <label for="price">Cena:</label>
-      <input type="number" id="price" name="price" min="0,00" step="0.01" value={{delivery.price}} {% if readonly %} readonly {% endif %}>
-      zł
-
-      <br/><br/>
-
-      <label for="date">Data:</label>
-      <input type="date" id="date" name="date" value="{{delivery.date|date:'Y-m-d'}}" {% if readonly %} readonly {% endif %}>
-
-      <br/><br/>
-
-      <label for="initial_quantity">Ilość początkowa</label>
-      <input type="number" id="initial_quantity" name="initial_quantity"  step="0.1" value={{delivery.initial_quantity}} {% if readonly %} readonly {% endif %}>
-      kg
       
-      <br/><br/>
-
-      <label for="used_quantity">Ilość zużyta</label>
-      <input type="number" id="used_quantity" name="used_quantity"  step="0.1" value={{delivery.used_quantity}} {% if readonly %} readonly {% endif %}>
-      kg
+      <div class="control1">
+        <label for="product">Nazwa Produktu:</label>
+        <select id="product" name="product" {% if readonly %} disabled {% endif %}>
+          {% for prod in latest_products_list %}
+          <option value={{prod.pk}} {% if prod.pk == delivery.product.pk %} selected {% endif %}>{{prod.product_name}}</option>
+          {% endfor %}
+        </select>
+      </div>
       
-      <br/><br/>
-
-      <label for="waste">Strata</label>
-      <input type="number" id="waste" name="waste"  step="0.1" value={{delivery.waste}} {% if readonly %} readonly {% endif %}>
-      kg
+      <div class="control2">
+        <label for="price">Cena:</label>
+        <input type="number" id="price" name="price" min="0,00" step="0.01" value={{delivery.price}} {% if readonly %} readonly {% endif %}>
+        zł
+      </div>
       
-      <br/><br/>
-
-      <label for="is_finished">Czy dostawa zakończona?</label>
-      <input type="checkbox" id="is_finished" name="is_finished"  value={{delivery.is_finished}} {% if readonly %} disabled {% endif %}>
-    
-      <br/><br/>
+      <div class="control1">
+        <label for="date">Data:</label>
+        <input type="date" id="date" name="date" value="{{delivery.date|date:'Y-m-d'}}" {% if readonly %} readonly {% endif %}>
+      </div>
+        
+      <div class="control2">
+        <label for="initial_quantity">Ilość początkowa</label>
+        <input type="number" id="initial_quantity" name="initial_quantity"  step="0.1" value={{delivery.initial_quantity}} {% if readonly %} readonly {% endif %}>
+        kg
+      </div>
+        
+      <div class="control1">
+        <label for="used_quantity">Ilość zużyta</label>
+        <input type="number" id="used_quantity" name="used_quantity"  step="0.1" value={{delivery.used_quantity}} {% if readonly %} readonly {% endif %}>
+        kg
+      </div>
+          
+      <div class="control2">
+        <label for="waste">Strata</label>
+        <input type="number" id="waste" name="waste"  step="0.1" value={{delivery.waste}} {% if readonly %} readonly {% endif %}>
+        kg
+      </div>
+          
+      <div class="control1">
+        <label for="is_finished">Czy dostawa zakończona?</label>
+        <select name="is_finished" {% if readonly %} disabled {% endif %}>
+          <option value="False" {% if delivery.is_finished == False %} selected {% endif %}>Nie</option>
+          <option value="True" {% if delivery.is_finished == True %} selected {% endif %}>Tak</option>
+        </select>
+      </div>
 
       {% if not readonly %}
-      <input type="submit" name="save" value="Zapisz zmianę"/>
+      <input class="green_button" type="submit" name="save" value="Zapisz zmianę"/>
       {% endif %}
     </form>
   </div>
 
   {% if readonly %}
-  <form method="POST">
-    {% csrf_token %}
-    <input class="delete_button" type="submit" name="delete" value="Usuń Dostawę"/>
-  </form>
 
   <form method="POST">
     {% csrf_token %}
-    <input class="edit_button" type="submit" name="edit" value="Edytuj"/>
+    <input class="green_button" type="submit" name="edit" value="Edytuj"/>
   </form>
+
+  <div style="width: 50px; height: 10px; float: left;"></div>
+  
+  <form method="POST">
+    {% csrf_token %}
+    <input class="red_button" type="submit" name="delete" value="Usuń Dostawę"/>
+  </form>
+  <div style="clear:both"></div>
+
   {% endif %}
 
 

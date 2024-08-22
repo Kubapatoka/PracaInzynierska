@@ -8,41 +8,51 @@
 
     <div><form method="POST">{% csrf_token %}
         <fieldset><legend>Podstawowe dane</legend>
+            <div class="control1">
+                <label for="recipe">Realizowana receptura:</label>
+                <select id="recipe" name="recipe">
+                    {% for c in latest_recipes_list %}
+                    <option value={{c.pk}}>{{c.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-            <label for="recipe">Realizowana receptura:</label>
-            <select id="recipe" name="recipe">
-                {% for c in latest_recipes_list %}
-                <option value={{c.pk}}>{{c.name}}</option>
-                {% endfor %}
-            </select>
-            <br>
-            <label for="date">Data:</label>
-            <input type="date" id="date" name="date">
-            <br>
-            <label for="name_of_final_product">Nazwa finalnego produktu:</label>
-            <input type="text" id="name_of_final_product" name="name_of_final_product" placeholder="Typ paszy">
+            <div class="control2">
+                <label for="date">Data:</label>
+                <input type="date" id="date" name="date">
+            </div>
 
-            <br/>
-            <input type="submit" id="submit" name="create_production" value="Przejdź do dodania poszczególnych elementów">
+            <div class="control1">
+                <label for="name_of_final_product">Nazwa finalnego produktu:</label>
+                <input type="text" id="name_of_final_product" name="name_of_final_product" placeholder="Typ paszy">
+            </div>
 
+            <input style="width: 350px;" class="green_button" type="submit" id="submit" name="create_production" value="Przejdź do dodania poszczególnych elementów">
+            <div style="clear:both"></div>
         </fieldset>
     </form></div>
     {% else %}
     <div>
         <fieldset><legend>Podstawowe dane</legend>
 
-            <label for="recipe">Realizowana receptura:</label>
-            <select id="recipe" name="recipe" disabled>
-                {% for c in latest_recipes_list %}
-                <option value={{c.pk}}  {% if c.pk == production.recipe.pk %} selected {% endif %}>{{c.name}}</option>
-                {% endfor %}
-            </select>
-            <br>
-            <label for="date">Data:</label>
-            <input type="date" id="date" name="date" value="{{production.date|date:'Y-m-d'}}" readonly>
-            <br>
-            <label for="name_of_final_product">Nazwa finalnego produktu:</label>
-            <input type="text" id="name_of_final_product" name="name_of_final_product" placeholder="Typ paszy" readonly value={{production.name_of_final_product}}>
+            <div class="control1">
+                <label for="recipe">Realizowana receptura:</label>
+                <select id="recipe" name="recipe" disabled>
+                    {% for c in latest_recipes_list %}
+                    <option value={{c.pk}}  {% if c.pk == production.recipe.pk %} selected {% endif %}>{{c.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="control2">
+                <label for="date">Data:</label>
+                <input type="date" id="date" name="date" value="{{production.date|date:'Y-m-d'}}" readonly>
+            </div>
+
+            <div class="control1">
+                <label for="name_of_final_product">Nazwa finalnego produktu:</label>
+                <input type="text" id="name_of_final_product" name="name_of_final_product" placeholder="Typ paszy" readonly value={{production.name_of_final_product}}>
+            </div>
         </fieldset>
     </div>
 
@@ -53,61 +63,73 @@
                     {% with elem_id=i|stringformat:"d" %}
 
                         {% with delivery_name="delivery"|add:elem_id %}
-                        <select id={{delivery_name}} name={{delivery_name}}>
-                            {% for d in latest_deliveries_list %}
-                                {% if d.product.pk == r_e.product.pk %}
-                                    <option value={{d.pk}}>{{d.product.product_name}} {{d.date}}</option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
+                        <div class="control2">
+                            <select id={{delivery_name}} name={{delivery_name}} style="width: 400px;">
+                                {% for d in latest_deliveries_list %}
+                                    {% if d.product.pk == r_e.product.pk %}
+                                        <option value={{d.pk}}>{{d.product.product_name}} {{d.date}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
                         {% endwith %}
 
                         {% with quantity_name="quantity"|add:elem_id %}
-                        <label for={{quantity_name}}>Ilość</label>
-                        <input type="number" id={{quantity_name}} name={{quantity_name}} value=0 step="0.1">
-                        kg
+                        <div class="control2">
+                            <label for={{quantity_name}}>Ilość</label>
+                            <input type="number" id={{quantity_name}} name={{quantity_name}} value=0 step="0.1">
+                            kg
+                        </div>
                         {% endwith %}
 
-                        <br>
 
                         {% with delivery_name="2delivery"|add:elem_id %}
-                        <select id={{delivery_name}} name={{delivery_name}}>
-                            {% for d in latest_deliveries_list %}
-                                {% if d.product.pk == r_e.product.pk %}
-                                    <option value={{d.pk}}>{{d.product.product_name}} {{d.date}}</option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
+                        <div class="control1">
+                            <select id={{delivery_name}} name={{delivery_name}} style="width: 400px;">
+                                {% for d in latest_deliveries_list %}
+                                    {% if d.product.pk == r_e.product.pk %}
+                                        <option value={{d.pk}}>{{d.product.product_name}} {{d.date}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
                         {% endwith %}
 
                         {% with quantity_name="2quantity"|add:elem_id %}
-                        <label for={{quantity_name}}>Ilość</label>
-                        <input type="number" id={{quantity_name}} name={{quantity_name}} value=0 step="0.1">
-                        kg
+                        <div class="control1">
+                            <label for={{quantity_name}}>Ilość</label>
+                            <input type="number" id={{quantity_name}} name={{quantity_name}} value=0 step="0.1">
+                            kg
+                        </div>
                         {% endwith %}
 
                         <br>
 
                         {% with delivery_name="3delivery"|add:elem_id %}
-                        <select id={{delivery_name}} name={{delivery_name}}>
-                            {% for d in latest_deliveries_list %}
-                                {% if d.product.pk == r_e.product.pk %}
-                                    <option value={{d.pk}}>{{d.product.product_name}} {{d.date}}</option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
+                        <div class="control2">
+                            <select id={{delivery_name}} name={{delivery_name}} style="width: 400px;">
+                                {% for d in latest_deliveries_list %}
+                                    {% if d.product.pk == r_e.product.pk %}
+                                        <option value={{d.pk}}>{{d.product.product_name}} {{d.date}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
                         {% endwith %}
 
                         {% with quantity_name="3quantity"|add:elem_id %}
-                        <label for={{quantity_name}}>Ilość</label>
-                        <input type="number" id={{quantity_name}} name={{quantity_name}} value=0 step="0.1">
-                        kg
+                        <div class="control2">
+                            <label for={{quantity_name}}>Ilość</label>
+                            <input type="number" id={{quantity_name}} name={{quantity_name}} value=0 step="0.1">
+                            kg
+                        </div>
                         {% endwith %}
                     {% endwith %}
                 </fieldset>
             {% endfor %}
 
-            <input type="submit" id="submit" name="add_productions_elements" value="Dodaj Produkcję">
+            <input type="submit" class="green_button" name="add_productions_elements" value="Dodaj Produkcję">
+            <div style="clear:both"></div>
         </fieldset></div>
     </form>
 

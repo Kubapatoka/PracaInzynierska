@@ -7,90 +7,91 @@
 <form method="POST">
     {% csrf_token %}
 
-    <label for="composition_name">Nazwa Składu:</label>
-    <input type="text" id="composition_name" name="composition_name" placeholder="Twoja nazwa nowego składu">
+    <div class="control1">
+      <label for="composition_name">Nazwa Składu:</label>
+      <input type="text" id="composition_name" name="composition_name" placeholder="Twoja nazwa nowego składu">
+    </div>
 
-    <br/><br/>
+    <div class="control2">
+      <label for="energia_metaboliczna_min">Energia Metaboliczna Minimalna:</label>
+      <input type="number" id="energia_metaboliczna_min" name="energia_metaboliczna_min" min="0,0"  step="0.01" value="10,00">
+      MJ
+    </div>
 
-    <label for="energia_metaboliczna_min">Energia Metaboliczna Minimalna:</label>
-    <input type="number" id="energia_metaboliczna_min" name="energia_metaboliczna_min" min="0,0"  step="0.01" value="10,00">
-    MJ
+    <div class="control1">
+      <label for="energia_metaboliczna_max">Energia Metaboliczna Maksymalna:</label>
+      <input type="number" id="energia_metaboliczna_max" name="energia_metaboliczna_max" min="0,0"  step="0.01" value="10,00">
+      MJ
+    </div>
 
-    <br/><br/>
+    <div class="control2">
+      <label for="lizyna">Lizyna</label>
+      <input type="number" id="lizyna" name="lizyna" min="0,00"  step="0.001" value="2,00">
+      g/MJ
+    </div>
 
-    <label for="energia_metaboliczna_max">Energia Metaboliczna Maksymalna:</label>
-    <input type="number" id="energia_metaboliczna_max" name="energia_metaboliczna_max" min="0,0"  step="0.01" value="10,00">
-    MJ
+    <div class="control1">
+      <label for="metionina">Metionina</label>
+      <input type="number" id="metionina" name="metionina" min="0,00"  step="0.001" value="2,00">
+      g/MJ
+    </div>
 
-    <br/><br/>
+    <div class="control2">
+      <label for="cystyna_metionina">Cystyna + Metionina</label>
+      <input type="number" id="cystyna_metionina" name="cystyna_metionina" min="0,00"  step="0.001" value="2,00">
+      g/MJ
+    </div>
 
-    <label for="lizyna">Lizyna</label>
-    <input type="number" id="lizyna" name="lizyna" min="0,00"  step="0.001" value="2,00">
-    g/MJ
+    <div class="control1">
+      <label for="treonina">Treonina</label>
+      <input type="number" id="treonina" name="treonina" min="0,00"  step="0.001" value="2,00">
+      g/MJ
+    </div>
 
-    <br/><br/>
+    <div class="control2">
+      <label for="tryptofan">Tryptofan</label>
+      <input type="number" id="tryptofan" name="tryptofan" min="0,00"  step="0.001" value="2,00">
+      g/MJ
+    </div>
+    
+    <div class="control1">
+      <label for="arginina">Arginina</label>
+      <input type="number" id="arginina" name="arginina" min="0,00"  step="0.001" value="2,00">
+      g/MJ
+    </div>
 
-    <label for="metionina">Metionina</label>
-    <input type="number" id="metionina" name="metionina" min="0,00"  step="0.001" value="2,00">
-    g/MJ
+    <div class="control2">
+      <label for="walina">Walina</label>
+      <input type="number" id="walina" name="walina" min="0,00"  step="0.001" value="2,00">
+      g/MJ
+    </div>
 
-    <br/><br/>
+    <div class="control1">
+      <label for="izoleucyna">Izoleucyna</label>
+      <input type="number" id="izoleucyna" name="izoleucyna" min="0,00"  step="0.001" value="2,00">
+      g/MJ
+    </div>
 
-    <label for="cystyna_metionina">Cystyna + Metionina</label>
-    <input type="number" id="cystyna_metionina" name="cystyna_metionina" min="0,00"  step="0.001" value="2,00">
-    g/MJ
+    <div class="control2">
+      <label for="wapn">Wapń</label>
+      <input type="number" id="wapn" name="wapn" min="0,0"  step="0.001" value="0,0">
+      g/MJ
+    </div>
 
-    <br/><br/>
+    <div class="control1">
+      <label for="fosfor_przyswajalny">Fosfor przyswajalny</label>
+      <input type="number" id="fosfor_przyswajalny" name="fosfor_przyswajalny" min="0,00"  step="0.001" value="0,13">
+      g/MJ
+    </div>
 
-    <label for="treonina">Treonina</label>
-    <input type="number" id="treonina" name="treonina" min="0,00"  step="0.001" value="2,00">
-    g/MJ
+    <div class="control2">
+      <label for="sod">Sód</label>
+      <input type="number" id="sod" name="sod" min="0,00"  step="0.001" value="0,01">
+      g/MJ
+    </div>
 
-    <br/><br/>
-
-    <label for="tryptofan">Tryptofan</label>
-    <input type="number" id="tryptofan" name="tryptofan" min="0,00"  step="0.001" value="2,00">
-    g/MJ
-
-    <br/><br/>
-
-    <label for="arginina">Arginina</label>
-    <input type="number" id="arginina" name="arginina" min="0,00"  step="0.001" value="2,00">
-    g/MJ
-
-    <br/><br/>
-
-    <label for="walina">Walina</label>
-    <input type="number" id="walina" name="walina" min="0,00"  step="0.001" value="2,00">
-    g/MJ
-
-    <br/><br/>
-
-    <label for="izoleucyna">Izoleucyna</label>
-    <input type="number" id="izoleucyna" name="izoleucyna" min="0,00"  step="0.001" value="2,00">
-    g/MJ
-
-    <br/><br/>
-
-    <label for="wapn">Wapń</label>
-    <input type="number" id="wapn" name="wapn" min="0,0"  step="0.001" value="0,0">
-    g/MJ
-
-    <br/><br/>
-
-    <label for="fosfor_przyswajalny">Fosfor przyswajalny</label>
-    <input type="number" id="fosfor_przyswajalny" name="fosfor_przyswajalny" min="0,00"  step="0.001" value="0,13">
-    g/MJ
-
-    <br/><br/>
-
-    <label for="sod">Sód</label>
-    <input type="number" id="sod" name="sod" min="0,00"  step="0.001" value="0,01">
-    g/MJ
-
-    <br/><br/>
-
-    <input type="submit" id="submit" name="submit" value="Dodaj Skład">
+    <input class="green_button" type="submit" id="submit" name="submit" value="Dodaj Skład">
+    <div style="clear:both"></div>
 
   </form>
 {% endblock %}

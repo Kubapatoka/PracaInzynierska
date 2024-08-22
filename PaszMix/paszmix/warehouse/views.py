@@ -532,20 +532,20 @@ def new_production(request):
                 if quantity > 0:
                     ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
 
-                production_elements = ProductionElement.objects.filter(production_ref = production.pk)
+            production_elements = ProductionElement.objects.filter(production_ref = production.pk)
 
-                context = {
-                    "latest_deliveries_list": latest_deliveries_list,
-                    "latest_products_list": latest_products_list,
-                    "latest_compositions_list": latest_compositions_list,
-                    "latest_productions_list": latest_productions_list,
-                    "latest_recipes_list": latest_recipes_list,
-                    "newly_created" : True,
-                    "production" : production,
-                    "production_elements" : production_elements,
-                }
+            context = {
+                "latest_deliveries_list": latest_deliveries_list,
+                "latest_products_list": latest_products_list,
+                "latest_compositions_list": latest_compositions_list,
+                "latest_productions_list": latest_productions_list,
+                "latest_recipes_list": latest_recipes_list,
+                "newly_created" : True,
+                "production" : production,
+                "production_elements" : production_elements,
+            }
 
-                return render(request, "warehouse/production.html", context)
+            return render(request, "warehouse/production.html", context)
 
     context = {
         "latest_deliveries_list": latest_deliveries_list,
