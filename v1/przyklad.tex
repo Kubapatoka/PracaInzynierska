@@ -52,7 +52,7 @@
 	
 	System powinien również pomóc optymalizować koszty produkcji. 
 
-\section {Moje oczekiwania od systemu}
+\section {Wymagania od systemu}
 
 \begin{itemize}
   \item Sprawdzanie ilości dostępnych półproduktów w magazynie
@@ -63,10 +63,11 @@
   \item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów
   \item  Wprowadzanie receptur na paszę
   \item  Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji
+  \item Możliwe używanie aplikacji na urządzeniu mobilnym oraz komputerze - system webowy
+  \item System minimalistyczny, najpotrzebniejsze funkcje, proste użycie
+  \item Baza danych zdolna pomieścić dane dla gospodarstwa rolnego.
 \end{itemize} 
 
-\section {Architektura}
-	System będzie w formie aplikacji Web-owej. Planuję użyć frameworku Django oraz bazy danych PostgreSQL. Użyję również konteneryzacji (Docker)
 
 \chapter{Plan pracy}
 	\begin{enumerate}
@@ -78,10 +79,15 @@
 		\item Weryfikacja dotychczasowej wiedzy na temat produkcji pasz na podstawie książki "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu" praca zbiorowa pod redakcją Stefanii Smulikowskiej i Andrzeja Rutkowskiego 2018.
 		\item Zaplanowanie funkcjonalności programu
 		\item Zaprojektowanie modeli, jest to równoznaczne z projektem bazy danych
-		\item WIP
+		\item Zaprogramowanie układu strony
+		\item Dodanie nawigacji
+		\item Napisanie formularzy do dodawania/edycji/usuwania elementów modelu (frontend i backend)
+		\item Ujednolicenie kolorów w systemie
+		\item Poprawa wyglądu formularzy
+		\item Dodanie dodatkowych widoków (archiwa, stan magazynowy, układanie receptur)
 	\end{enumerate}
 	
-\chapter{Wiadomości z  książki Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}
+\chapter{Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}
 
 \section{Układ książki}
 Zalecenia podzielone są na 15 rozdziałów i są opisane szczegółowo na ponad 130 stronach. 
@@ -218,7 +224,7 @@ W tabelach występuje zapotrzebowanie tylko na kwas linolowy, ponieważ zapotrze
 	\end{itemize} 
 
 
-\chapter{Projektowanie Modeli}
+\chapter{Projektowanie Modeli oraz słownik kluczowych pojęć}
 
 \section{Dostawa}
 Podstawową jednostką w systemie jest dostawa. To dostawy będą zapisane w bazie danych i na ich podstawie będą oblczane stany magazynowe.
@@ -233,10 +239,10 @@ Dostawa składa się z:
 	\item wartość boolowska czy dostawa się zakończyła
 \end{itemize}
 
-Jeśli dostawa jest zakończona to powinien zachodzić warunek $$strata + zużyta ilość = początkowa ilość$$
+Jeśli dostawa jest zakończona to powinien zachodzić warunek strata + zużyta ilość = początkowa ilość
 
 \section{Produkt}
-Nie wyjaśniłem jeszcze czym jest wskazanie na produkt i czym jest produkt. Produkt jest zdefiniowany jako lista parametrów oraz nazwa.
+Produkt jest zdefiniowany jako lista parametrów oraz nazwą własną. Produkt jest wykorzystywany do produkcji paszy.
 Lista znaczących parametrów w produkcji paszy dla drobiu według "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu" to:
 \begin{itemize}
 	\item 	Wilgotność,
@@ -261,34 +267,27 @@ Z wyżej wymienionych paramterów jedynie białko ogółem oraz kwas linolowy ni
 
 Tutaj pojawiła się opcja rozszerzenia możliwości systemu o inne parametry. Przykładowo inne białka i właściwości danych produktów mogą odgrywać znaczącą rolę w produkcji pasz dla bydła, trzody lub hodowli ryb. Biorąc pod uwagę mnogość szczegółów charakterystycznych dla produkcji pasz zdecydowałem się mieć dane parametry "na stałe".
 
-\subsection{Przypadek użycia}
-Gospodarz posiał dwa pola Łubinu żółtego, odmianę "Mister" na działce numer $12$ oraz odmianę "Salut" na działce numer $72$. Po zbiorach Łubinu żółtego gospodarz wysyła próbkę z każdego pola do badań w laboratorium. Otrzymuje następujące wyniki:
-
-\begin{tabular}{|c|c|c|}
-\hline
-cecha &Mister &Salut \\
-\hline
-\end{tabular}
-
-
 \section{Skład}
 
-Skład będzie docelowym zbiorem wartości poszczególnych współrzędnych. Energia metaboliczna jest wyrażona w megadżulach i jako jedyny parametr jest przedstawiony w postaci zakresu. Pozostałe parametry (lizyna, metionina, cystyna+metionina, ..., wapń, fosfor przyswajalny, sód) są wyrażone w gramach na każdy megadżul wartości energetycznej.
+Skład będzie docelowym zbiorem wartości poszczególnych współrzędnych dla paszy. Energia metaboliczna jest wyrażona w megadżulach i jako jedyny parametr jest przedstawiony w postaci zakresu. Pozostałe parametry (lizyna, metionina, cystyna+metionina, ..., wapń, fosfor przyswajalny, sód) są wyrażone w gramach na każdy megadżul wartości energetycznej. Różne gatunki i grupy wiekowe drobiu wymagają paszy o różnych składach.
 
 
 \section{Receptura}
 
-Jest to wektor par <Produkt, ilość> gdzie suma ilości sumuje się do jednej tony. Taka lista może pochodzić z metody optymalizującej skład paszy na podstawie dostępnych produktów lub może zostać wprowadzona ręcznie. 
+Jest to wektor par <Produkt, ilość> gdzie suma ilości zwykle sumuje się do jednej tony. Taka lista może pochodzić z metody optymalizującej skład paszy na podstawie dostępnych produktów lub może zostać wprowadzona ręcznie. Receptura powinna realizować jakiś skład.
+
+\section{Produkcja}
+
+Produkcja realizuje konkretną recepturę korzystając z produktów z konkretnych dostaw.  
+
+\chapter{Instalacja systemu}
+
+\chapter{Podsumowanie}
 
 \chapter{luźne notki}
-
-1. Dodać dostawe, usunąć, edytować <dostawa>
-2. --||--produkt  --------||------ <produkt>
-3. --||--skład  --------||------ <skład>
 4. Wylistować dostępne produkty <dostawa, produkt>
 5. Skomponować paszę z dostępnych produktów <skład, dostawa, produkt>
-6. Skomponować paszę z przykładowych produktów <produkty (z dołożoną ceną), skład>
-7. Wprowadzić własną mieszaninę <mieszanina> 
+6. Skomponować paszę z przykładowych produktów <produkty (z dołożoną ceną), skład> 
 
 
 

@@ -224,10 +224,6 @@ def delivery(request, delivery_id):
         "readonly" : readonly,
     }
 
-    print("aa\n")
-    print(delivery.date)
-    print("aa\n")
-
     return render(request, "warehouse/delivery.html", context)
 
 def new_recipe(request):
@@ -436,7 +432,6 @@ def new_composition(request):
     return render(request, "warehouse/add_composition.html", context)
 
 def composition(request, composition_id):
-    composition = Composition.objects.get(pk = composition_id)
     latest_deliveries_list      = Delivery.objects.all()
     latest_products_list        = Product.objects.all()
     latest_compositions_list    = Composition.objects.all()

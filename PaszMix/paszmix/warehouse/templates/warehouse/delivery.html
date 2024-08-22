@@ -65,18 +65,18 @@
   {% if readonly %}
   <form method="POST">
     {% csrf_token %}
-    <input type="submit" name="delete" value="Usuń produkt"/>
+    <input class="delete_button" type="submit" name="delete" value="Usuń Dostawę"/>
   </form>
 
   <form method="POST">
     {% csrf_token %}
-    <input type="submit" name="edit" value="Edytuj"/>
+    <input class="edit_button" type="submit" name="edit" value="Edytuj"/>
   </form>
   {% endif %}
 
 
   
   {% else %}
-  <div id="failed">Produkt nie istnieje</div>
+  <div id="failed">Dostawa nie istnieje</div>
   {% endif %}
 {% endblock %}

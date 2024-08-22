@@ -31,28 +31,16 @@
     </div>
 
     <div><fieldset><legend>Rozpiska</legend>
+      <ol>
         {% for pe in production_elements %}
-
-        <a href="/warehouse/delivery/{{ pe.delivery_ref.id }}/">
-          <label>
-            Produkt:
-            <input type="text" value={{pe.delivery_ref.product}} readonly>
-          </label>
-
-          <label>
-            w ilości
-            <input type="number" value={{pe.quantity}} readonly>
-          </label>
-          kg
-
-          <label>
-            z:
-            <input type="date" value="{{pe.delivery_ref.date|date:'Y-m-d'}}" readonly>
-          </label>
-        </a>
-          <br>
+          <li>
+            <a href="/warehouse/delivery/{{ pe.delivery_ref.id }}/">
+                Produkt: {{pe.delivery_ref.product}}
+                w ilości {{pe.quantity}} kg z: {{pe.delivery_ref.date|date:'Y-m-d'}}
+            </a>
+          </li>
         {% endfor %}
-
+    </ol>
     </fieldset></div>
 
     <form method="POST">{% csrf_token %}

@@ -1,3 +1,27 @@
+:root{
+  /* Gray colors */
+  --gray_1: #f2f2f2;
+  --gray_2: #d9d9d9;
+  --gray_3: #bfbfbf;
+  --gray_4: #999999;
+  --gray_5: #666666;
+  --gray_6: #404040;
+  --gray_7: #262626;
+  /* Green colors */
+  --green_1: #ebfaeb;
+  --green_2: #adebad;
+  --green_3: #85e085;
+  --green_4: #5cd65c;
+  --green_5: #33cc33;
+  --green_6: #2eb82e;
+  --green_7: #248f24;
+  --green_8: #1f7a1f;
+  --green_9: #145214;
+  /* Red colors */
+  --red_1: #ff8080;
+  --red_2: #ff0000;
+}
+
 body
 {
   /* background from subtlepatterns.com */
@@ -9,7 +33,7 @@ body
 #logo
 {
   width: 100%;
-  background-color: rgb(140, 140, 140);
+  background-color: var(--gray_4);
   color: black;
   text-align: center;
   padding: 15px;
@@ -20,7 +44,7 @@ body
 #menu
 {
   width: 100%;
-  background-color: #676770;
+  background-color:  var(--gray_5);
   color: black;
   text-align: center;
   padding: 15px;
@@ -56,17 +80,17 @@ body
   float: left;
   width: 200px;
   height: 40px;
-  border-right: 2px dotted #eb6434;
+  border-right: 2px dotted var(--green_6);
 }
 
 #menuol > li:first-child
 {
-  border-left: 2px dotted #eb6434;
+  border-left: 2px dotted var(--green_6);
 }
 
 #menuol > li:hover
 {
-  background-color: #555560;
+  background-color: var(--gray_6);
 }
 
 #menuol > li > ul
@@ -86,21 +110,21 @@ body
 #menuol > li > ul > li
 {
   width: 400px;
-  background-color: #555560;
+  background-color: var(--gray_6);
   position: relative;
   z-index: 100;
-  border-top: 2px dotted #eb6434;
+  border-top: 2px dotted var(--green_6);
 }
 
 #menuol > li > ul > li:hover
 {
-  background-color: #444450;
+  background-color: var(--gray_7);
 }
 
 #navigation
 {
   float: left;
-  background-color: cornflowerblue;
+  background-color: var(--green_2);
   color: black;
   width: 15%;
   min-height: 700px;
@@ -115,7 +139,7 @@ body
 
 #content
 {
-  background-color: bisque;
+  background-color: var(--gray_2);
   color: black;
   width: 90%;
   padding-top: 10px;
@@ -129,33 +153,35 @@ body
 #success_add
 {
   margin: auto;
+  margin-bottom: 20px;
   text-align: center;
-  padding: 5px;
+  padding: 20px;
   border-radius:20px;
-  border: 5px rgb(20, 210, 95) solid;
-  width: 90%;
-  height: 30px;
+  border: 5px var(--green_3) solid;
+  width: 50%;
+  height: 25px;
   font-size: 18px;
-  background-color: rgb(30, 220, 105);
+  background-color: var(--green_2);
 }
 
 #failed
 {
   margin: auto;
   text-align: center;
-  padding: 5px;
+  padding: 20px;
   border-radius:20px;
-  border: 5px rgb(210, 20, 95) solid;
-  width: 90%;
-  height: 30px;
+  border: 5px var(--red_2) solid;
+  width: 50%;
+  height: 25px;
   font-size: 18px;
-  background-color: rgb(220, 30, 105);
+  font-weight: 700;
+  background-color: var(--red_1);
 }
 
 #additions
 {
   float: right;
-  background-color: cadetblue;
+  background-color: var(--green_2);
   color: black;
   width: 15%;
   
@@ -165,7 +191,8 @@ body
 #footer
 {
   clear: both;
-  background-color: brown;
+  background-color: var(--gray_4);
+  color: black;
   min-height: 70px;
   text-align: center;
   padding-top: 30px;
@@ -178,12 +205,12 @@ body
   font-size: 20px;
   padding: 10px;
   text-align: center;
-  border-bottom: 3px solid #8f8683;
+  border-bottom: 3px solid var(--green_6);
 }
 
 .additem:hover
 {
-  background-color: #eb6434;
+  background-color: var(--green_3);
 }
 
 a.addlink
@@ -192,3 +219,102 @@ a.addlink
   text-decoration: none;
 }
 
+/* input[type=submit], */
+input[type=number],
+input[type=text]
+{
+  width: 150px;
+  background-color: var(--green_1);
+  color: black;
+  border: 2px solid var(--green_6);
+  border-radius: 5px;
+  font-size: 14px;
+  padding: 5px;
+  box-sizing: border-box;
+  outline: none;
+  margin-top: 10px;
+}
+
+/* input[type=submit]:focus, */
+input[type=number]:focus,
+input[type=text]:focus
+{
+  background-color: var(--green_2);
+}
+
+/* input[type=submit]:hover, */
+input[type=number]:hover,
+input[type=text]:hover
+{
+  background-color: var(--green_3);
+}
+
+.control2
+{
+  background-color: var(--gray_1);
+  padding: 0px 0px 5px 5px ;
+}
+
+.control2 > label
+{
+  display: inline-block;
+  width: 200px;
+}
+
+.control1
+{
+  padding: 5px 0px 5px 5px ;
+}
+
+.control1 > label
+{
+  display: inline-block;
+  width: 200px;
+}
+
+.red_button
+{
+  background-color: var(--red_1);
+  border: 2px solid var(--red_2);
+  border-radius: 5px;
+  float: left;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  width: 150px;
+  color: black;
+  font-size: 14px;
+  padding: 5px;
+  box-sizing: border-box;
+  outline: none;
+  margin-top: 10px;
+}
+
+.red_button:hover
+{
+  background-color: var(--red_2);
+}
+
+.green_button
+{
+  background-color: var(--green_1);
+  border: 2px solid var(--green_6);
+  border-radius: 5px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  float: left;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  width: 150px;
+  color: black;
+  font-size: 14px;
+  padding: 5px;
+  box-sizing: border-box;
+  outline: none;
+  margin-top: 10px;
+
+}
+
+.green_button:hover
+{
+  background-color: var(--green_3);
+}
