@@ -588,7 +588,41 @@ def production(request, production_id):
     return render(request, "warehouse/production.html", context)
 
 def stan_magazynowy(request):
-    return HttpResponse("Tu będzie podawany akutalny stan magazynu, z podziałem na produkty i dostawy")
+    latest_deliveries_list      = Delivery.objects.all()
+    latest_products_list        = Product.objects.all()
+    latest_compositions_list    = Composition.objects.all()
+    latest_productions_list     = Production.objects.all()
+    latest_recipes_list         = Recipe.objects.all()
+
+    class del_prod():
+        def __init__(self, product, quantity, desc):
+            self.product = product
+            self.quantity = quantity
+            self.desc = desc
+
+    dict = []
+
+    for delivery in Delivery.objects.filter(is_finished = False):
+        poz_il = delivery.initial_quantity - delivery.used_quantity - delivery.waste
+        filtered = filter(lambda x: x.product==delivery.product, dict)
+        
+        try:
+            obj = filtered.__next__()
+            obj.quantity += poz_il
+            obj.desc.append((delivery, poz_il))
+        except StopIteration:
+            dict.append(del_prod(product = delivery.product, quantity=poz_il, desc=[(delivery, poz_il)]))
+
+    context = {
+        "latest_deliveries_list": latest_deliveries_list,
+        "latest_products_list": latest_products_list,
+        "latest_compositions_list": latest_compositions_list,
+        "latest_productions_list": latest_productions_list,
+        "latest_recipes_list": latest_recipes_list,
+        "dict" : dict,
+    }
+
+    return render(request, "warehouse/stan_magazynowy.html", context)
 
 def archiwum_produkcji(request):
     return HttpResponse("Tu będzie archiwum zleceń produkcji")
@@ -604,3 +638,19 @@ def calculate_recipe(request, composition_id):
 
 def calculate_production(request, recipe_id):
     return HttpResponse("Tu będzie można utworzyć produkcje na podstawie konkretnej receptury: " + recipe_id)
+
+def instruction(request):
+    latest_deliveries_list      = Delivery.objects.all()
+    latest_products_list        = Product.objects.all()
+    latest_compositions_list    = Composition.objects.all()
+    latest_productions_list     = Production.objects.all()
+    latest_recipes_list         = Recipe.objects.all()
+
+    context = {
+        "latest_deliveries_list": latest_deliveries_list,
+        "latest_products_list": latest_products_list,
+        "latest_compositions_list": latest_compositions_list,
+        "latest_productions_list": latest_productions_list,
+        "latest_recipes_list": latest_recipes_list,
+    }
+    return render(request, "warehouse/instruction.html", context)

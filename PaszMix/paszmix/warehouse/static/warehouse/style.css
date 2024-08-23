@@ -127,7 +127,7 @@ body
   background-color: var(--green_2);
   color: black;
   width: 15%;
-  min-height: 700px;
+  min-height: 289px;
 }
 
 #container
@@ -185,7 +185,7 @@ body
   color: black;
   width: 15%;
   
-  min-height: 700px;
+  min-height: 289px;
 }
 
 #footer
@@ -206,6 +206,8 @@ body
   padding: 10px;
   text-align: center;
   border-bottom: 3px solid var(--green_6);
+  border-right: 3px solid var(--green_6);
+  border-left: 3px solid var(--green_6);
 }
 
 .additem:hover
@@ -364,3 +366,49 @@ input[type=text]:hover
   text-align: center;
 }
 
+#powitanie
+{
+  margin: 50px auto 0px auto;
+  width: 80%;
+  font-size: 25px;
+  color: var(--green_2);
+  text-align: center;
+  background-color: var(--green_8);
+  border-radius: 50px;
+  box-shadow: 0 0 20px 10px var(--green_8)
+}
+
+#powitanie > a
+{
+  text-decoration: none;
+  color: var(--green_2);
+}
+
+.sm_legend
+{
+  color: var(--green_8);
+  text-align: center;
+  margin: 5px;
+}
+
+.sm_prod > a
+{
+  text-decoration: none;
+  color: var(--gray_5);
+}
+
+.sm_prod > a:hover
+{
+  color: var(--gray_6);
+  text-shadow: 4px 4px 5px var(--gray_6);
+}
+
+.sm_prod
+{
+  border: 2px solid var(--gray_6);
+  border-radius: 20px;
+  box-shadow: 0 0 20px 10px var(--gray_6);
+  width: 500px;
+  margin: 20px 5px 20px 20px;
+  padding: 10px;
+}
