@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.template import loader
 
+from warehouse.create_recipe import *
+
 from .models import Delivery, Product, Composition, Production, Recipe, RecipeElement, ProductionElement
 
 def index(request):
@@ -513,24 +515,29 @@ def new_production(request):
             for i in range(recipe_elems.count()):
                 delivery_name = "delivery"+str(i)
                 quantity_name = "quantity"+str(i)
-                delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
-                quantity = float(request.POST.get(quantity_name))
-                if quantity > 0:
-                    ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
+
+                if Delivery.objects.filter(pk=request.POST.get(delivery_name)).exists():
+                    delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
+                    quantity = float(request.POST.get(quantity_name))
+                    if quantity > 0:
+                        ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
 
                 delivery_name = "2delivery"+str(i)
                 quantity_name = "2quantity"+str(i)
-                delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
-                quantity = float(request.POST.get(quantity_name))
-                if quantity > 0:
-                    ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
+
+                if Delivery.objects.filter(pk=request.POST.get(delivery_name)).exists():
+                    delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
+                    quantity = float(request.POST.get(quantity_name))
+                    if quantity > 0:
+                        ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
 
                 delivery_name = "3delivery"+str(i)
                 quantity_name = "3quantity"+str(i)
-                delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
-                quantity = float(request.POST.get(quantity_name))
-                if quantity > 0:
-                    ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
+                if Delivery.objects.filter(pk=request.POST.get(delivery_name)).exists():
+                    delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
+                    quantity = float(request.POST.get(quantity_name))
+                    if quantity > 0:
+                        ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
 
             production_elements = ProductionElement.objects.filter(production_ref = production.pk)
 
@@ -624,20 +631,118 @@ def stan_magazynowy(request):
 
     return render(request, "warehouse/stan_magazynowy.html", context)
 
-def archiwum_produkcji(request):
-    return HttpResponse("Tu będzie archiwum zleceń produkcji")
+def lista_produkcji(request):
+    latest_deliveries_list      = Delivery.objects.all()
+    latest_products_list        = Product.objects.all()
+    latest_compositions_list    = Composition.objects.all()
+    latest_productions_list     = Production.objects.all()
+    latest_recipes_list         = Recipe.objects.all()
+
+    class prod():
+        def __init__(self, production, elems):
+            self.production = production
+            self.elems = elems
+
+    productions = Production.objects.all().order_by('date')
+
+    dict = []
+    for p in productions:
+        elems = []
+        for e in ProductionElement.objects.filter(production_ref = p.pk):
+            elems.append(e)
+        dict.append(prod(p, elems))
+
+    context = {
+        "latest_deliveries_list": latest_deliveries_list,
+        "latest_products_list": latest_products_list,
+        "latest_compositions_list": latest_compositions_list,
+        "latest_productions_list": latest_productions_list,
+        "latest_recipes_list": latest_recipes_list,
+        "dict" : dict,
+    }
+    return render(request, "warehouse/lista_produkcji.html", context)
 
 def archiwum_dostaw(request):
-    return HttpResponse("Tu będą dostawy chronologicznie, również te niezakończone")
+    latest_deliveries_list      = Delivery.objects.all()
+    latest_products_list        = Product.objects.all()
+    latest_compositions_list    = Composition.objects.all()
+    latest_productions_list     = Production.objects.all()
+    latest_recipes_list         = Recipe.objects.all()
 
-def archiwum_dostaw_p(request, product_id):
-    return HttpResponse("Tu będą wszystkie dostawy produktu: " + product_id + " uporządkowane chronologicznie")
+    arch_deliveries = []
+    for i in Delivery.objects.filter(is_finished = True):
+        arch_deliveries.append(i)
 
-def calculate_recipe(request, composition_id):
-    return HttpResponse("Tu będzie można wyklikać recepturę na podstawie danego składu: " + composition_id)
+    context = {
+        "latest_deliveries_list": latest_deliveries_list,
+        "latest_products_list": latest_products_list,
+        "latest_compositions_list": latest_compositions_list,
+        "latest_productions_list": latest_productions_list,
+        "latest_recipes_list": latest_recipes_list,
+        "arch_deliveries" : arch_deliveries,
+    }
+    return render(request, "warehouse/archiwum_dostaw.html", context)
 
-def calculate_production(request, recipe_id):
-    return HttpResponse("Tu będzie można utworzyć produkcje na podstawie konkretnej receptury: " + recipe_id)
+def calculate_recipe(request):
+    latest_deliveries_list      = Delivery.objects.all()
+    latest_products_list        = Product.objects.all()
+    latest_compositions_list    = Composition.objects.all()
+    latest_productions_list     = Production.objects.all()
+    latest_recipes_list         = Recipe.objects.all()
+
+    print("poczatke")
+
+    if request.method == "POST" and  "create" in request.POST:
+        print("dobra droga")
+        sklad = Composition.objects.get(pk = request.POST.get('composition'))
+
+        class pos():
+            def __init__(self, product, dost_ilosc, srednia_cena):
+                self.product = product
+                self.dost_ilosc = dost_ilosc
+                self.srednia_cena = srednia_cena
+
+        list = []
+
+        for p in latest_products_list:
+            dels = Delivery.objects.filter(product = p.pk).filter(is_finished=False)
+            p_il = 0.0
+            p_cen = 0.0
+            for d in dels:
+                p_il += d.initial_quantity-d.used_quantity-d.waste
+                p_cen += (float(d.price)/(d.initial_quantity-d.waste))* (d.initial_quantity-d.used_quantity-d.waste)
+            if p_il > 0: list.append(pos(p, p_il, p_cen/p_il))
+
+        recipe = False
+        recipe_elems = False
+        if create_recipe(sklad, list):
+            recipe = Recipe.objects.last()
+            recipe_elems = RecipeElement.objects.filter(recipe_ref = recipe.pk)
+
+        context = {
+            "latest_deliveries_list": latest_deliveries_list,
+            "latest_products_list": latest_products_list,
+            "latest_compositions_list": latest_compositions_list,
+            "latest_productions_list": latest_productions_list,
+            "latest_recipes_list": latest_recipes_list,
+            "recipe": recipe,
+            "recipe_elems": recipe_elems,
+            "newly_created" : True,
+            "readonly" : True,
+            "how_many_empty" : False,
+            "generated": True
+            }
+
+        return render(request, "warehouse/recipe.html", context)
+
+    context = {
+        "latest_deliveries_list": latest_deliveries_list,
+        "latest_products_list": latest_products_list,
+        "latest_compositions_list": latest_compositions_list,
+        "latest_productions_list": latest_productions_list,
+        "latest_recipes_list": latest_recipes_list,
+    }
+    return render(request, "warehouse/skomponuj_recepture.html", context)
 
 def instruction(request):
     latest_deliveries_list      = Delivery.objects.all()

@@ -85,7 +85,7 @@
                 
                 {% with quantity_name="quantity"|add:elem_id %}
                 <div class="control2">
-                    <label for={{quantity_name}}>Ilość początkowa</label>
+                    <label for={{quantity_name}}>Ilość</label>
                     <input type="number" id={{quantity_name}} name={{quantity_name}}  step="0.1">
                     kg
                 </div>
@@ -95,6 +95,7 @@
             {% endfor %}
             
             <input class="green_button" type="submit" id="submit" name="add_recipe_elements" value="Dodaj">
+            <div style="clear:both"></div>
         </form>
     </fieldset>
     {% endif %}

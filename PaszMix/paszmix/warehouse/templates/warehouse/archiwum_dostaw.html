@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Archiwalne Dostawy{% endblock %}
+
+{% block content %}
+    {% for d in arch_deliveries %}
+        {{d.product.product_name}} {{d.date}} {{d.initial_quantity}} <br><br>
+    {% endfor %}
+{% endblock %}

@@ -3,5 +3,74 @@
 {% block title %}Instrukcja Obsługi Systemu{% endblock %}
 
 {% block content %}
-  Instrukcja
+  <div class="ins_head">Słownik pojęć</div>
+  <div class="ins_body">
+    <p>
+      Produkt jest to składnik paszy. Ma on swój ustalony zestaw parametrów (białka, energia, ilość wapnia) oraz nazwę. 
+      Dlatego najprawdopodobniej każdej dostawie danego surowca (np. Jęczmienia) będzie odpowiadać inny produkt ze względu na różne parametry poszczególnych surowców (np. "Jęczmień od ...", "Jęczmień z pola XYZ") 
+    </p>
+
+    <p>
+      Dostawa jest to transfer partii jakiegoś produktu do magazynu. Dostawa ma cenę oraz początkową ilość. 
+      Ilość zużyta nie powinna być edytowana przez użytkownika, jest ona automatycznie zmieniana podczas dodawania produkcji (lub usuwania błędnie wprowadzonej produkcji). 
+      Śmiało można na bieżąco wprowadzać stratę (rozsypanie, dziurawe opakowania). Strata może być ujemna (więcej produktu w opakowaniu niż oferował producent).
+      Jeśli dana dostawa została wyczerpana należy ustawić odpowiednie pole, wtedy nie będzie ona proponowana podczas dodawania produkcji.
+    </p>
+
+    <p>
+      Skład jest to docelowy zestaw parametrów jaki powinna osiągnąć pasza.
+    </p>
+
+    <p>
+      Receptura jest to zestaw produktów i ich ilości potrzebnych do wyprodukowania danej ilości paszy o wskazanym składzie. 
+      Podczas komponowania receptury można optymalizować koszt paszy.
+    </p>
+
+    <p>
+      Produkcja to realizacja receptury z wskazaniem z jakich dostaw pobierane są poszczególne produkty
+    </p>
+  
+    </div>
+
+  <div class="ins_head">Jak korzystać z systemu:</div>
+  <div class="ins_body">
+    Pododawaj niezbędne pozycje. Zacznij od Produktów i Dostaw. Sprawdź czy stany magazynowe odpowiednio się wyświetlają.
+    Następnie dodaj skład i spróbuj skomponować recepturę. Można dodać Produkcję i sprawdzić czy dostawy są zmniejszane. Powodzenia!
+  </div>
+
+  <div class="ins_head">Dodawanie Produktu</div>
+  <div class="ins_body">
+    <p>Kliknij w "Dodaj produkt" w prawym menu. Wpisz unikatową nazwę i wypełnij poprawnie pola.</p>
+  </div>
+
+  <div class="ins_head">Dodawanie Dostawy</div>
+  <div class="ins_body">
+    <p>
+      Przed dodaniem dostaw upewnij się czy produkt którego dotyczy dostawa jest wpisany do systemu. 
+      W tym celu najedź kursorem na odpowiednie pole menu i sprawdź czy produkt który Cię interesuje znajduje się na liście rozwijanej.
+    </p>
+
+    <p>Jeśli nie, dodaj go.</p>
+  </div>
+
+  <div class="ins_head">Dodawanie Składu</div>
+  <div class="ins_body">
+    <p>Kliknij w "dodaj skład" i wypełnij poprawnie wszystkie pola</p>
+  </div>
+
+  <div class="ins_head">Dodawanie Receptury</div>
+  <div class="ins_body">
+    <p>Recepturę możesz dodać na dwa sposoby: ręcznie za pomocą pola "Dodaj Recepturę" lub komponując automatycznie na podstawie dostępnych produktów</p>
+  </div>
+
+  <div class="ins_head">Dodawanie Produkcji</div>
+  <div class="ins_body">
+    <p>
+      Produkcję można dodać klikając odpowiedni przycisk po prawej stronie. 
+      W pierwszym kroku należy wybrać jaką recepturę checmy wyprodukować.
+      Następnie do każdego Produktu z wybranej receptury należy wskazać pochodzenie produktu (dostawę). 
+      Można wybrać maksymalnie 3 dostawy na każdy produkt. Jeśli zamierzamy wybrać jedną lub dwie, w pozostałych pozycjach zostawić 0.
+    </p>
+  </div>
+  
 {% endblock %}

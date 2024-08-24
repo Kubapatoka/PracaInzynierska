@@ -3,11 +3,15 @@
 {% block title %}Receptura{% endblock %}
 
 {% block content %}
-{% if newly_created %}
-<div id="success_add">
-  Pomyślnie dodano nową recepturę!
-</div>
-{% endif %}
+  {% if newly_created %}
+    <div id="success_add">
+      {% if generated %}
+        Pomyślnie wygenerowane nową recepturę!
+      {% else %}
+        Pomyślnie dodano nową recepturę!
+      {% endif %}
+    </div>
+  {% endif %}
 
   {% if recipe %}
     <form method="POST">
@@ -124,6 +128,12 @@
 
 
   {% else %}
-  <div id="failed">Receptura nie istnieje</div>
+    <div id="failed">
+      {% if generated %}
+          Błąd podczas generowania receptury
+      {% else %}
+          Receptura nie istnieje
+      {% endif %}
+    </div>
   {% endif %}
 {% endblock %}

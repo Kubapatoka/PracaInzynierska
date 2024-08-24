@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Lista Produkcji{% endblock %}
+
+{% block content %}
+    {% for d in dict %}
+        {{d.production.date}}
+        <br>
+        {% for e in d.elems %}
+            {{e.delivery_ref.product.product_name}} {{e.delivery_ref.date}} {{e.quantity}}
+            <br>
+        {% endfor %}
+        <br><br>
+    {% endfor %}
+{% endblock %}
