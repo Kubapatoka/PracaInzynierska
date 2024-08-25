@@ -14,29 +14,26 @@
 \contentsline {section}{\numberline {1.2.}Wymagania od systemu}{7}{section.1.2}%
 \contentsline {chapter}{\numberline {2.}Plan pracy}{9}{chapter.2}%
 \contentsline {chapter}{\numberline {3.}Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}{11}{chapter.3}%
-\contentsline {section}{\numberline {3.1.}Układ książki}{11}{section.3.1}%
-\contentsline {section}{\numberline {3.2.}Wilgotność}{11}{section.3.2}%
-\contentsline {section}{\numberline {3.3.}Energia}{11}{section.3.3}%
-\contentsline {section}{\numberline {3.4.}Białko i Aminokwasy}{12}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1.}Aminokwasy niezbędne (egzogenne)}{12}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2.}Aminokwasy względnie egzogenne}{13}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3.}Aminokwasy nie-niezbędne (endogenne)}{13}{subsection.3.4.3}%
-\contentsline {section}{\numberline {3.5.}Tłuszcz}{13}{section.3.5}%
-\contentsline {section}{\numberline {3.6.}Składniki mineralne}{14}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1.}Wapń}{14}{subsection.3.6.1}%
-\contentsline {section}{\numberline {3.7.}Przykładowa pasza}{14}{section.3.7}%
-\contentsline {chapter}{\numberline {4.}Funkcje systemu}{15}{chapter.4}%
-\contentsline {chapter}{\numberline {5.}Projektowanie Modeli oraz słownik kluczowych pojęć}{17}{chapter.5}%
-\contentsline {section}{\numberline {5.1.}Dostawa}{17}{section.5.1}%
-\contentsline {section}{\numberline {5.2.}Produkt}{17}{section.5.2}%
-\contentsline {section}{\numberline {5.3.}Skład}{18}{section.5.3}%
-\contentsline {section}{\numberline {5.4.}Receptura}{19}{section.5.4}%
-\contentsline {section}{\numberline {5.5.}Produkcja}{19}{section.5.5}%
-\contentsline {chapter}{\numberline {6.}Przypadki użycia}{21}{chapter.6}%
-\contentsline {chapter}{\numberline {7.}Instalacja systemu}{23}{chapter.7}%
-\contentsline {chapter}{\numberline {8.}Podsumowanie}{25}{chapter.8}%
-\contentsline {section}{\numberline {8.1.}Pomysły jakie przyszły w trakcie pisania pracy}{25}{section.8.1}%
-\contentsline {section}{\numberline {8.2.}Czego zabrakło w aplikacji}{25}{section.8.2}%
-\contentsline {section}{\numberline {8.3.}Rozeznanie rynku}{25}{section.8.3}%
-\contentsline {chapter}{\numberline {9.}Bibliografia}{27}{chapter.9}%
-\contentsline {chapter}{\numberline {10.}luźne notki}{29}{chapter.10}%
+\contentsline {section}{\numberline {3.1.}Znaczące parametry}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2.}Przykładowy skład paszy}{12}{section.3.2}%
+\contentsline {chapter}{\numberline {4.}Projektowanie modeli oraz słownik kluczowych pojęć}{15}{chapter.4}%
+\contentsline {section}{\numberline {4.1.}Dostawa}{15}{section.4.1}%
+\contentsline {section}{\numberline {4.2.}Produkt}{15}{section.4.2}%
+\contentsline {section}{\numberline {4.3.}Skład}{16}{section.4.3}%
+\contentsline {section}{\numberline {4.4.}Receptura}{17}{section.4.4}%
+\contentsline {section}{\numberline {4.5.}Produkcja}{17}{section.4.5}%
+\contentsline {chapter}{\numberline {5.}Funkcje systemu}{19}{chapter.5}%
+\contentsline {section}{\numberline {5.1.}Dodawanie, czytanie, edytowanie, usuwanie (CRUD) podstawowych obiektów modelu}{19}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1.}Edycja Dostawy: zwiększenie straty o 10 kg}{20}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2.}Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji}{21}{section.5.2}%
+\contentsline {section}{\numberline {5.3.}Sprawdzanie ilości dostępnych półproduktów w magazynie}{23}{section.5.3}%
+\contentsline {section}{\numberline {5.4.}Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej}{23}{section.5.4}%
+\contentsline {section}{\numberline {5.5.}Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów}{23}{section.5.5}%
+\contentsline {section}{\numberline {5.6.}Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie - optymalizacja kosztów}{23}{section.5.6}%
+\contentsline {chapter}{\numberline {6.}Instalacja systemu}{25}{chapter.6}%
+\contentsline {chapter}{\numberline {7.}Podsumowanie}{27}{chapter.7}%
+\contentsline {section}{\numberline {7.1.}Pomysły jakie przyszły w trakcie pisania pracy}{27}{section.7.1}%
+\contentsline {section}{\numberline {7.2.}Czego zabrakło w aplikacji}{27}{section.7.2}%
+\contentsline {section}{\numberline {7.3.}Rozeznanie rynku}{27}{section.7.3}%
+\contentsline {chapter}{\numberline {8.}Bibliografia}{29}{chapter.8}%
+\contentsline {chapter}{\numberline {9.}luźne notki}{31}{chapter.9}%

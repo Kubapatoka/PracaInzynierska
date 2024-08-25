@@ -519,6 +519,9 @@ def new_production(request):
                 if Delivery.objects.filter(pk=request.POST.get(delivery_name)).exists():
                     delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
                     quantity = float(request.POST.get(quantity_name))
+                    
+                    delivery.used_quantity += quantity
+                    delivery.save()
                     if quantity > 0:
                         ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
 
@@ -528,6 +531,8 @@ def new_production(request):
                 if Delivery.objects.filter(pk=request.POST.get(delivery_name)).exists():
                     delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
                     quantity = float(request.POST.get(quantity_name))
+                    delivery.used_quantity += quantity
+                    delivery.save()
                     if quantity > 0:
                         ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
 
@@ -536,6 +541,8 @@ def new_production(request):
                 if Delivery.objects.filter(pk=request.POST.get(delivery_name)).exists():
                     delivery = Delivery.objects.get(pk = request.POST.get(delivery_name))
                     quantity = float(request.POST.get(quantity_name))
+                    delivery.used_quantity += quantity
+                    delivery.save()
                     if quantity > 0:
                         ProductionElement.objects.create(production_ref = production, delivery_ref = delivery, quantity=quantity)
 
@@ -573,6 +580,12 @@ def production(request, production_id):
 
     if request.method == "POST":
         if "delete" in request.POST:
+            production_elements = ProductionElement.objects.filter(production_ref = production_id)
+            for pe in production_elements:
+                d = Delivery.objects.get(pk = pe.delivery_ref.pk)
+                d.used_quantity -= pe.quantity
+                d.save()
+                pe.delete()
             Production.objects.get(pk = production_id).delete()
 
     if Production.objects.filter(pk=production_id).exists():

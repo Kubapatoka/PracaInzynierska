@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  22 AUG 2024 13:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  25 AUG 2024 15:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -261,6 +261,26 @@ Package: inputenc 2021/02/14 v1.3d Input encoding file
 \inpenc@prehook=\toks19
 \inpenc@posthook=\toks20
 )
+(/home/jakub/.miktex/texmfs/install/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/home/jakub/.miktex/texmfs/install/tex/latex/graphics/graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+
+(/home/jakub/.miktex/texmfs/install/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+)
+(/home/jakub/.miktex/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+
+(/home/jakub/.miktex/texmfs/install/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2024/04/13 v1.2c Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen154
+\Gin@req@width=\dimen155
+)
 (/home/jakub/.miktex/texmfs/install/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-03-14 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count280
@@ -269,26 +289,26 @@ File: l3backend-pdftex.def 2024-03-14 L3 backend support: PDF output (pdfTeX)
 (przyklad.aux)
 \openout1 = `przyklad.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for OT4/cmr/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 43.
+LaTeX Font Info:    ... okay on input line 43.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -325,17 +345,17 @@ LaTeX Font Info:    ... okay on input line 42.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 42.
+Package hyperref Info: Link coloring OFF on input line 43.
 (przyklad.out) (przyklad.out)
 \@outlinefile=\write3
 \openout3 = `przyklad.out'.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 42.
+(Font)              <12> on input line 43.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 42.
+(Font)              <8> on input line 43.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 42.
+(Font)              <6> on input line 43.
  [1
 
 {/home/jakub/.miktex/texmfs/data/fonts/map/pdftex/pdftex.map}{/home/jakub/.mikt
@@ -346,11 +366,42 @@ ex/texmfs/install/fonts/enc/dvips/pl/plrm.enc}] [2
 ] (przyklad.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 13.
+
+Overfull \hbox (0.51569pt too wide) in paragraph at lines 29--29
+ [][] [][]\OT4/cmr/m/n/10.95 Dodanie no-wej pro-duk-cji spo-wo-duje ze-dy-to-wa
+-nie Do-stawy (zu- 
+ []
+
+
+Underfull \vbox (badness 2189) has occurred while \output is active []
+
  [5])
 \tf@toc=\write4
 \openout4 = `przyklad.toc'.
 
- [6]
+
+(/home/jakub/.miktex/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count281
+\scratchdimen=\dimen156
+\scratchbox=\box52
+\nofMPsegments=\count282
+\nofMParguments=\count283
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count284
+\MPscratchDim=\dimen157
+\MPnumerator=\count285
+\makeMPintoPDFobject=\count286
+\everyMPtoPDFconversion=\toks22
+) (/home/jakub/.miktex/texmfs/install/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/home/jakub/.miktex/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+[6]
 Rozdzia\l  1..
 [7
 
@@ -368,57 +419,158 @@ Overfull \hbox (74.17639pt too wide) has occurred while \output is active
 RTO‘‚ POKARMOWA PASZ DLA DROBIU
  []
 
-[12]
-Overfull \hbox (3.2227pt too wide) in paragraph at lines 163--166
-\OT4/cmr/m/n/10.95 buj¡ okre-±lo-nej ilo-±ci tzw. nie-zb¦d-nych nie-na-sy-co-ny
-ch kwa-sów tªusz-czo-wych (NNKT).
- []
-
-[13]
-Overfull \hbox (74.17639pt too wide) has occurred while \output is active
-\OT4/cmr/m/n/10.95 14 \OT4/cmr/m/sl/10.95 ROZDZIAŠ 3. ZALECENIA ›YWIENIOWE I WA
-RTO‘‚ POKARMOWA PASZ DLA DROBIU
- []
-
-[14]
-Rozdzia\l  4..
-[15
-
-] [16
+[12{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/plit.enc}] [13]
+[14
 
 ]
-Rozdzia\l  5..
-[17]
+Rozdzia\l  4..
+[15]
 Overfull \hbox (43.15387pt too wide) has occurred while \output is active
-\OT4/cmr/m/n/10.95 18 \OT4/cmr/m/sl/10.95 ROZDZIAŠ 5. PROJEKTOWANIE MODELI ORAZ
+\OT4/cmr/m/n/10.95 16 \OT4/cmr/m/sl/10.95 ROZDZIAŠ 4. PROJEKTOWANIE MODELI ORAZ
  SŠOWNIK KLUCZOWYCH POJ†‚
  []
 
-[18] [19] [20
+[16] [17] [18
+
+]
+Rozdzia\l  5..
+<img/StronaGlowna.jpg, id=254, 1861.95625pt x 967.615pt>
+File: img/StronaGlowna.jpg Graphic file (type jpg)
+<use img/StronaGlowna.jpg>
+Package pdftex.def Info: img/StronaGlowna.jpg  used on input line 238.
+(pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
+
+Overfull \hbox (126.87227pt too wide) in paragraph at lines 237--239
+[]\OT4/cmr/bx/n/10.95 Wygl¡d strony gªów-nej: [] 
+ []
+
+
+Overfull \hbox (10.05081pt too wide) in paragraph at lines 240--240
+[]\OT4/cmr/bx/n/14.4 Dodawanie, czy-ta-nie, edy-to-wa-nie, usu-wa-nie (CRUD)
+ []
+
+<img/DodajProdukt.png, id=255, 1861.95625pt x 967.615pt>
+File: img/DodajProdukt.png Graphic file (type png)
+<use img/DodajProdukt.png>
+Package pdftex.def Info: img/DodajProdukt.png  used on input line 244.
+(pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19 <./img/StronaGlowna.jpg>]
+<img/EdycjaDostawy1.png, id=262, 1861.95625pt x 967.615pt>
+File: img/EdycjaDostawy1.png Graphic file (type png)
+<use img/EdycjaDostawy1.png>
+Package pdftex.def Info: img/EdycjaDostawy1.png  used on input line 252.
+(pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
+
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 252--253
+[][] 
+ []
+
+<img/EdycjaDostawy2.png, id=263, 1861.95625pt x 967.615pt>
+File: img/EdycjaDostawy2.png Graphic file (type png)
+<use img/EdycjaDostawy2.png>
+Package pdftex.def Info: img/EdycjaDostawy2.png  used on input line 255.
+(pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
+
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 255--256
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [20 <./img/DodajProdukt.png> <./img/EdycjaDostawy1.png>]
+<img/EdycjaDostawy3.png, id=272, 1861.95625pt x 967.615pt>
+File: img/EdycjaDostawy3.png Graphic file (type png)
+<use img/EdycjaDostawy3.png>
+Package pdftex.def Info: img/EdycjaDostawy3.png  used on input line 259.
+(pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
+
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 259--260
+[][] 
+ []
+
+<img/AutomatycznieZmniejszenie1.png, id=273, 1861.95625pt x 967.615pt>
+File: img/AutomatycznieZmniejszenie1.png Graphic file (type png)
+<use img/AutomatycznieZmniejszenie1.png>
+Package pdftex.def Info: img/AutomatycznieZmniejszenie1.png  used on input line
+ 269.
+(pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
+
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 269--270
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Overfull \hbox (180.63487pt too wide) has occurred while \output is active
+\OT4/cmr/m/sl/10.95 5.2. AUTOMATYCZNE ODEJMOWANIE PRODUKTÓW ZE STANU MAGAZYNOWE
+GO PODCZAS PRODUKCJI \OT4/cmr/m/n/10.95 21
+ []
+
+[21 <./img/EdycjaDostawy2.png> <./img/EdycjaDostawy3.png>]
+<img/AutomatycznieZmniejszenie2.png, id=283, 1861.95625pt x 967.615pt>
+File: img/AutomatycznieZmniejszenie2.png Graphic file (type png)
+<use img/AutomatycznieZmniejszenie2.png>
+Package pdftex.def Info: img/AutomatycznieZmniejszenie2.png  used on input line
+ 275.
+(pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
+
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 275--276
+[][] 
+ []
+
+<img/AutomatycznieZmniejszenie3.png, id=284, 1861.95625pt x 967.615pt>
+File: img/AutomatycznieZmniejszenie3.png Graphic file (type png)
+<use img/AutomatycznieZmniejszenie3.png>
+Package pdftex.def Info: img/AutomatycznieZmniejszenie3.png  used on input line
+ 281.
+(pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
+
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 281--282
+[][] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22 <./img/AutomatycznieZmniejszenie1.png> <./img/AutomatycznieZmniejszenie2.p
+ng>]
+Overfull \hbox (1.82751pt too wide) in paragraph at lines 285--285
+[]\OT4/cmr/bx/n/14.4 Sprawdzanie ilo-±ci do-st¦p-nych póª-pro-duk-tów w ma-
+ []
+
+
+Overfull \hbox (22.09024pt too wide) has occurred while \output is active
+\OT4/cmr/m/sl/10.95 5.3. SPRAWDZANIE ILO‘CI DOST†PNYCH PÓŠPRODUKTÓW W MAGAZYNIE
+ \OT4/cmr/m/n/10.95 23
+ []
+
+[23 <./img/AutomatycznieZmniejszenie3.png>] [24
 
 ]
 Rozdzia\l  6..
-[21] [22
+[25] [26
 
 ]
 Rozdzia\l  7..
-[23] [24
-
-]
-Rozdzia\l  8..
 LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 
-313.
+320.
 (/home/jakub/.miktex/texmfs/install/tex/latex/polski/ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
-) [25] [26{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/pltt.enc}]
-Rozdzia\l  9..
-[27
+) [27] [28{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/pltt.enc}]
+Rozdzia\l  8..
+[29
 
-] [28
+] [30
 
 ]
-Rozdzia\l  10..
-[29] (przyklad.aux)
+Rozdzia\l  9..
+[31] (przyklad.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
@@ -430,28 +582,20 @@ Package rerunfilecheck Warning: File `przyklad.out' has changed.
 (rerunfilecheck)                or use package `bookmark'.
 
 Package rerunfilecheck Info: Checksums for `przyklad.out':
-(rerunfilecheck)             Before: 6ACA33DE8DFEE9045B5B77A9413D8B56;4491
-(rerunfilecheck)             After:  7D5F1FAFB03A501E178C66ECCABE7CD1;4622.
+(rerunfilecheck)             Before: 88F1D4CB83935C211B9610712A0C990D;6954
+(rerunfilecheck)             After:  E5B556615468BC29323F9B1E0E0A5EB4;6512.
  ) 
 Here is how much of TeX's memory you used:
- 9995 strings out of 474425
- 158073 string characters out of 5746496
- 1934493 words of memory out of 5000000
- 32151 multiletter control sequences out of 15000+600000
- 568907 words of font info for 63 fonts, out of 8000000 for 9000
+ 10879 strings out of 474425
+ 172233 string characters out of 5746496
+ 1936493 words of memory out of 5000000
+ 32998 multiletter control sequences out of 15000+600000
+ 569443 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,6n,93p,693b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,6n,93p,745b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-pdfTeX warning (dest): name{section.7.3} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.7.2} has been referenced but does not exist
-, replaced by a fixed one
-
-
-pdfTeX warning (dest): name{section.7.1} has been referenced but does not exist
-, replaced by a fixed one
+pdfTeX warning (dest): name{subsection.5.2.1} has been referenced but does not 
+exist, replaced by a fixed one
 
  </home/jakub/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.p
 k></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pfb
@@ -464,10 +608,11 @@ ktex/texmfs/install/fonts/type1/public/pl/plbx12.pfb></home/jakub/.miktex/texmf
 s/install/fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs/install/f
 onts/type1/public/pl/plr12.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/
 public/pl/plsl10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/
-pltt10.pfb>
-Output written on przyklad.pdf (29 pages, 180709 bytes).
+plti10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/pltt10.pfb
+>
+Output written on przyklad.pdf (31 pages, 1777032 bytes).
 PDF statistics:
- 374 PDF objects out of 1000 (max. 8388607)
- 75 named destinations out of 1000 (max. 500000)
- 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 414 PDF objects out of 1000 (max. 8388607)
+ 81 named destinations out of 1000 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -28,6 +28,7 @@
 %%%%% WLASNE DODATKOWE PAKIETY
 %
 %\usepackage{graphicx,listings,amsmath,amssymb,amsthm,amsfonts,tikz}
+\usepackage{graphicx}
 %
 %%%%% WŁASNE DEFINICJE I POLECENIA
 %
@@ -46,18 +47,18 @@
 \chapter{Wprowadzenie}
 
 \section{Motywacja}
-	Motywacją do stworzenia takiego systemu jest realny problem z życia.  Prowadzę gospodarstwo rolne, którego głównym kierunkiem produkcji są jaja kurze. W związku z tym produkuję paszę dla kur niosek. Pasza składa się z około 10 różnych składników, a ich liczba jest uzależniona od dostępności niektórych surowców. Niektóre składniki takie jak pszenżyto, jęczmień, owies pochodzą z gospodarstwa, inne (np. śruta rzepakowa, kukurydza) są zamawiane z zewnętrznych firm. Cenną informacją jest to ile jakiego półproduktu jest obecnie w magazynie, aby przed przystąpieniem do procesu produkcji zgromadzić potrzebne materiały.
+	Motywacją do stworzenia systemu magazynowego wspomagającego produkcję pasz jest realny problem z życia. Prowadzę gospodarstwo rolne, którego głównym kierunkiem produkcji są jaja kurze. W związku z tym produkuję paszę dla kur niosek. Pasza składa się z około dziesięciu różnych składników, a ich liczba jest uzależniona od dostępności niektórych surowców. Niektóre składniki takie jak pszenżyto, jęczmień, owies pochodzą z gospodarstwa, inne (np. śruta rzepakowa, kukurydza) są zamawiane od zewnętrznych dostawców. Cenną informacją jest to ile jakiego półproduktu jest obecnie w magazynie, aby przed przystąpieniem do procesu produkcji zgromadzić potrzebne materiały.
 
 	Z takiego systemu również łatwo mógłbym wydedukować ile przykładowo pszenżyta zebrałem ze swoich pól . System będzie też w stanie obliczyć różnice między deklarowaną a rzeczywistą wielkością dostawy.
 	
-	System powinien również pomóc optymalizować koszty produkcji. 
+	System powinien również pomóc optymalizować koszty produkcji przy odpowiednim składzie paszy. 
 
 \section {Wymagania od systemu}
 
 \begin{itemize}
   \item Sprawdzanie ilości dostępnych półproduktów w magazynie
   \item Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej
-  \item Obliczanie wielkości zbiorów - Jeśli mam "dostawę" z mojego gospodarstwa o nieznanej masie mogę policzyć tę masę uwzględniająć zużycie zasobu z tej dostawy 
+  \item Obliczanie wielkości zbiorów - Jeśli mam "dostawę" z mojego gospodarstwa o nieznanej masie mogę policzyć tę masę uwzględniająć zużycie zasobu z tej dostawy oraz poniesione straty
   \item  Wprowadzanie dostaw
   \item  Wprowadzanie strat
   \item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów
@@ -89,21 +90,16 @@
 	
 \chapter{Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}
 
-\section{Układ książki}
-Zalecenia podzielone są na 15 rozdziałów i są opisane szczegółowo na ponad 130 stronach. 
-Pierwsze trzy rozdziały zawierają wiedzę ogólną na temat składników materiałów paszowych.
-Rozdziały od 4. do 13. włącznie są szczegółowymi zaleceniami dla różnych gatunków drobiu ("Zalecenia żywienia perlic", "Zalecenia żywienia kur", "Zalecenia żywienia gęsi").
-Rozdział 14-sty "Zawartość składników pokarmowych w materiałach paszowych w żywieniu drobiu" zawiera uporządkowane w tabelach informacje.
-Postaram się streścić najważniejsze informacje w kontekście bilansowania mieszanki paszowej.
+\section{Znaczące parametry}
 
-\section{Wilgotność}
+\textbf{Wilgotność}
 W tabelach określa się zawartości poszczególnych składników pokarmowych przy założeniu $12\%$ wilgotności. Jest to częsta wilgotność w jakiej przechowuje się zboża. 
 Jeśli zawartość suchej masy w kilogramie materiału paszowego jest inna niż w tabeli (zazwyczaj w tabeli widnieje 880g/kg), zawartość składników pokarmowych należy przeliczyć zgodnie ze wzorem: 
 
 $$ S(g/kg) = S(tabela) * \frac{SuchaMasaNowa}{Sucha Masa Tabela}  $$
  
  
- \section{Energia}
+ \textbf{Energia}
  Zawartość energii jest wyrażana w jednostkach pozornej energii metabolicznej - $EM_n$. Jest to różnica energii brutto (ciepło spalania) i energii odchodów (kałomoczu w przypadku drobiu) i gazów.
  Energię tradycyjnie mierzono i wyrażano w kaloriach, ale obecnie powinniśmy stosować się do Międzynarodowego Układu Jednostek Miar i wyrażać tę energię w dżulach. 
  W opisywanym opracowaniu energia jest wyrażana zarówno w kilokaloriach (kcal) jak i megadżulach (MJ)
@@ -114,7 +110,7 @@ $$1 MJ = 239 kcal$$
 Potrzeby energetyczne są określone dla każdego gatunku i stadium rozwoju, ponieważ różnią się między sobą. Jeśli mieszanka paszowa będzie miała niedobór energii, objawi się to większym spożyciem paszy.
 Natomiast z nadmiarem energii w paszy idzie w parze otłuszczenie ptaków.
 
-\section{Białko i Aminokwasy}
+\textbf{Białko i Aminokwasy}
 W białkach ciała i jaj ptaków znajdują się $22$ aminokwasy, które dzielimy na trzy kategorie:
 \begin{itemize}
 \item aminokwasy niezbędne (egzogenne)
@@ -122,57 +118,24 @@ W białkach ciała i jaj ptaków znajdują się $22$ aminokwasy, które dzielimy
 \item aminokwasy nie-niezbędne (endogenne)
 \end{itemize}
 
-Aminokwasy niezbędne muszą być dostarczane w paszy w odpowiednich proporcjach. Najlepiej zbadane jest zapotrzebowanie na te aminokwasy u kurczątk brojlerów i indyków. 
+Aminokwasy niezbędne muszą być dostarczane w paszy w odpowiednich proporcjach.
 W omawianym opracowaniu dla każdego gatunku podano zapotrzebowanie tylko na te aminokwasy egzogenne, których niedobór może wystąpić w mieszankach paszowych tradycyjnych.
-Na pozostałych aminokwasach nie ma potrzeby skupiania swojej uwagi przez zależność: Jeśli poprzednie aminokwasy są w wystarczających ilościach, to pozostałe również.
+Na pozostałych aminokwasach nie ma potrzeby skupiania uwagi przez zależność: \textit{Jeśli poprzednie aminokwasy są w wystarczających ilościach, to pozostałe również.}
 
-\subsection{Aminokwasy niezbędne (egzogenne)}
-Aminokwasy egzogenne to takie których ptaki nie mogą syntetyzować. Są to dokładnie:
-\begin{itemize}
-\item lizyna
-\item metionina
-\item treonina
-\item tryptofan
-\item arginina
-\item fenyloalanina
-\item histydyna
-\item izoleucyna
-\item leucyna
-\item walina
-\end{itemize}
-
-\subsection{Aminokwasy względnie egzogenne}
-Te aminokwasy są względnie syntetyzowane w organizmie z aminokwasów egzogennych np. cysteina z metioniny.
-
-\subsection{Aminokwasy nie-niezbędne (endogenne)}
-Aminokwasy endogenne są syntezowane w organizmie. Są to takie aminokwasy jak:
-\begin{itemize}
-\item alanina
-\item asparagina
-\item glutamina
-\item kwas asparaginowy
-\item kwas glutaminowy
-\item prolina
-\item seryna
-\item hydroksyprolina
-\item glicyna
-\end{itemize}
+Aminokwasy egzogenne to takie których ptaki nie mogą syntetyzować. Są one wymienione dokładniej w \nameref{s:pr_sklad}, \nameref{s:produkt}
 
 
-\section{Tłuszcz}
+\textbf{Tłuszcz}
 Dodatek tłuszczu pozwala na zwiększenie wartości energetycznej mieszanki paszowej, aby wyrównać ją do zapotrzebowania na energię.
 Oprócz tego ptaki potrzebują określonej ilości tzw. niezbędnych nienasyconych kwasów tłuszczowych (NNKT). Są to kwasy linolowy i kwas $\alpha-$linolenowy.
 W tabelach występuje zapotrzebowanie tylko na kwas linolowy, ponieważ zapotrzebowanie na kwas $\alpha-$linolenowy jest około 10-krotnie mniejsze.
 
 
-\section{Składniki mineralne}
+\textbf{Wapń}
+Wapń z produktów innych niż kreda pastewna, skorupki jaj itp. nie wchłania się odpowiednio. Dlatego przy wprowadzaniu produktów innych niż wymienione należy ustawić zawartość wapnia na $0.0$ 
 
-\subsection{Wapń}
 
-
- 
-
-\section{Przykładowa pasza}
+\section{Przykładowy skład paszy}\label{s:pr_sklad}
 
 	Parametry do skomponowania przykładowej$^*$ mieszanki paszowej to:
 	
@@ -211,20 +174,8 @@ W tabelach występuje zapotrzebowanie tylko na kwas linolowy, ponieważ zapotrze
 	
 
 
-\chapter{Funkcje systemu}
-	\begin{itemize}
-  		\item  Wprowadzanie dostaw
-  		\item  Wprowadzanie strat
-  		\item  Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji
-  		\item  Sprawdzanie ilości dostępnych półproduktów w magazynie
-  		\item  Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej
-  		\item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów
-  		\item  Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie - optymalizacja kosztów
-  		\item  Wprowadzanie receptur na paszę
-	\end{itemize} 
 
-
-\chapter{Projektowanie Modeli oraz słownik kluczowych pojęć}
+\chapter{Projektowanie modeli oraz słownik kluczowych pojęć}
 
 \section{Dostawa}
 Podstawową jednostką w systemie jest dostawa. To dostawy będą zapisane w bazie danych i na ich podstawie będą oblczane stany magazynowe.
@@ -241,7 +192,7 @@ Dostawa składa się z:
 
 Jeśli dostawa jest zakończona to powinien zachodzić warunek strata + zużyta ilość = początkowa ilość
 
-\section{Produkt}
+\section{Produkt}\label{s:produkt}
 Produkt jest zdefiniowany jako lista parametrów oraz nazwą własną. Produkt jest wykorzystywany do produkcji paszy.
 Lista znaczących parametrów w produkcji paszy dla drobiu według "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu" to:
 \begin{itemize}
@@ -278,9 +229,65 @@ Jest to wektor par <Produkt, ilość> gdzie suma ilości zwykle sumuje się do j
 
 \section{Produkcja}
 
-Produkcja realizuje konkretną recepturę korzystając z produktów z konkretnych dostaw.  
+Produkcja realizuje konkretną recepturę korzystając z produktów z konkretnych dostaw. Przy dodawaniu produkcji, w każdej z dostaw z których produkcja zaczerpnęła surowców zostanie zmniejszona - pole used$\_$quantity zostanie zwiększone.
 
-\chapter{Przypadki użycia}
+
+\chapter{Funkcje systemu}
+
+\textbf{Wygląd strony głównej:}
+\includegraphics[scale=0.2]{img/StronaGlowna.jpg}
+
+\section{Dodawanie, czytanie, edytowanie, usuwanie (CRUD) podstawowych obiektów modelu}
+
+Dodawanie odbywa się za pomocą formularzy dostępnych po prawej stronie. Należy odpowiednio wypełnić formularz, a następnie kliknąć przycisk: Dodaj.
+
+\includegraphics[scale=0.2]{img/DodajProdukt.png}
+
+
+\subsection{Edycja Dostawy: zwiększenie straty o 10 kg}
+	Kroki:
+	\begin{enumerate}
+	\item Wybierz dostawę najeżdżając na przycisk "Dostawy" w górnym menu, a następnie klikając w odpowiednią dostawę.
+	
+		\includegraphics[scale=0.2]{img/EdycjaDostawy1.png}
+	\item Kliknij "Edytuj" na dole formularza. Pola powinny stać się edytowalne.
+	
+		\includegraphics[scale=0.2]{img/EdycjaDostawy2.png}
+		
+	\item Ustaw pole strata na 10.
+	
+		\includegraphics[scale=0.2]{img/EdycjaDostawy3.png}
+		
+	\item Kliknij "Zapisz zmianę"
+	
+	\end{enumerate}
+	
+\section{Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji}
+	\begin{enumerate}
+		\item Sprawdź zawartość jednej z dostaw, z której Produkcja zaczerpnie surowiec.
+		
+		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie1.png}
+		
+		\item Przejdź do Formularza dodającego nową produkcję. Wybierz recepturę oraz datę. Przejdź do dodania poszczególnych elementów.
+		
+		\item Ustaw z których dostaw powinny zostać wymienione surowce.
+		
+		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie2.png}
+		
+		\item Kliknij "Dodaj Produkcję"
+		
+		\item Sprawdź czy zużyta ilość w dostawie z punktu 1. zwiększyła się.
+		
+		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie3.png}
+		
+	\end{enumerate}
+	
+\section{Sprawdzanie ilości dostępnych półproduktów w magazynie}
+\section{Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej}
+\section{Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów}
+\section{Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie - optymalizacja kosztów}
+
+
 
 \chapter{Instalacja systemu}
 Wersja Pythona: Python 3.10.12

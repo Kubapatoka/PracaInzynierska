@@ -4,12 +4,14 @@
 
 {% block content %}
     {% for d in dict %}
-        {{d.production.date}}
-        <br>
+    <div class="sm_prod">
+        <a href="/warehouse/production/{{ d.production.id }}/"><div class="sm_legend">{{d.production.date}}</div></a>
         {% for e in d.elems %}
-            {{e.delivery_ref.product.product_name}} {{e.delivery_ref.date}} {{e.quantity}}
+            <a href="/warehouse/delivery/{{ e.delivery_ref.id }}/">
+                {{e.delivery_ref.product.product_name}} {{e.delivery_ref.date}} {{e.quantity}}
+            </a>
             <br>
         {% endfor %}
-        <br><br>
+    </div>
     {% endfor %}
 {% endblock %}
