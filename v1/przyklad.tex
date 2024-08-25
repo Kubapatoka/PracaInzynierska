@@ -235,6 +235,7 @@ Produkcja realizuje konkretną recepturę korzystając z produktów z konkretnyc
 \chapter{Funkcje systemu}
 
 \textbf{Wygląd strony głównej:}
+
 \includegraphics[scale=0.2]{img/StronaGlowna.jpg}
 
 \section{Dodawanie, czytanie, edytowanie, usuwanie (CRUD) podstawowych obiektów modelu}
@@ -283,10 +284,36 @@ Dodawanie odbywa się za pomocą formularzy dostępnych po prawej stronie. Nale�
 	\end{enumerate}
 	
 \section{Sprawdzanie ilości dostępnych półproduktów w magazynie}
-\section{Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej}
-\section{Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów}
-\section{Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie - optymalizacja kosztów}
+	W lewym menu znajduje się przycisk "Stan Magazynu", kliknij go.
+	
+	\includegraphics[scale=0.2]{img/StanMagazyn.png}
+	
+	Dostawy zgrupowane są pod względem produktów. Podana jest zarówno całkowita ilość produktu jak i ilość pozostała w każdej z dostaw.
 
+\section{Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej}
+
+	Funkcja ta jest realizowana za pomocą pola "Strata" w modelu dostawy. Stratę można na bieżąco zmieniać w trakcie pobierania surowca z Dostawy (czas od dodania dostawy do jej wyczerpania) jak i na końcu, przed archiwizacją, można stwierdzić ile surowca brakowało.
+	
+	Koszt surowca brany jest zawsze jako iloraz ceny za dostawę i różnicy pomiędzy wartością początkową i stratą.
+	
+\section{Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów}
+	To obliczenie jest wykonywane podczas komponowania receptury, ale nie jest nigdzie wyświetlane.
+	
+\section{Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie - optymalizacja kosztów}
+	\begin{enumerate}
+		\item W Lewym menu kliknij: "Skomponuj Recepturę"
+		\item Wybierz skład
+		
+		\includegraphics[scale=0.2]{img/Komponowanie1.png}
+		
+		\item Kliknij komponuj
+		
+		\includegraphics[scale=0.2]{img/Komponowanie2.png}
+		
+		\item Opcjonalnie zmień nazwę nowo utworzonej receptury.
+		
+	\end{enumerate}
+	
 
 
 \chapter{Instalacja systemu}

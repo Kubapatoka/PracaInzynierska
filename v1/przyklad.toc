@@ -28,12 +28,12 @@
 \contentsline {section}{\numberline {5.2.}Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji}{21}{section.5.2}%
 \contentsline {section}{\numberline {5.3.}Sprawdzanie ilości dostępnych półproduktów w magazynie}{23}{section.5.3}%
 \contentsline {section}{\numberline {5.4.}Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej}{23}{section.5.4}%
-\contentsline {section}{\numberline {5.5.}Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów}{23}{section.5.5}%
-\contentsline {section}{\numberline {5.6.}Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie - optymalizacja kosztów}{23}{section.5.6}%
-\contentsline {chapter}{\numberline {6.}Instalacja systemu}{25}{chapter.6}%
-\contentsline {chapter}{\numberline {7.}Podsumowanie}{27}{chapter.7}%
-\contentsline {section}{\numberline {7.1.}Pomysły jakie przyszły w trakcie pisania pracy}{27}{section.7.1}%
-\contentsline {section}{\numberline {7.2.}Czego zabrakło w aplikacji}{27}{section.7.2}%
-\contentsline {section}{\numberline {7.3.}Rozeznanie rynku}{27}{section.7.3}%
-\contentsline {chapter}{\numberline {8.}Bibliografia}{29}{chapter.8}%
-\contentsline {chapter}{\numberline {9.}luźne notki}{31}{chapter.9}%
+\contentsline {section}{\numberline {5.5.}Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów}{24}{section.5.5}%
+\contentsline {section}{\numberline {5.6.}Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie - optymalizacja kosztów}{24}{section.5.6}%
+\contentsline {chapter}{\numberline {6.}Instalacja systemu}{27}{chapter.6}%
+\contentsline {chapter}{\numberline {7.}Podsumowanie}{29}{chapter.7}%
+\contentsline {section}{\numberline {7.1.}Pomysły jakie przyszły w trakcie pisania pracy}{29}{section.7.1}%
+\contentsline {section}{\numberline {7.2.}Czego zabrakło w aplikacji}{29}{section.7.2}%
+\contentsline {section}{\numberline {7.3.}Rozeznanie rynku}{29}{section.7.3}%
+\contentsline {chapter}{\numberline {8.}Bibliografia}{31}{chapter.8}%
+\contentsline {chapter}{\numberline {9.}luźne notki}{33}{chapter.9}%
