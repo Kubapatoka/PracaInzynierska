@@ -58,7 +58,7 @@
 \begin{itemize}
   \item Sprawdzanie ilości dostępnych półproduktów w magazynie.
   \item Obliczanie rzeczywistych wielkości dostawy uwzględniając różnice w deklarowanej masie oraz masie rzeczywistej.
-  \item Obliczanie wielkości zbiorów, jeśli mam "dostawę"{} z mojego gospodarstwa o nieznanej masie mogę policzyć tę masę uwzględniając zużycie zasobu z tej dostawy oraz poniesione straty.
+  \item Obliczanie wielkości zbiorów: jeśli mam "dostawę"{} z mojego gospodarstwa o nieznanej masie mogę policzyć tę masę uwzględniając zużycie zasobu z tej dostawy oraz poniesione straty.
   \item  Wprowadzanie dostaw.
   \item  Wprowadzanie strat.
   \item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów.
@@ -103,10 +103,10 @@ W białkach ciała i jaj ptaków znajdują się $22$ aminokwasy, które dzielimy
 \end{itemize}
 
 Aminokwasy niezbędne muszą być dostarczane w paszy w odpowiednich proporcjach.
-W opracowaniu "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu"{} dla każdego gatunku podano zapotrzebowanie tylko na te aminokwasy egzogenne, których niedobór może wystąpić w mieszankach paszowych tradycyjnych.
+W książce \cite{ZZ} dla każdego gatunku podano zapotrzebowanie tylko na te aminokwasy egzogenne, których niedobór może wystąpić w mieszankach paszowych tradycyjnych.
 Na pozostałych aminokwasach nie ma potrzeby skupiania uwagi przez zależność: \textit{jeśli poprzednie aminokwasy są w wystarczających ilościach, to pozostałe również.}
 
-Aminokwasy egzogenne to takie których ptaki nie mogą syntetyzować. Są one wymienione dokładniej w rozdziałach: \ref{s:pr_sklad}, \ref{s:produkt}
+Aminokwasy egzogenne to takie których ptaki nie mogą syntetyzować. Są one wymienione dokładniej w rozdziałach \ref{s:pr_sklad} i \ref{s:produkt}
 
 
 \textbf{Tłuszcz}
@@ -159,7 +159,9 @@ Wapń z produktów innych niż kreda pastewna, skorupki jaj itp. nie wchłania s
 
 
 
-\chapter{Projektowanie modeli oraz słownik kluczowych pojęć}
+\chapter{Projektowanie modeli}
+
+\textbf{Ten rozdział pełni jednocześnie funkcję słownika kluczowych pojęć}
 
 \section{Produkt}\label{s:produkt}
 \textbf{Produkt} jest opisany listą parametrów oraz nazwą własną. \textit{Produkt} jest wykorzystywany do produkcji paszy. Lista kluczowych do optymalizowania składu paszy dla drobiu atrybutów według \cite{ZZ} to:
@@ -184,19 +186,19 @@ Wapń z produktów innych niż kreda pastewna, skorupki jaj itp. nie wchłania s
 
 Z wyżej wymienionych parametrów jedynie białko ogółem oraz kwas linolowy nie bierze udziału w komponowaniu mieszanki. Są jedynie wskaźnikami.
 
-Możnaby dać możliwość konfiguracji parametrów użytkownikowi. Przykładowo inne białka i właściwości danych produktów mogą odgrywać znaczącą rolę w produkcji pasz dla bydła, trzody lub hodowli ryb. Biorąc pod uwagę mnogość szczegółów charakterystycznych dla produkcji pasz zdecydowałem się mieć te parametry "na stałe".
+Ze względu na przeznaczenie systemu atrybuty produktu są z góry ustalone, nie są konfigurowalne.
 
 \section{Dostawa}
 Głównymi obiektami w systemie są \textbf{dostawy.} To \textit{dostawy} są zapisane w bazie danych i na ich podstawie będą obliczane stany magazynowe, których nie przechowujemy w bazie danych.
 Dostawa jest opisana atrybutami:
 \begin{itemize}
-	\item \textit{Produkt}
-	\item cena
-	\item data
-	\item początkowa ilość
-	\item zużyta ilość
-	\item strata
-	\item wartość boolowska czy dostawa się zakończyła
+	\item \textit{Produkt},
+	\item cena,
+	\item data,
+	\item początkowa ilość,
+	\item zużyta ilość,
+	\item strata,
+	\item wartość boolowska czy dostawa się zakończyła,
 \end{itemize}
 
 Jeśli dostawa jest wyczerpana, to powinien zachodzić warunek $$ \textrm{strata} + \textrm{zużyta ilość} = \textrm{początkowa ilość} $$
@@ -213,7 +215,7 @@ Model \textbf{receptura} to lista par $<$\textit{Produkt}, ilość$>$, gdzie sum
 
 \section{Produkcja}
 
-\textbf{Produkcja} realizuje konkretną \textit{recepturę} korzystając z produktów z konkretnych dostaw. Przy dodawaniu \textit{produkcji}, dla każdego \textit{produktu} z wybranej \textit{receptury} należy wskazać ich pochodzenie, czyli \textit{dostawę}. Można wskazać maksymalnie trzy \textit{dostawy} dla danego \textit{produktu}. W każdej z \textit{dostaw}, z których \textit{produkcja} zaczerpnęła surowiec, zostanie zwiększona wartość: zużyta ilość.
+\textbf{Produkcja} realizuje wskazaną \textit{recepturę} korzystając z produktów z konkretnych dostaw. Przy dodawaniu \textit{produkcji}, dla każdego \textit{produktu} z wybranej \textit{receptury} należy wskazać ich pochodzenie, czyli \textit{dostawę}. Można wskazać maksymalnie trzy \textit{dostawy} dla danego \textit{produktu}. W każdej z \textit{dostaw}, z których \textit{produkcja} zaczerpnęła surowiec, zostanie zwiększony atrybut \textit{zużyta ilość} w obiekcie modelu \textit{dostawa}.
 
 
 \chapter{Funkcje systemu}
@@ -222,7 +224,7 @@ Aplikacja implementuje wszystkie podstawowe operacje na obiektach modeli określ
 W rozdziale tym opisuję najistotniejsze operacje z punktu widzenia gospodarstwa hodowlanego.
 
 
-\section{Dodawanie dostawy}
+\section{Dodawanie produktu}
 
 Dodawanie odbywa się za pomocą formularzy dostępnych po prawej stronie. 
 
@@ -233,17 +235,20 @@ Należy odpowiednio wypełnić formularz, a następnie kliknąć przycisk: \text
 \includegraphics[scale=0.2]{img/DodajProdukt.png}
 
 
-\section{Edycja Dostawy: zwiększenie straty o 10 kg}
+\section{Edycja Dostawy}
+
+Poniżej podaję scenariusz zwiększenia \textit{Straty} o 10 kg.
+
 	Kroki:
 	\begin{enumerate}
-	\item Wybierz dostawę najeżdżając na przycisk \textit{Dostawy} w górnym menu, a następnie klikając w odpowiednią dostawę.
+	\item Wybierz dostawę najeżdżając na przycisk \textit{Dostawy} w górnym menu, a następnie klikając w \textit{dostawę} którą chcesz wyedytować.
 	
 		\includegraphics[scale=0.2]{img/EdycjaDostawy1.png}
-	\item Kliknij \textit{Edytuj} na dole formularza. Pola powinny stać się edytowalne.
+	\item Kliknij \textit{Edytuj} na dole formularza. Pola formularza są teraz edytowalne.
 	
 		\includegraphics[scale=0.2]{img/EdycjaDostawy2.png}
 		
-	\item Ustaw pole strata na 10.
+	\item Ustaw pole \textit{Strata} na 10.
 	
 		\includegraphics[scale=0.2]{img/EdycjaDostawy3.png}
 		
@@ -251,51 +256,53 @@ Należy odpowiednio wypełnić formularz, a następnie kliknąć przycisk: \text
 	
 	\end{enumerate}
 	
-\section{Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji}
+\section{Dodawanie Produkcji}
+
+Istotnym aspektem jest \textbf{automatyczne zdejmowanie} produktów z dostaw podczas dodawania \textit{produkcji}. Zostanie odnotowane każde użycie zasobu który użyjemy w \textit{produkcji}.
+
 	\begin{enumerate}
 		\item Sprawdź zawartość jednej z dostaw, z której Produkcja zaczerpnie surowiec.
 		
 		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie1.png}
 		
-		\item Przejdź do Formularza dodającego nową produkcję. Wybierz recepturę oraz datę. Przejdź do dodania poszczególnych elementów.
+		\item Przejdź do formularza dodającego nową \textit{produkcję}. Wybierz \textit{recepturę} oraz datę. Przejdź do dodania poszczególnych elementów.
 		
-		\item Ustaw z których dostaw powinny zostać wymienione surowce.
+		\item Ustaw z których \textit{dostaw} i w jakiej ilości zostaną pobrane surowce.
 		
 		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie2.png}
 		
 		\item Kliknij \textit{Dodaj Produkcję}
 		
-		\item Sprawdź czy zużyta ilość w dostawie z punktu 1. zwiększyła się.
+		\item W tym momencie oczekujemy że atrybut \textit{Zużyta Ilość} w \textit{dostawie} z punktu 1. zwiększył się o ilość wpisaną w punkcie 3.
 		
 		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie3.png}
 		
 	\end{enumerate}
 	
-\section{Sprawdzanie ilości dostępnych półproduktów w magazynie}
+\section{Wyświetlenie stanu magazynu}
 	W lewym menu znajduje się przycisk \textit{Stan Magazynu}, kliknij go.
 	
 	\includegraphics[scale=0.2]{img/StanMagazyn.png}
 	
-	Dostawy zgrupowane są pod względem produktów. Podana jest zarówno całkowita ilość produktu jak i ilość pozostała w każdej z dostaw.
+	\textit{Dostawy} zgrupowane są pod względem \textit{produktów}. Podana jest zarówno całkowita ilość produktu w magazynie jak i ilość pozostała w każdej z \textit{dostaw}.
 
 \section{Obliczanie rzeczywistych wielkości dostawy}
 
-	Funkcja ta jest realizowana za pomocą pola \textit{Strata} w modelu dostawy. Stratę można na bieżąco zmieniać w trakcie pobierania surowca z Dostawy (czas od dodania dostawy do jej wyczerpania) jak i na końcu, przed archiwizacją, można stwierdzić ile surowca brakowało.
+	Funkcja ta jest realizowana za pomocą atrybutów \textit{Ilość początkowa} oraz \textit{Strata} w modelu \textit{dostawy}. Stratę można na bieżąco zmieniać w trakcie pobierania surowca z \textit{Dostawy} (czas od dodania dostawy do jej wyczerpania) jak i na końcu, przed archiwizacją, można stwierdzić ile surowca brakowało. Różnica tych dwóch atrybutówto rzeczywista wielkość dostawy.
 	
+	Koszt surowca brany jest zawsze jako iloraz \textit{Ceny za dostawę} i różnicy pomiędzy \textit{Wartością Początkową} i \textit{Stratą}.
 	
-	Koszt surowca brany jest zawsze jako iloraz ceny za dostawę i różnicy pomiędzy wartością początkową i stratą.
-	
-\section{Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów}
-	To obliczenie jest wykonywane podczas komponowania receptury. Na jego podstawie optymalizowany jest skład paszy.
-	
-\section{Komponowanie receptury na paszę, w oparciu o produkty dostępne w magazynie}
+
+\section{Komponowanie receptury}
+Komponowanie \textit{receptury} polega na odpowiednim doborze \textit{produktów}, tak aby zrealizować \textit{skład}, czyli zapewnić odpowiednią ilość energii oraz odpowiednie ilości aminokwasów, minerałów itd. 
+
 	\begin{enumerate}
-		\item W Lewym menu kliknij: \textit{Skomponuj Recepturę}
+		\item W lewym menu kliknij: \textit{Skomponuj Recepturę}
 		\item Wybierz skład
 		
 		\includegraphics[scale=0.2]{img/Komponowanie1.png}
 		
-		\item Kliknij \textit{komponuj}
+		\item Kliknij \textit{Komponuj}
 		
 		\includegraphics[scale=0.2]{img/Komponowanie2.png}
 		
@@ -303,15 +310,29 @@ Należy odpowiednio wypełnić formularz, a następnie kliknąć przycisk: \text
 		
 	\end{enumerate}
 	
+Algorytm komponowania receptury:
+\begin{enumerate}
+	\item Przygotowanie listy dostępnych produktów. Dla każdego produktu jest dołączana informacja ile produktu jest w magazynie oraz średnia cena produktu za jeden kilogram. Ilość produktu jest to suma ilości początkowych pomniejszonych o straty oraz ilości zużyte we wszystkich niewykorzystanych dostawach.
+	\item Losujemy recepturę. Sto razy losujemy produkt i jeśli można to zwiększamy ilość Produktu o $10$ kg, jeśli nie to ponawiamy losowanie.
+	\item Dla wylosowanej receptury generujemy $20$ sąsiadów. Generowanie sąsiada jest to losowanie dwóch produktów oraz delty. Ilość pierwszego z wylosowanych produktów zwiększamy o deltę, a ilość drugiego zmniejszamy o deltę. W ten sposób zawsze mamy tonę. Jeśli dana sytuacja jest niemożliwa (ilość produktu w recepturze jest większa niż w magazynie lub ilość jest ujemna) to ponawiamy losowanie. Tak samo w przypadku gdy wylosowaliśmy gorszą recepturę niż obecna.
+	\item Ocena receptury (stanu) odbywa się przy pomocy funkcji oceniającej z odpowiednio dobranymi wagami.
+	\item Z wygenerowanych sąsiadów zostawiamy $3$ najlepszych (funkcja oceniająca)
+	\item Od tej pory dla każdych z trójki receptur generujemy po $20$ sąsiednich, sortujemy i zostawiamy $3$ najlepsze itd.
+	\item Pętlę przerywamy w momencie gdy różnica pomiędzy najlepszą recepturą z "nowej"{} i "starej"{} trójki będzie mniejsza od pewnego $\epsilon$ 
+	
+\end{enumerate}
 
 
 \chapter{Instalacja systemu}
+TODO
 Wersja Pythona: Python 3.10.12
 Wersja Django: (5, 0, 3, 'final', 0)
 
+sqlite
+
 Do zainstalowania systemu wystarczy zainstalować pythona. Skrypt instalacyjny wykorzysta załączony plik 'virtual environment'.
 
-Aby uruchomić system należy w lini poleceń wywołać komendę: "python3 program.zip", a następnie otworzyć w przeglądarce: \url{http://127.0.0.1:8000/warehouse/}
+Aby uruchomić system należy w lini poleceń wywołać komendę: "\$python3 program.zip", a następnie otworzyć w przeglądarce: \url{http://127.0.0.1:8000/warehouse/}
 
 \chapter{Podsumowanie}
 
