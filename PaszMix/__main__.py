@@ -15,8 +15,8 @@ def activate_virtualenv():
         # For Linux/Unix: Use the standard 'bin/activate' script
         activate_script = os.path.join('virtual_env', 'bin', 'activate')
     
-    if not os.path.exists(activate_script):
-        raise RuntimeError(f"Could not find the virtual environment activation script at {activate_script}. Please ensure the virtual environment is set up properly.")
+    # if not os.path.exists(activate_script):
+    #     raise RuntimeError(f"Could not find the virtual environment activation script at {activate_script}. Please ensure the virtual environment is set up properly.")
 
     return activate_script
 
@@ -26,9 +26,9 @@ def run_django_server():
     """
     try:
         # Ensure manage.py exists in the 'paszmix' directory
-        manage_py_path = os.path.join('paszmix', 'manage.py')
-        if not os.path.exists(manage_py_path):
-            raise RuntimeError(f"{manage_py_path} not found. Ensure you're in the correct directory and the 'paszmix' folder exists.")
+        # manage_py_path = os.path.join('paszmix', 'manage.py')
+        # if not os.path.exists(manage_py_path):
+        #     raise RuntimeError(f"{manage_py_path} not found. Ensure you're in the correct directory and the 'paszmix' folder exists.")
 
         # Get the path to the activation script
         activate_script = activate_virtualenv()
