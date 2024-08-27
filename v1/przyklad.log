@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  25 AUG 2024 16:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  27 AUG 2024 06:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -367,7 +367,7 @@ ex/texmfs/install/fonts/enc/dvips/pl/plrm.enc}] [2
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 13.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1448) has occurred while \output is active []
 
  [5])
 \tf@toc=\write4
@@ -397,98 +397,100 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 [6]
 Rozdzia\l  1..
+
+Overfull \hbox (1.36613pt too wide) in paragraph at lines 52--53
+[]\OT4/cmr/m/n/10.95 Z ta-kiego sys-temu rów-nie» ªa-two mógª-bym wy-de-du-ko-w
+a¢, ile przy-kªa-dowo pszen-
+ []
+
 [7
 
 ] [8]
 Rozdzia\l  2..
 [9
 
-] [10
-
 ]
-Rozdzia\l  3..
-[11]
 Overfull \hbox (74.17639pt too wide) has occurred while \output is active
-\OT4/cmr/m/n/10.95 12 \OT4/cmr/m/sl/10.95 ROZDZIAŠ 3. ZALECENIA ›YWIENIOWE I WA
+\OT4/cmr/m/n/10.95 10 \OT4/cmr/m/sl/10.95 ROZDZIAŠ 2. ZALECENIA ›YWIENIOWE I WA
 RTO‘‚ POKARMOWA PASZ DLA DROBIU
  []
 
-[12{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/plit.enc}] [13]
-[14
+[10{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/plit.enc}] [11]
+[12
 
 ]
-Rozdzia\l  4..
-[15]
+Rozdzia\l  3..
+[13]
 Overfull \hbox (43.15387pt too wide) has occurred while \output is active
-\OT4/cmr/m/n/10.95 16 \OT4/cmr/m/sl/10.95 ROZDZIAŠ 4. PROJEKTOWANIE MODELI ORAZ
+\OT4/cmr/m/n/10.95 14 \OT4/cmr/m/sl/10.95 ROZDZIAŠ 3. PROJEKTOWANIE MODELI ORAZ
  SŠOWNIK KLUCZOWYCH POJ†‚
  []
 
-[16] [17] [18
+[14] [15] [16
 
 ]
-Rozdzia\l  5..
-<img/StronaGlowna.jpg, id=248, 1861.95625pt x 967.615pt>
+Rozdzia\l  4..
+<img/StronaGlowna.jpg, id=210, 1861.95625pt x 967.615pt>
 File: img/StronaGlowna.jpg Graphic file (type jpg)
 <use img/StronaGlowna.jpg>
-Package pdftex.def Info: img/StronaGlowna.jpg  used on input line 239.
+Package pdftex.def Info: img/StronaGlowna.jpg  used on input line 221.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (10.05081pt too wide) in paragraph at lines 241--241
+Overfull \hbox (10.05081pt too wide) in paragraph at lines 223--223
 []\OT4/cmr/bx/n/14.4 Dodawanie, czy-ta-nie, edy-to-wa-nie, usu-wa-nie (CRUD)
  []
 
-<img/DodajProdukt.png, id=249, 1861.95625pt x 967.615pt>
+<img/DodajProdukt.png, id=211, 1861.95625pt x 967.615pt>
 File: img/DodajProdukt.png Graphic file (type png)
 <use img/DodajProdukt.png>
-Package pdftex.def Info: img/DodajProdukt.png  used on input line 245.
+Package pdftex.def Info: img/DodajProdukt.png  used on input line 227.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [19 <./img/StronaGlowna.jpg>]
-<img/EdycjaDostawy1.png, id=256, 1861.95625pt x 967.615pt>
+ [17 <./img/StronaGlowna.jpg>]
+<img/EdycjaDostawy1.png, id=217, 1861.95625pt x 967.615pt>
 File: img/EdycjaDostawy1.png Graphic file (type png)
 <use img/EdycjaDostawy1.png>
-Package pdftex.def Info: img/EdycjaDostawy1.png  used on input line 253.
+Package pdftex.def Info: img/EdycjaDostawy1.png  used on input line 235.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (1.42111pt too wide) in paragraph at lines 253--254
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 235--236
 [][] 
  []
 
-<img/EdycjaDostawy2.png, id=257, 1861.95625pt x 967.615pt>
+<img/EdycjaDostawy2.png, id=218, 1861.95625pt x 967.615pt>
 File: img/EdycjaDostawy2.png Graphic file (type png)
 <use img/EdycjaDostawy2.png>
-Package pdftex.def Info: img/EdycjaDostawy2.png  used on input line 256.
+Package pdftex.def Info: img/EdycjaDostawy2.png  used on input line 238.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (1.42111pt too wide) in paragraph at lines 256--257
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 238--239
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [20 <./img/DodajProdukt.png> <./img/EdycjaDostawy1.png>]
-<img/EdycjaDostawy3.png, id=266, 1861.95625pt x 967.615pt>
+ [18 <./img/DodajProdukt.png> <./img/EdycjaDostawy1.png>]
+<img/EdycjaDostawy3.png, id=227, 1861.95625pt x 967.615pt>
 File: img/EdycjaDostawy3.png Graphic file (type png)
 <use img/EdycjaDostawy3.png>
-Package pdftex.def Info: img/EdycjaDostawy3.png  used on input line 260.
+Package pdftex.def Info: img/EdycjaDostawy3.png  used on input line 242.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (1.42111pt too wide) in paragraph at lines 260--261
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 242--243
 [][] 
  []
 
-<img/AutomatycznieZmniejszenie1.png, id=267, 1861.95625pt x 967.615pt>
+<img/AutomatycznieZmniejszenie1.png, id=228, 1861.95625pt x 967.615pt>
 File: img/AutomatycznieZmniejszenie1.png Graphic file (type png)
 <use img/AutomatycznieZmniejszenie1.png>
 Package pdftex.def Info: img/AutomatycznieZmniejszenie1.png  used on input line
- 270.
+ 252.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (1.42111pt too wide) in paragraph at lines 270--271
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 252--253
 [][] 
  []
 
@@ -497,119 +499,119 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (180.63487pt too wide) has occurred while \output is active
-\OT4/cmr/m/sl/10.95 5.2. AUTOMATYCZNE ODEJMOWANIE PRODUKTÓW ZE STANU MAGAZYNOWE
-GO PODCZAS PRODUKCJI \OT4/cmr/m/n/10.95 21
+\OT4/cmr/m/sl/10.95 4.2. AUTOMATYCZNE ODEJMOWANIE PRODUKTÓW ZE STANU MAGAZYNOWE
+GO PODCZAS PRODUKCJI \OT4/cmr/m/n/10.95 19
  []
 
-[21 <./img/EdycjaDostawy2.png> <./img/EdycjaDostawy3.png>]
-<img/AutomatycznieZmniejszenie2.png, id=277, 1861.95625pt x 967.615pt>
+[19 <./img/EdycjaDostawy2.png> <./img/EdycjaDostawy3.png>]
+<img/AutomatycznieZmniejszenie2.png, id=239, 1861.95625pt x 967.615pt>
 File: img/AutomatycznieZmniejszenie2.png Graphic file (type png)
 <use img/AutomatycznieZmniejszenie2.png>
 Package pdftex.def Info: img/AutomatycznieZmniejszenie2.png  used on input line
- 276.
+ 258.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (1.42111pt too wide) in paragraph at lines 276--277
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 258--259
 [][] 
  []
 
-<img/AutomatycznieZmniejszenie3.png, id=278, 1861.95625pt x 967.615pt>
+<img/AutomatycznieZmniejszenie3.png, id=240, 1861.95625pt x 967.615pt>
 File: img/AutomatycznieZmniejszenie3.png Graphic file (type png)
 <use img/AutomatycznieZmniejszenie3.png>
 Package pdftex.def Info: img/AutomatycznieZmniejszenie3.png  used on input line
- 282.
+ 264.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (1.42111pt too wide) in paragraph at lines 282--283
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 264--265
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [22 <./img/AutomatycznieZmniejszenie1.png> <./img/AutomatycznieZmniejszenie2.p
+ [20 <./img/AutomatycznieZmniejszenie1.png> <./img/AutomatycznieZmniejszenie2.p
 ng>]
-Overfull \hbox (1.82751pt too wide) in paragraph at lines 286--286
+Overfull \hbox (1.82751pt too wide) in paragraph at lines 268--268
 []\OT4/cmr/bx/n/14.4 Sprawdzanie ilo-±ci do-st¦p-nych póª-pro-duk-tów w ma-
  []
 
-<img/StanMagazyn.png, id=289, 1861.95625pt x 967.615pt>
+<img/StanMagazyn.png, id=251, 1861.95625pt x 967.615pt>
 File: img/StanMagazyn.png Graphic file (type png)
 <use img/StanMagazyn.png>
-Package pdftex.def Info: img/StanMagazyn.png  used on input line 289.
+Package pdftex.def Info: img/StanMagazyn.png  used on input line 271.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
 Overfull \hbox (22.09024pt too wide) has occurred while \output is active
-\OT4/cmr/m/sl/10.95 5.3. SPRAWDZANIE ILO‘CI DOST†PNYCH PÓŠPRODUKTÓW W MAGAZYNIE
- \OT4/cmr/m/n/10.95 23
+\OT4/cmr/m/sl/10.95 4.3. SPRAWDZANIE ILO‘CI DOST†PNYCH PÓŠPRODUKTÓW W MAGAZYNIE
+ \OT4/cmr/m/n/10.95 21
  []
 
-[23 <./img/AutomatycznieZmniejszenie3.png> <./img/StanMagazyn.png>]
-<img/Komponowanie1.png, id=296, 1861.95625pt x 967.615pt>
+[21 <./img/AutomatycznieZmniejszenie3.png> <./img/StanMagazyn.png>]
+<img/Komponowanie1.png, id=258, 1861.95625pt x 967.615pt>
 File: img/Komponowanie1.png Graphic file (type png)
 <use img/Komponowanie1.png>
-Package pdftex.def Info: img/Komponowanie1.png  used on input line 307.
+Package pdftex.def Info: img/Komponowanie1.png  used on input line 289.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (1.42111pt too wide) in paragraph at lines 307--308
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 289--290
 [][] 
  []
 
-<img/Komponowanie2.png, id=297, 1861.95625pt x 967.615pt>
+<img/Komponowanie2.png, id=259, 1861.95625pt x 967.615pt>
 File: img/Komponowanie2.png Graphic file (type png)
 <use img/Komponowanie2.png>
-Package pdftex.def Info: img/Komponowanie2.png  used on input line 311.
+Package pdftex.def Info: img/Komponowanie2.png  used on input line 293.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
-Overfull \hbox (1.42111pt too wide) in paragraph at lines 311--312
+Overfull \hbox (1.42111pt too wide) in paragraph at lines 293--294
 [][] 
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [24 <./img/Komponowanie1.png>]
+ [22 <./img/Komponowanie1.png>]
 Overfull \hbox (320.77495pt too wide) has occurred while \output is active
-\OT4/cmr/m/sl/10.95 5.6. KOMPONOWANIE RECEPTURY NA PASZ†, W OPARCIU O PRODUKTY 
-DOST†PNE W MAGAZYNIE - OPTYMALIZACJA KOSZTÓW \OT4/cmr/m/n/10.95 25
+\OT4/cmr/m/sl/10.95 4.6. KOMPONOWANIE RECEPTURY NA PASZ†, W OPARCIU O PRODUKTY 
+DOST†PNE W MAGAZYNIE - OPTYMALIZACJA KOSZTÓW \OT4/cmr/m/n/10.95 23
  []
 
-[25 <./img/Komponowanie2.png>] [26
+[23 <./img/Komponowanie2.png>] [24
+
+]
+Rozdzia\l  5..
+LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 
+307.
+(/home/jakub/.miktex/texmfs/install/tex/latex/polski/ot4cmtt.fd
+File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
+)
+Overfull \hbox (13.62299pt too wide) in paragraph at lines 307--308
+\OT4/cmr/m/n/10.95 gram.zip", a na-st¦p-nie otwo-rzy¢ w prze-gl¡-darce: []$\OT4
+/cmtt/m/n/10.95 http : / / 127 . 0 . 0 . 1 : 8000 / warehouse/$[] 
+ []
+
+[25{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/pltt.enc}] [26
 
 ]
 Rozdzia\l  6..
 [27] [28
 
-]
-Rozdzia\l  7..
-LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 
-347.
-(/home/jakub/.miktex/texmfs/install/tex/latex/polski/ot4cmtt.fd
-File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
-) [29] [30{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/pltt.enc}]
-Rozdzia\l  8..
-[31
-
-] [32
-
-]
-Rozdzia\l  9..
-[33] (przyklad.aux)
+] [29] (przyklad.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
 Package rerunfilecheck Info: File `przyklad.out' has not changed.
-(rerunfilecheck)             Checksum: E5B556615468BC29323F9B1E0E0A5EB4;6512.
+(rerunfilecheck)             Checksum: 9AE39B89E132B7A80DDF5DD6F1122221;5718.
  ) 
 Here is how much of TeX's memory you used:
- 10906 strings out of 474425
- 172840 string characters out of 5746496
+ 10890 strings out of 474425
+ 172714 string characters out of 5746496
  1936493 words of memory out of 5000000
- 33020 multiletter control sequences out of 15000+600000
+ 33019 multiletter control sequences out of 15000+600000
  569443 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,6n,93p,745b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,6n,93p,716b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jakub/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095
 .pk></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.p
 fb></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb
@@ -623,9 +625,9 @@ mfs/install/fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs/install
 1/public/pl/plsl10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/p
 l/plti10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/pltt10.p
 fb>
-Output written on przyklad.pdf (33 pages, 2829887 bytes).
+Output written on przyklad.pdf (29 pages, 2822856 bytes).
 PDF statistics:
- 427 PDF objects out of 1000 (max. 8388607)
- 86 named destinations out of 1000 (max. 500000)
- 280 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 381 PDF objects out of 1000 (max. 8388607)
+ 71 named destinations out of 1000 (max. 500000)
+ 248 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -47,46 +47,28 @@
 \chapter{Wprowadzenie}
 
 \section{Motywacja}
-	Motywacją do stworzenia systemu magazynowego wspomagającego produkcję pasz jest realny problem z życia. Prowadzę gospodarstwo rolne, którego głównym kierunkiem produkcji są jaja kurze. W związku z tym produkuję paszę dla kur niosek. Pasza składa się z około dziesięciu różnych składników, a ich liczba jest uzależniona od dostępności niektórych surowców. Niektóre składniki takie jak pszenżyto, jęczmień, owies pochodzą z gospodarstwa, inne (np. śruta rzepakowa, kukurydza) są zamawiane od zewnętrznych dostawców. Cenną informacją jest to ile jakiego półproduktu jest obecnie w magazynie, aby przed przystąpieniem do procesu produkcji zgromadzić potrzebne materiały.
+	Motywacją do stworzenia systemu magazynowego wspomagającego produkcję pasz jest realny problem z życia. Prowadzę gospodarstwo rolne produkujące jaja kurze. W związku z tym przygotowuję paszę dla kur niosek. Pasza składa się z około dziesięciu różnych składników, a ich liczba jest uzależniona od dostępności niektórych surowców. Niektóre składniki takie jak pszenżyto, jęczmień, owies pochodzą z gospodarstwa, inne (np. śruta rzepakowa, kukurydza) są zamawiane od zewnętrznych dostawców. Cenną informacją jest to, ile i jakie półprodukty są obecnie w magazynie, aby przed przystąpieniem do procesu produkcji zgromadzić potrzebne materiały.
 
-	Z takiego systemu również łatwo mógłbym wydedukować ile przykładowo pszenżyta zebrałem ze swoich pól . System będzie też w stanie obliczyć różnice między deklarowaną a rzeczywistą wielkością dostawy.
+	Z takiego systemu również łatwo mógłbym wydedukować, ile przykładowo pszenżyta zebrałem ze swoich pól. System będzie też w stanie obliczyć różnice między deklarowaną a rzeczywistą wielkością dostawy.
 	
 	System powinien również pomóc optymalizować koszty produkcji przy odpowiednim składzie paszy. 
 
 \section {Wymagania od systemu}
 
 \begin{itemize}
-  \item Sprawdzanie ilości dostępnych półproduktów w magazynie
-  \item Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej
-  \item Obliczanie wielkości zbiorów - Jeśli mam "dostawę" z mojego gospodarstwa o nieznanej masie mogę policzyć tę masę uwzględniająć zużycie zasobu z tej dostawy oraz poniesione straty
-  \item  Wprowadzanie dostaw
-  \item  Wprowadzanie strat
-  \item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów
-  \item  Wprowadzanie receptur na paszę
-  \item  Automatyczne odejmowanie produktów ze stanu magazynowego podczas produkcji
-  \item Możliwe używanie aplikacji na urządzeniu mobilnym oraz komputerze - system webowy
-  \item System minimalistyczny, najpotrzebniejsze funkcje, proste użycie
+  \item Sprawdzanie ilości dostępnych półproduktów w magazynie.
+  \item Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej.
+  \item Obliczanie wielkości zbiorów - Jeśli mam "dostawę"{} z mojego gospodarstwa o nieznanej masie mogę policzyć tę masę uwzględniając zużycie zasobu z tej dostawy oraz poniesione straty.
+  \item  Wprowadzanie dostaw.
+  \item  Wprowadzanie strat.
+  \item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów.
+  \item  Wprowadzanie receptur na paszę.
+  \item  Automatyczne zdejmowanie produktów ze stanu magazynowego podczas produkcji.
+  \item Możliwość używanie aplikacji na urządzeniu mobilnym oraz komputerze - system webowy.
+  \item System minimalistyczny, najpotrzebniejsze funkcje, proste użycie.
   \item Baza danych zdolna pomieścić dane dla gospodarstwa rolnego.
 \end{itemize} 
 
-
-\chapter{Plan pracy}
-	\begin{enumerate}
-		\item  Zapoznanie się z frameworkiem Django
-			\begin{itemize}
-				\item Wykonanie tutorialu 'Writing your first Django app', czyli utworzenie "basic poll aplication"
-				\item Przegląd dostępych materiałów w serwisie Youtube w celu zdobycia praktycznych wskazówek przydatnych przy pisaniu programu.
-			\end{itemize}
-		\item Weryfikacja dotychczasowej wiedzy na temat produkcji pasz na podstawie książki "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu" praca zbiorowa pod redakcją Stefanii Smulikowskiej i Andrzeja Rutkowskiego 2018.
-		\item Zaplanowanie funkcjonalności programu
-		\item Zaprojektowanie modeli, jest to równoznaczne z projektem bazy danych
-		\item Zaprogramowanie układu strony
-		\item Dodanie nawigacji
-		\item Napisanie formularzy do dodawania/edycji/usuwania elementów modelu (frontend i backend)
-		\item Ujednolicenie kolorów w systemie
-		\item Poprawa wyglądu formularzy
-		\item Dodanie dodatkowych widoków (archiwa, stan magazynowy, układanie receptur)
-	\end{enumerate}
 	
 \chapter{Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu}
 
@@ -96,21 +78,20 @@
 W tabelach określa się zawartości poszczególnych składników pokarmowych przy założeniu $12\%$ wilgotności. Jest to częsta wilgotność w jakiej przechowuje się zboża. 
 Jeśli zawartość suchej masy w kilogramie materiału paszowego jest inna niż w tabeli (zazwyczaj w tabeli widnieje 880g/kg), zawartość składników pokarmowych należy przeliczyć zgodnie ze wzorem: 
 
-$$ S(g/kg) = S(tabela) * \frac{SuchaMasaNowa}{Sucha Masa Tabela}  $$
+$$ S(g/kg) = S(\textrm{tabela}) * \frac{\textrm{Sucha Masa Nowa}}{\textrm{Sucha Masa Tabela}}  $$
  
  
  \textbf{Energia}
  Zawartość energii jest wyrażana w jednostkach pozornej energii metabolicznej - $EM_n$. Jest to różnica energii brutto (ciepło spalania) i energii odchodów (kałomoczu w przypadku drobiu) i gazów.
  Energię tradycyjnie mierzono i wyrażano w kaloriach, ale obecnie powinniśmy stosować się do Międzynarodowego Układu Jednostek Miar i wyrażać tę energię w dżulach. 
- W opisywanym opracowaniu energia jest wyrażana zarówno w kilokaloriach (kcal) jak i megadżulach (MJ)
+ W opisywanym opracowaniu energia jest wyrażana zarówno w kilokaloriach (kcal), jak i megadżulach (MJ)
  
-$$1 kcal = 0,004184 MJ$$
-$$1 MJ = 239 kcal$$ 
+$$1 \textrm{kcal} = 0,004184 \textrm{MJ}$$
+$$1 \textrm{MJ} = 239 \textrm{kcal}$$ 
 
-Potrzeby energetyczne są określone dla każdego gatunku i stadium rozwoju, ponieważ różnią się między sobą. Jeśli mieszanka paszowa będzie miała niedobór energii, objawi się to większym spożyciem paszy.
-Natomiast z nadmiarem energii w paszy idzie w parze otłuszczenie ptaków.
+Potrzeby energetyczne są określone dla każdego gatunku i stadium rozwoju, ponieważ różnią się między sobą. Jeśli mieszanka paszowa będzie miała niedobór energii, objawi się to większym spożyciem paszy. Natomiast z nadmiarem energii w paszy idzie w parze otłuszczenie ptaków.
 
-\textbf{Białko i Aminokwasy}
+\textbf{Białko i aminokwasy}
 W białkach ciała i jaj ptaków znajdują się $22$ aminokwasy, które dzielimy na trzy kategorie:
 \begin{itemize}
 \item aminokwasy niezbędne (egzogenne)
@@ -122,7 +103,7 @@ Aminokwasy niezbędne muszą być dostarczane w paszy w odpowiednich proporcjach
 W omawianym opracowaniu dla każdego gatunku podano zapotrzebowanie tylko na te aminokwasy egzogenne, których niedobór może wystąpić w mieszankach paszowych tradycyjnych.
 Na pozostałych aminokwasach nie ma potrzeby skupiania uwagi przez zależność: \textit{Jeśli poprzednie aminokwasy są w wystarczających ilościach, to pozostałe również.}
 
-Aminokwasy egzogenne to takie których ptaki nie mogą syntetyzować. Są one wymienione dokładniej w \nameref{s:pr_sklad}, \nameref{s:produkt}
+Aminokwasy egzogenne to takie których ptaki nie mogą syntetyzować. Są one wymienione dokładniej w rozdziałach: \ref{s:pr_sklad}, \ref{s:produkt}
 
 
 \textbf{Tłuszcz}
@@ -170,31 +151,15 @@ Wapń z produktów innych niż kreda pastewna, skorupki jaj itp. nie wchłania s
 	Poziom EM w paszy powinien wynosić $11,5-11,7$ MJ/kg paszy
 	
 	
-	* - Dla grupy wiekowej kur niosek która dopiero co weszła w okres nieśności (od około $5\%$ nieśności w stadzie do około 45 tygodnia życia)
+	*Dla grupy wiekowej kur niosek która dopiero co weszła w okres nieśności (od około $5\%$ nieśności w stadzie do około 45 tygodnia życia)
 	
 
 
 
 \chapter{Projektowanie modeli oraz słownik kluczowych pojęć}
 
-\section{Dostawa}
-Podstawową jednostką w systemie jest dostawa. To dostawy będą zapisane w bazie danych i na ich podstawie będą oblczane stany magazynowe.
-Dostawa składa się z:
-\begin{itemize}
-	\item wskazanie na produkt
-	\item cena
-	\item data
-	\item początkowa ilość
-	\item zużyta ilość
-	\item strata
-	\item wartość boolowska czy dostawa się zakończyła
-\end{itemize}
-
-Jeśli dostawa jest zakończona to powinien zachodzić warunek strata + zużyta ilość = początkowa ilość
-
 \section{Produkt}\label{s:produkt}
-Produkt jest zdefiniowany jako lista parametrów oraz nazwą własną. Produkt jest wykorzystywany do produkcji paszy.
-Lista znaczących parametrów w produkcji paszy dla drobiu według "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu" to:
+\textbf{Produkt} jest opisany listą parametrów oraz nazwą własną. \textit{Produkt} jest wykorzystywany do produkcji paszy. Lista kluczowych do optymalizowania składu paszy dla drobiu atrybutów według książki "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu"{} to:
 \begin{itemize}
 	\item 	Wilgotność,
 	\item	Energia Metaboliczna
@@ -214,22 +179,39 @@ Lista znaczących parametrów w produkcji paszy dla drobiu według "Zalecenia ż
     	\item	Kwas linolowy 
 \end{itemize}
 
-Z wyżej wymienionych paramterów jedynie białko ogółem oraz kwas linolowy nie bierze udziału w komponowaniu mieszanki, jest jedynie wskaźnikiem.
+Z wyżej wymienionych parametrów jedynie białko ogółem oraz kwas linolowy nie bierze udziału w komponowaniu mieszanki. Są jedynie wskaźnikami.
 
 Tutaj pojawiła się opcja rozszerzenia możliwości systemu o inne parametry. Przykładowo inne białka i właściwości danych produktów mogą odgrywać znaczącą rolę w produkcji pasz dla bydła, trzody lub hodowli ryb. Biorąc pod uwagę mnogość szczegółów charakterystycznych dla produkcji pasz zdecydowałem się mieć dane parametry "na stałe".
 
+\section{Dostawa}
+Głównymi obiektami w systemie są \textbf{dostawy.} To \textit{dostawy} są zapisane w bazie danych i na ich podstawie będą obliczane stany magazynowe, których nie przechowujemy w bazie danych.
+Dostawa jest opisana atrybutami:
+\begin{itemize}
+	\item \textit{Produkt}
+	\item cena
+	\item data
+	\item początkowa ilość
+	\item zużyta ilość
+	\item strata
+	\item wartość boolowska czy dostawa się zakończyła
+\end{itemize}
+
+Jeśli dostawa jest zakończona to powinien zachodzić warunek $$ \textrm{strata} + \textrm{zużyta ilość} = \textrm{początkowa ilość} $$
+
+
 \section{Skład}
 
-Skład będzie docelowym zbiorem wartości poszczególnych współrzędnych dla paszy. Energia metaboliczna jest wyrażona w megadżulach i jako jedyny parametr jest przedstawiony w postaci zakresu. Pozostałe parametry (lizyna, metionina, cystyna+metionina, ..., wapń, fosfor przyswajalny, sód) są wyrażone w gramach na każdy megadżul wartości energetycznej. Różne gatunki i grupy wiekowe drobiu wymagają paszy o różnych składach.
+\textbf{Skład} jest docelowym zbiorem wartości poszczególnych współrzędnych dla paszy. Energia metaboliczna jest wyrażona w megadżulach i jako jedyny parametr jest przedstawiony w postaci zakresu. Pozostałe parametry (lizyna, metionina, cystyna+metionina, ..., wapń, fosfor przyswajalny, sód) są wyrażone w gramach na każdy megadżul wartości energetycznej. Różne gatunki, systemy hodowli (wolny wybieg, chów klatkowy) i  grupy wiekowe drobiu wymagają paszy o różnych składach.
 
 
 \section{Receptura}
 
-Jest to wektor par <Produkt, ilość> gdzie suma ilości zwykle sumuje się do jednej tony. Taka lista może pochodzić z metody optymalizującej skład paszy na podstawie dostępnych produktów lub może zostać wprowadzona ręcznie. Receptura powinna realizować jakiś skład.
+Jest to lista par $<$\textit{Produkt}, ilość$>$, gdzie suma ilości zwykle sumuje się do jednej tony. Taka lista może pochodzić z metody optymalizującej skład paszy na podstawie dostępnych produktów lub może zostać wprowadzona ręcznie. Receptura powinna realizować jakiś \textit{skład}.
+Dobrze jeśli ma rozpoznawalną przez użytkownika nazwę.
 
 \section{Produkcja}
 
-Produkcja realizuje konkretną recepturę korzystając z produktów z konkretnych dostaw. Przy dodawaniu produkcji, w każdej z dostaw z których produkcja zaczerpnęła surowców zostanie zmniejszona - pole used$\_$quantity zostanie zwiększone.
+\textbf{Produkcja} realizuje konkretną \textit{recepturę} korzystając z produktów z konkretnych dostaw. Przy dodawaniu \textit{produkcji}, dla każdego \textit{produktu} z wybranej \textit{receptury} należy wskazać ich pochodzenie, czyli \textit{dostawę}. Można wskazać maksymalnie trzy \textit{dostawy} dla danego \textit{produktu}. W każdej z \textit{dostaw}, z których \textit{produkcja} zaczerpnęła surowiec, zostanie zwiększona wartość: zużyta ilość.
 
 
 \chapter{Funkcje systemu}
@@ -245,13 +227,13 @@ Dodawanie odbywa się za pomocą formularzy dostępnych po prawej stronie. Nale�
 \includegraphics[scale=0.2]{img/DodajProdukt.png}
 
 
-\subsection{Edycja Dostawy: zwiększenie straty o 10 kg}
+\textbf{Edycja Dostawy: zwiększenie straty o 10 kg}
 	Kroki:
 	\begin{enumerate}
-	\item Wybierz dostawę najeżdżając na przycisk "Dostawy" w górnym menu, a następnie klikając w odpowiednią dostawę.
+	\item Wybierz dostawę najeżdżając na przycisk "Dostawy"{} w górnym menu, a następnie klikając w odpowiednią dostawę.
 	
 		\includegraphics[scale=0.2]{img/EdycjaDostawy1.png}
-	\item Kliknij "Edytuj" na dole formularza. Pola powinny stać się edytowalne.
+	\item Kliknij "Edytuj"{} na dole formularza. Pola powinny stać się edytowalne.
 	
 		\includegraphics[scale=0.2]{img/EdycjaDostawy2.png}
 		
@@ -292,7 +274,7 @@ Dodawanie odbywa się za pomocą formularzy dostępnych po prawej stronie. Nale�
 
 \section{Obliczanie rzeczywistych wielkości dostawy - występują różnice w deklarowanej masie oraz masie rzeczywistej}
 
-	Funkcja ta jest realizowana za pomocą pola "Strata" w modelu dostawy. Stratę można na bieżąco zmieniać w trakcie pobierania surowca z Dostawy (czas od dodania dostawy do jej wyczerpania) jak i na końcu, przed archiwizacją, można stwierdzić ile surowca brakowało.
+	Funkcja ta jest realizowana za pomocą pola "Strata"{} w modelu dostawy. Stratę można na bieżąco zmieniać w trakcie pobierania surowca z Dostawy (czas od dodania dostawy do jej wyczerpania) jak i na końcu, przed archiwizacją, można stwierdzić ile surowca brakowało.
 	
 	Koszt surowca brany jest zawsze jako iloraz ceny za dostawę i różnicy pomiędzy wartością początkową i stratą.
 	
@@ -320,47 +302,36 @@ Dodawanie odbywa się za pomocą formularzy dostępnych po prawej stronie. Nale�
 Wersja Pythona: Python 3.10.12
 Wersja Django: (5, 0, 3, 'final', 0)
 
-Do zainstalowania systemu wystarczy zainstalować pythona. Skrypt instalacyjny wykorzysta załączony plik 'virtual environment' 
+Do zainstalowania systemu wystarczy zainstalować pythona. Skrypt instalacyjny wykorzysta załączony plik 'virtual environment'.
+
+Aby uruchomić system należy w lini poleceń wywołać komendę: "python3 program.zip", a następnie otworzyć w przeglądarce: \url{http://127.0.0.1:8000/warehouse/}
 
 \chapter{Podsumowanie}
 
-\section{Pomysły jakie przyszły w trakcie pisania pracy}
+\section{Potencjalne kierunki rozwoju}
 \begin{itemize}
 	\item Możliwość wyboru motywów graficznych (wybór dwóch podstawowych kolorów)
 	\item Import danych z wyników badań laboratoryjnych
 	\item Archiwizacja produktów/dostaw/składów
 	\item Dodawanie produkcji na podstawie innej, przeszłej produkcji
 	\item Zrezygnowanie z wielu walidacji które mogłyby bardziej przeszkodzić w użytkowaniu systemu niż ułatwić pracę z nim.
-\end{itemize}
-
-\section{Czego zabrakło w aplikacji}
-\begin{itemize}
 	\item Możliwość komponowania jednorazowej receptury, która zużyje daną dostawę, partię
 	\item Realizacja receptury z użyciem dowolnej ilości dostaw na każdy Produkt (obecnie max 3).
 	\item Brak możliwości edycji Produkcji (jest możliwość usunięcia i stworzenia na nowo) 
 \end{itemize}
 
-\section{Rozeznanie rynku}
+\section{Podobne aplikacje}
 
-Konkurencji dla systemu możnaby szukać w zaawansowanych systemach ERP, jednakże są one znacznie szersze niż potrzeby przeciętnego użytkownika niniejszej aplikacji. 
+Bardzo zbliżonym produktem jest OptiPasz: \url{https://optipasz.pl/}. Jest to płatne oprogramowanie, przeznaczone do komponowania pasz dla większego zakresu zwierząt.
 
-Pierwszym bardzo zbliżonym produktem jest OptiPasz: \url{https://optipasz.pl/}. Jest to płatne oprogramowanie, przeznaczone dla większego zakresu zwierząt, więc istnieje ryzyko że nie jest tak skupione na szczegółach ważnych dla drobiu.
-
-\chapter{Bibliografia}
-
-\chapter{luźne notki}
-4. Wylistować dostępne produkty <dostawa, produkt>
-5. Skomponować paszę z dostępnych produktów <skład, dostawa, produkt>
-6. Skomponować paszę z przykładowych produktów <produkty (z dołożoną ceną), skład> 
-
-
-
-
+Aplikacje klasy ERP posiadają funkcjonalność związaną z produkcją, lecz jest to tylko drobny element większej całości. Aplikacje te są najczęściej bardzo drogie i mają o wiele więcej funkcji (np. monitorowanie czasu pracy, wystawianie faktur, kadry i płace) które nie są wymagane w gospodarstwie rolnym.
 
 %%%%% BIBLIOGRAFIA
 
-%\begin{thebibliography}{1}
-%\bibitem{example} \ldots
-%\end{thebibliography}
+\begin{thebibliography}{3}
+\bibitem{ZZ} Smulikowska S., Rutkowski A., 2018. "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu",{} wydanie piąte, Instytut Fizjologii i Żywienia Zwierząt im. Jana Kielanowskiego, Polski Oddział WPSA, praca zbiorowa
+\bibitem{OP} \url{https://optipasz.pl/} [dostęp 26.08.2024]
+\bibitem{DJ} \url{https://docs.djangoproject.com/en/5.0/} [dostęp 26.08.2024]
+\end{thebibliography}
 
 \end{document}
