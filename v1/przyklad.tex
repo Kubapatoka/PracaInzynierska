@@ -310,30 +310,55 @@ Komponowanie \textit{receptury} polega na odpowiednim doborze \textit{produktów
 		
 	\end{enumerate}
 	
-Algorytm komponowania receptury:
-\begin{enumerate}
-	\item Przygotowanie listy dostępnych produktów. Dla każdego produktu jest dołączana informacja ile produktu jest w magazynie oraz średnia cena produktu za jeden kilogram. Ilość produktu jest to suma ilości początkowych pomniejszonych o straty oraz ilości zużyte we wszystkich niewykorzystanych dostawach.
-	\item Losujemy recepturę. Sto razy losujemy produkt i jeśli można to zwiększamy ilość Produktu o $10$ kg, jeśli nie to ponawiamy losowanie.
-	\item Dla wylosowanej receptury generujemy $20$ sąsiadów. Generowanie sąsiada jest to losowanie dwóch produktów oraz delty. Ilość pierwszego z wylosowanych produktów zwiększamy o deltę, a ilość drugiego zmniejszamy o deltę. W ten sposób zawsze mamy tonę. Jeśli dana sytuacja jest niemożliwa (ilość produktu w recepturze jest większa niż w magazynie lub ilość jest ujemna) to ponawiamy losowanie. Tak samo w przypadku gdy wylosowaliśmy gorszą recepturę niż obecna.
-	\item Ocena receptury (stanu) odbywa się przy pomocy funkcji oceniającej z odpowiednio dobranymi wagami.
-	\item Z wygenerowanych sąsiadów zostawiamy $3$ najlepszych (funkcja oceniająca)
-	\item Od tej pory dla każdych z trójki receptur generujemy po $20$ sąsiednich, sortujemy i zostawiamy $3$ najlepsze itd.
-	\item Pętlę przerywamy w momencie gdy różnica pomiędzy najlepszą recepturą z "nowej"{} i "starej"{} trójki będzie mniejsza od pewnego $\epsilon$ 
-	
+
+\subsection{Algorytm optymalizacji receptury:}
+
+\begin{enumerate} 
+
+\item \textbf{Inicjalizacja danych wejściowych:} Na początku algorytmu tworzona jest lista dostępnych produktów. Dla każdego produktu zapisujemy informacje o dostępnej ilości w magazynie oraz średniej cenie za kilogram. Ilość produktu w magazynie jest obliczana jako różnica między początkową ilością a stratami oraz zużyciem we wszystkich niewykorzystanych dostawach. Ten krok jest istotny do zdefiniowania przestrzeni przeszukiwania algorytmu.
+
+\item \textbf{Losowa generacja początkowej receptury:} Algorytm rozpoczyna od losowej generacji receptury. Przez 100 iteracji losujemy produkt z listy dostępnych produktów. Jeśli dla wybranego produktu można zwiększyć jego ilość w recepturze o 10 kg bez przekroczenia dostępnych zasobów w magazynie, to ilość produktu jest zwiększana. Jeśli nie jest to możliwe, proces losowania jest powtarzany. Ten etap służy do znalezienia początkowego punktu w przestrzeni rozwiązań.
+
+\item \textbf{Generowanie sąsiadów stanu (receptury):} Dla wylosowanej początkowej receptury generowanych jest 20 sąsiadów, co odpowiada podejściu stosowanemu w algorytmach przeszukiwania lokalnego, takich jak "local search". Generowanie sąsiada polega na losowym wyborze dwóch produktów oraz wartości zmiany (delta). Ilość pierwszego z wybranych produktów jest zwiększana o deltę, a ilość drugiego zmniejszana o tę samą deltę, co zapewnia, że całkowita masa receptury pozostaje stała (1 tona). Jeśli w wyniku tej operacji powstaje receptura, która nie jest wykonalna (np. ilość produktu przekracza dostępne zasoby lub jest ujemna), losowanie jest powtarzane. Ponadto, jeśli wylosowana receptura jest gorsza niż obecna (zgodnie z funkcją oceny), również następuje ponowne losowanie.
+
+\item \textbf{Ocena receptury:} Każda receptura (stan) jest oceniana za pomocą funkcji oceniającej (funkcji celu), która uwzględnia odpowiednio dobrane wagi. Funkcja ta może mierzyć różne kryteria jakości receptury, takie jak koszt produkcji, stabilność dostaw, lub inne specyficzne wymogi produkcyjne.
+
+\item \textbf{Selekcja najlepszych sąsiadów:} Spośród 20 wygenerowanych sąsiadów wybierane są 3 najlepsze, które posiadają najwyższą ocenę według funkcji oceny. Selekcja ta jest kluczowa dla dalszego przeszukiwania i pozwala na skoncentrowanie się na obiecujących obszarach przestrzeni rozwiązań.
+
+\item \textbf{Iteracyjne doskonalenie:} Dla każdego z wybranych trzech najlepszych rozwiązań (receptur) generowanych jest ponownie 20 sąsiadów. Po wygenerowaniu sąsiedztwa, rozwiązania są sortowane według funkcji oceny, a następnie wybierane są trzy najlepsze receptury. Proces ten jest iterowany, prowadząc do sukcesywnego doskonalenia jakości rozwiązania.
+
+\item \textbf{Kryterium stopu:} Algorytm kontynuuje iteracyjne doskonalenie do momentu, gdy różnica pomiędzy najlepszą recepturą z obecnego zestawu a najlepszą recepturą z poprzedniego zestawu jest mniejsza od zadanego progu $\epsilon$. Ten warunek stopu jest kluczowy dla zapewnienia konwergencji algorytmu oraz zapobiegania nadmiernemu przeszukiwaniu bez znaczącej poprawy wyników.
+
 \end{enumerate}
 
 
 \chapter{Instalacja systemu}
-TODO
-Wersja Pythona: Python 3.10.12
-Wersja Django: (5, 0, 3, 'final', 0)
 
-sqlite
+Aby rozpocząć pracę z systemem, należy zainstalować i skonfigurować środowisko programistyczne oparte na języku Python oraz frameworku Django. W niniejszym rozdziale przedstawiamy kroki, które należy podjąć, aby prawidłowo zainstalować i uruchomić system na lokalnej maszynie.
 
-Do zainstalowania systemu wystarczy zainstalować pythona. Skrypt instalacyjny wykorzysta załączony plik 'virtual environment'.
+\section{Wymagania systemowe}
 
-Aby uruchomić system należy w lini poleceń wywołać komendę: "\$python3 program.zip", a następnie otworzyć w przeglądarce: \url{http://127.0.0.1:8000/warehouse/}
+Do poprawnego działania systemu wymagane są następujące wersje oprogramowania:
 
+\begin{itemize} \item Python: 3.10.12 \item Django: 5.0.3 \item SQLite: Domyślna baza danych wykorzystywana przez Django do przechowywania danych aplikacji \end{itemize}
+
+\section{Przygotowanie środowiska}
+
+Instalacja systemu opiera się na utworzeniu wirtualnego środowiska Python, które zapewnia izolację pakietów i bibliotek, umożliwiając zarządzanie zależnościami projektu w sposób niezależny od innych aplikacji.
+
+Pierwszym krokiem jest instalacja odpowiedniej wersji języka Python. Wersję 3.10.12 można pobrać z oficjalnej strony Python.org. Należy postępować zgodnie z instrukcjami instalacyjnymi dla odpowiedniego systemu operacyjnego (Windows, macOS, Linux).
+
+\section{Uruchamianie systemu}
+
+Po poprawnej instalacji i konfiguracji środowiska, można uruchomić system. W tym celu należy wykonać poniższą komendę w terminalu lub wierszu poleceń:
+
+\begin{verbatim}$ python3 program.zip \end{verbatim}
+
+Po uruchomieniu aplikacji będzie ona dostępna na lokalnym serwerze pod adresem localhost na porcie 8000. Aby uzyskać dostęp do systemu, otwórz przeglądarkę internetową i wprowadź odpowiedni adres URL w pasku adresu. Adres localhost odnosi się do lokalnej maszyny, a port 8000 to domyślny port używany przez serwer Django.
+
+\section{Podsumowanie}
+
+Proces instalacji systemu jest prosty i wymaga jedynie kilku kroków. Przestrzeganie powyższych instrukcji zapewni prawidłowe uruchomienie i działanie aplikacji na lokalnym środowisku. W przypadku napotkania jakichkolwiek problemów, zaleca się sprawdzenie wersji zainstalowanego oprogramowania oraz upewnienie się, że wszystkie kroki instalacyjne zostały wykonane poprawnie.
 \chapter{Podsumowanie}
 
 \section{Potencjalne kierunki rozwoju}
@@ -346,7 +371,8 @@ Aby uruchomić system należy w lini poleceń wywołać komendę: "\$python3 pro
 	\item Możliwość komponowania jednorazowej receptury, która zużyje daną dostawę, partię.
 	\item Większa ilość ustawień w procesie komponowania receptury.
 	\item Realizacja receptury z użyciem dowolnej ilości dostaw na każdy Produkt (obecnie max 3).
-	\item Możliwości edycji \textit{Produkcji}.
+	\item Konfiguracja parametrów produktów i składów
+	\item Konfiguracja algorytmu układającego recepturę z poziomu użytkownika. Możliwość zwiększenia lub zmniejszenia dokładności.
 \end{itemize}
 
 \section{Podobne aplikacje}
