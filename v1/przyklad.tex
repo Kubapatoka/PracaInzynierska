@@ -12,8 +12,8 @@
 % polecenia \fmlinebreak.
 \polishtitle    {Projektowanie i implementacja \fmlinebreak systemu magazynowego\fmlinebreak ze wspomaganiem procesu produkcji \fmlinebreak i zarządzaniem zasobami}
 \englishtitle   {Design and implementation of a warehouse system \fmlinebreak supporting the production process and resource management}
-\polishabstract {\ldots}
-\englishabstract{\ldots}
+\polishabstract {Celem pracy inżynierskiej jest zaprojektowanie i implementacja systemu magazynowego, który wspiera produkcję pasz dla drobiu oraz zarządzanie zasobami w gospodarstwie rolnym. System został stworzony, aby zoptymalizować proces produkcji pasz poprzez precyzyjne monitorowanie dostępności półproduktów, obliczanie rzeczywistych wielkości dostaw oraz kosztów produkcji, a także wprowadzanie receptur na pasze. System umożliwia również automatyczne aktualizowanie stanów magazynowych oraz jest dostępny na różnych platformach, takich jak urządzenia mobilne i komputery, dzięki swojej formie webowej. Kluczowym elementem jest minimalizm i prostota użytkowania, co pozwala na efektywne zarządzanie magazynem i optymalizację kosztów produkcji pasz.}
+\englishabstract{The aim of this engineering thesis is to design and implement a warehouse management system that supports poultry feed production and resource management on a farm. The system was developed to optimize the feed production process by precisely monitoring the availability of raw materials, calculating actual delivery volumes and production costs, and inputting feed recipes. The system also allows for automatic inventory updates and is accessible on various platforms, such as mobile devices and computers, due to its web-based format. A key feature is its minimalism and ease of use, enabling effective warehouse management and cost optimization in feed production.}
 % w pracach wielu autorow nazwiska mozna oddzielic poleceniem \and
 \author         {Jakub Kopystiański}
 % w przypadku kilku promotorow, lub koniecznosci podania ich afiliacji, linie
@@ -21,8 +21,8 @@
 \advisor        {dr Marcin Młotkowski}
 %\date          {}                     % Data zlozenia pracy
 % Dane do oswiadczenia o autorskim wykonaniu
-%\transcriptnum {}                     % Numer indeksu
-%\advisorgen    {dr. Jana Kowalskiego} % Nazwisko promotora w dopelniaczu
+\transcriptnum {321897}                     % Numer indeksu
+\advisorgen    {dr. Marcina Młotkowskiego} % Nazwisko promotora w dopelniaczu
 %%%%%
 
 %%%%% WLASNE DODATKOWE PAKIETY
@@ -64,7 +64,7 @@
   \item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów.
   \item  Wprowadzanie receptur na paszę.
   \item  Automatyczne zdejmowanie produktów ze stanu magazynowego podczas produkcji.
-  \item Możliwość używanie aplikacji na urządzeniu mobilnym oraz komputerze - system webowy.
+  \item Możliwość używania aplikacji na urządzeniu mobilnym oraz komputerze - system webowy.
   \item System minimalistyczny, najpotrzebniejsze funkcje, proste użycie.
   \item Baza danych zdolna pomieścić dane dla gospodarstwa rolnego.
 \end{itemize} 
@@ -186,7 +186,7 @@ Wapń z produktów innych niż kreda pastewna, skorupki jaj itp. nie wchłania s
 
 Z wyżej wymienionych parametrów jedynie białko ogółem oraz kwas linolowy nie bierze udziału w komponowaniu mieszanki. Są jedynie wskaźnikami.
 
-Ze względu na przeznaczenie systemu atrybuty produktu są z góry ustalone, nie są konfigurowalne.
+Ze względu na przeznaczenie systemu atrybuty produktu są z góry ustalone i nie są konfigurowalne.
 
 \section{Dostawa}
 Głównymi obiektami w systemie są \textbf{dostawy.} To \textit{dostawy} są zapisane w bazie danych i na ich podstawie będą obliczane stany magazynowe, których nie przechowujemy w bazie danych.
@@ -315,15 +315,35 @@ Komponowanie \textit{receptury} polega na odpowiednim doborze \textit{produktów
 
 \begin{enumerate} 
 
-\item \textbf{Inicjalizacja danych wejściowych:} Na początku algorytmu tworzona jest lista dostępnych produktów. Dla każdego produktu zapisujemy informacje o dostępnej ilości w magazynie oraz średniej cenie za kilogram. Ilość produktu w magazynie jest obliczana jako różnica między początkową ilością a stratami oraz zużyciem we wszystkich niewykorzystanych dostawach. Ten krok jest istotny do zdefiniowania przestrzeni przeszukiwania algorytmu.
+\item \textbf{Inicjalizacja danych wejściowych:} Na początku algorytmu tworzona jest lista dostępnych produktów. Dla każdego produktu zapisujemy informacje o dostępnej ilości w magazynie oraz średniej cenie za kilogram. Ilość produktu w magazynie oraz średnia cena za kilogram są obliczane jak we wzorach poniżej.
+
+$$\textrm{Icp} = \sum\limits_{\textrm{dp}} \textrm{ip} - \textrm{iz} - \textrm{s} $$
+
+$$ \textrm{Średnia cena} = \frac{\sum\limits_{\textrm{dp}} [\frac{\textrm{cena dostawy}}  {(\textrm{ip}-\textrm{s}} * (\textrm{ip}-\textrm{s}-\textrm{iz})]}{\textrm{icp}} $$
+
+gdzie:
+
+icp to Ilość całkowita produktu,
+
+dp to dostawa produktu,
+
+ip to ilość początkowa,
+
+iz to ilość zużyta,
+
+s to strata.
+
+
+
+
 
 \item \textbf{Losowa generacja początkowej receptury:} Algorytm rozpoczyna od losowej generacji receptury. Przez 100 iteracji losujemy produkt z listy dostępnych produktów. Jeśli dla wybranego produktu można zwiększyć jego ilość w recepturze o 10 kg bez przekroczenia dostępnych zasobów w magazynie, to ilość produktu jest zwiększana. Jeśli nie jest to możliwe, proces losowania jest powtarzany. Ten etap służy do znalezienia początkowego punktu w przestrzeni rozwiązań.
 
 \item \textbf{Generowanie sąsiadów stanu (receptury):} Dla wylosowanej początkowej receptury generowanych jest 20 sąsiadów, co odpowiada podejściu stosowanemu w algorytmach przeszukiwania lokalnego, takich jak "local search". Generowanie sąsiada polega na losowym wyborze dwóch produktów oraz wartości zmiany (delta). Ilość pierwszego z wybranych produktów jest zwiększana o deltę, a ilość drugiego zmniejszana o tę samą deltę, co zapewnia, że całkowita masa receptury pozostaje stała (1 tona). Jeśli w wyniku tej operacji powstaje receptura, która nie jest wykonalna (np. ilość produktu przekracza dostępne zasoby lub jest ujemna), losowanie jest powtarzane. Ponadto, jeśli wylosowana receptura jest gorsza niż obecna (zgodnie z funkcją oceny), również następuje ponowne losowanie.
 
-\item \textbf{Ocena receptury:} Każda receptura (stan) jest oceniana za pomocą funkcji oceniającej (funkcji celu), która uwzględnia odpowiednio dobrane wagi. Funkcja ta może mierzyć różne kryteria jakości receptury, takie jak koszt produkcji, stabilność dostaw, lub inne specyficzne wymogi produkcyjne.
+\item \textbf{Ocena receptury:} Każda receptura (stan) jest oceniana za pomocą funkcji oceniającej (funkcji celu), która uwzględnia procentową różnicę zawartości poszczególnych paremetrów pomnożonych przez odpowiednio dobrane wagi.
 
-\item \textbf{Selekcja najlepszych sąsiadów:} Spośród 20 wygenerowanych sąsiadów wybierane są 3 najlepsze, które posiadają najwyższą ocenę według funkcji oceny. Selekcja ta jest kluczowa dla dalszego przeszukiwania i pozwala na skoncentrowanie się na obiecujących obszarach przestrzeni rozwiązań.
+\item \textbf{Selekcja najlepszych sąsiadów:} Spośród 20 wygenerowanych rozwiązań (sąsiadów) wybierane są 3 najlepsze, które posiadają najwyższą ocenę według funkcji oceny. Selekcja ta jest kluczowa dla dalszego przeszukiwania i pozwala na skoncentrowanie się na obiecujących obszarach przestrzeni rozwiązań.
 
 \item \textbf{Iteracyjne doskonalenie:} Dla każdego z wybranych trzech najlepszych rozwiązań (receptur) generowanych jest ponownie 20 sąsiadów. Po wygenerowaniu sąsiedztwa, rozwiązania są sortowane według funkcji oceny, a następnie wybierane są trzy najlepsze receptury. Proces ten jest iterowany, prowadząc do sukcesywnego doskonalenia jakości rozwiązania.
 

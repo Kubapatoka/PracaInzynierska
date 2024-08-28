@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  28 AUG 2024 07:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  28 AUG 2024 17:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -417,12 +417,12 @@ Rozdzia\l  3..
 
 ]
 Rozdzia\l  4..
-<img/StronaGlowna.jpg, id=229, 1861.95625pt x 967.615pt>
+<img/StronaGlowna.jpg, id=234, 1861.95625pt x 967.615pt>
 File: img/StronaGlowna.jpg Graphic file (type jpg)
 <use img/StronaGlowna.jpg>
 Package pdftex.def Info: img/StronaGlowna.jpg  used on input line 231.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
-<img/DodajProdukt.png, id=230, 1861.95625pt x 967.615pt>
+<img/DodajProdukt.png, id=235, 1861.95625pt x 967.615pt>
 File: img/DodajProdukt.png Graphic file (type png)
 <use img/DodajProdukt.png>
 Package pdftex.def Info: img/DodajProdukt.png  used on input line 235.
@@ -431,7 +431,7 @@ Package pdftex.def Info: img/DodajProdukt.png  used on input line 235.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17 <./img/StronaGlowna.jpg>]
-<img/EdycjaDostawy1.png, id=236, 1861.95625pt x 967.615pt>
+<img/EdycjaDostawy1.png, id=241, 1861.95625pt x 967.615pt>
 File: img/EdycjaDostawy1.png Graphic file (type png)
 <use img/EdycjaDostawy1.png>
 Package pdftex.def Info: img/EdycjaDostawy1.png  used on input line 246.
@@ -441,7 +441,7 @@ Overfull \hbox (1.42111pt too wide) in paragraph at lines 246--247
 [][] 
  []
 
-<img/EdycjaDostawy2.png, id=237, 1861.95625pt x 967.615pt>
+<img/EdycjaDostawy2.png, id=242, 1861.95625pt x 967.615pt>
 File: img/EdycjaDostawy2.png Graphic file (type png)
 <use img/EdycjaDostawy2.png>
 Package pdftex.def Info: img/EdycjaDostawy2.png  used on input line 249.
@@ -455,7 +455,7 @@ Overfull \hbox (1.42111pt too wide) in paragraph at lines 249--250
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [18 <./img/DodajProdukt.png> <./img/EdycjaDostawy1.png>]
-<img/EdycjaDostawy3.png, id=246, 1861.95625pt x 967.615pt>
+<img/EdycjaDostawy3.png, id=251, 1861.95625pt x 967.615pt>
 File: img/EdycjaDostawy3.png Graphic file (type png)
 <use img/EdycjaDostawy3.png>
 Package pdftex.def Info: img/EdycjaDostawy3.png  used on input line 253.
@@ -465,7 +465,7 @@ Overfull \hbox (1.42111pt too wide) in paragraph at lines 253--254
 [][] 
  []
 
-<img/AutomatycznieZmniejszenie1.png, id=247, 1861.95625pt x 967.615pt>
+<img/AutomatycznieZmniejszenie1.png, id=252, 1861.95625pt x 967.615pt>
 File: img/AutomatycznieZmniejszenie1.png Graphic file (type png)
 <use img/AutomatycznieZmniejszenie1.png>
 Package pdftex.def Info: img/AutomatycznieZmniejszenie1.png  used on input line
@@ -480,7 +480,7 @@ Overfull \hbox (1.42111pt too wide) in paragraph at lines 266--267
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [19 <./img/EdycjaDostawy2.png> <./img/EdycjaDostawy3.png>]
-<img/AutomatycznieZmniejszenie2.png, id=258, 1861.95625pt x 967.615pt>
+<img/AutomatycznieZmniejszenie2.png, id=263, 1861.95625pt x 967.615pt>
 File: img/AutomatycznieZmniejszenie2.png Graphic file (type png)
 <use img/AutomatycznieZmniejszenie2.png>
 Package pdftex.def Info: img/AutomatycznieZmniejszenie2.png  used on input line
@@ -491,7 +491,7 @@ Overfull \hbox (1.42111pt too wide) in paragraph at lines 272--273
 [][] 
  []
 
-<img/AutomatycznieZmniejszenie3.png, id=259, 1861.95625pt x 967.615pt>
+<img/AutomatycznieZmniejszenie3.png, id=264, 1861.95625pt x 967.615pt>
 File: img/AutomatycznieZmniejszenie3.png Graphic file (type png)
 <use img/AutomatycznieZmniejszenie3.png>
 Package pdftex.def Info: img/AutomatycznieZmniejszenie3.png  used on input line
@@ -507,14 +507,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [20 <./img/AutomatycznieZmniejszenie1.png> <./img/AutomatycznieZmniejszenie2.p
 ng>]
-<img/StanMagazyn.png, id=270, 1861.95625pt x 967.615pt>
+<img/StanMagazyn.png, id=275, 1861.95625pt x 967.615pt>
 File: img/StanMagazyn.png Graphic file (type png)
 <use img/StanMagazyn.png>
 Package pdftex.def Info: img/StanMagazyn.png  used on input line 285.
 (pdftex.def)             Requested size: 372.38466pt x 193.51958pt.
 
 [21 <./img/AutomatycznieZmniejszenie3.png> <./img/StanMagazyn.png>]
-<img/Komponowanie1.png, id=277, 1861.95625pt x 967.615pt>
+<img/Komponowanie1.png, id=282, 1861.95625pt x 967.615pt>
 File: img/Komponowanie1.png Graphic file (type png)
 <use img/Komponowanie1.png>
 Package pdftex.def Info: img/Komponowanie1.png  used on input line 303.
@@ -524,7 +524,7 @@ Overfull \hbox (1.42111pt too wide) in paragraph at lines 303--304
 [][] 
  []
 
-<img/Komponowanie2.png, id=278, 1861.95625pt x 967.615pt>
+<img/Komponowanie2.png, id=283, 1861.95625pt x 967.615pt>
 File: img/Komponowanie2.png Graphic file (type png)
 <use img/Komponowanie2.png>
 Package pdftex.def Info: img/Komponowanie2.png  used on input line 307.
@@ -534,19 +534,19 @@ Overfull \hbox (1.42111pt too wide) in paragraph at lines 307--308
 [][] 
  []
 
-[22 <./img/Komponowanie1.png> <./img/Komponowanie2.png>]
-Overfull \hbox (3.37566pt too wide) in paragraph at lines 330--331
+[22 <./img/Komponowanie1.png> <./img/Komponowanie2.png>] [23]
+Overfull \hbox (3.37566pt too wide) in paragraph at lines 350--351
 []\OT4/cmr/bx/n/10.95 Kryterium stopu: \OT4/cmr/m/n/10.95 Al-go-rytm kon-ty-nu-
 uje ite-ra-cyjne do-sko-na-le-nie do mo-mentu,
  []
 
-[23] [24]
+[24]
 Rozdzia\l  5..
 [25
 
 ]
 LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line 
-355.
+375.
  (/home/jakub/.miktex/texmfs/install/tex/latex/polski/ot4cmtt.fd
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 ) [26{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/pltt.enc}]
@@ -560,40 +560,34 @@ Rozdzia\l  6..
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-03-14>
  ***********
-
-
-Package rerunfilecheck Warning: File `przyklad.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `przyklad.out':
-(rerunfilecheck)             Before: 9AD90D55ED343C34CCC7B1B1D9047CC9;4042
-(rerunfilecheck)             After:  67F031DF737E5254E6F7FFDA1132A08D;4275.
+Package rerunfilecheck Info: File `przyklad.out' has not changed.
+(rerunfilecheck)             Checksum: 67F031DF737E5254E6F7FFDA1132A08D;4275.
  ) 
 Here is how much of TeX's memory you used:
  10902 strings out of 474425
- 172844 string characters out of 5746496
- 1936493 words of memory out of 5000000
+ 172846 string characters out of 5746496
+ 1934493 words of memory out of 5000000
  33019 multiletter control sequences out of 15000+600000
  569443 words of font info for 64 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,6n,93p,873b,627s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,6n,93p,873b,626s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jakub/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095
-.pk></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.p
-fb></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb
-></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></ho
-me/jakub/.miktex/texmfs/install/fonts/type1/public/pl/plbx10.pfb></home/jakub/.
-miktex/texmfs/install/fonts/type1/public/pl/plbx12.pfb></home/jakub/.miktex/tex
-mfs/install/fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs/install
-/fonts/type1/public/pl/plr12.pfb></home/jakub/.miktex/texmfs/install/fonts/type
-1/public/pl/plsl10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/p
-l/plti10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/pltt10.p
-fb>
-Output written on przyklad.pdf (29 pages, 2829878 bytes).
+.pk></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.p
+fb></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pf
+b></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi8.pfb>
+</home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmr8.pfb></hom
+e/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home
+/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/j
+akub/.miktex/texmfs/install/fonts/type1/public/pl/plbx10.pfb></home/jakub/.mikt
+ex/texmfs/install/fonts/type1/public/pl/plbx12.pfb></home/jakub/.miktex/texmfs/
+install/fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs/install/fon
+ts/type1/public/pl/plr12.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/pu
+blic/pl/plsl10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/pl
+ti10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/pltt10.pfb>
+Output written on przyklad.pdf (29 pages, 2849787 bytes).
 PDF statistics:
- 409 PDF objects out of 1000 (max. 8388607)
+ 423 PDF objects out of 1000 (max. 8388607)
  83 named destinations out of 1000 (max. 500000)
- 280 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 288 words of extra memory for PDF output out of 10000 (max. 10000000)
 
