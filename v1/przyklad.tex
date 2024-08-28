@@ -12,8 +12,8 @@
 % polecenia \fmlinebreak.
 \polishtitle    {Projektowanie i implementacja \fmlinebreak systemu magazynowego\fmlinebreak ze wspomaganiem procesu produkcji \fmlinebreak i zarządzaniem zasobami}
 \englishtitle   {Design and implementation of a warehouse system \fmlinebreak supporting the production process and resource management}
-\polishabstract {Celem pracy inżynierskiej jest zaprojektowanie i implementacja systemu magazynowego, który wspiera produkcję pasz dla drobiu oraz zarządzanie zasobami w gospodarstwie rolnym. System został stworzony, aby zoptymalizować proces produkcji pasz poprzez precyzyjne monitorowanie dostępności półproduktów, obliczanie rzeczywistych wielkości dostaw oraz kosztów produkcji, a także wprowadzanie receptur na pasze. System umożliwia również automatyczne aktualizowanie stanów magazynowych oraz jest dostępny na różnych platformach, takich jak urządzenia mobilne i komputery, dzięki swojej formie webowej. Kluczowym elementem jest minimalizm i prostota użytkowania, co pozwala na efektywne zarządzanie magazynem i optymalizację kosztów produkcji pasz.}
-\englishabstract{The aim of this engineering thesis is to design and implement a warehouse management system that supports poultry feed production and resource management on a farm. The system was developed to optimize the feed production process by precisely monitoring the availability of raw materials, calculating actual delivery volumes and production costs, and inputting feed recipes. The system also allows for automatic inventory updates and is accessible on various platforms, such as mobile devices and computers, due to its web-based format. A key feature is its minimalism and ease of use, enabling effective warehouse management and cost optimization in feed production.}
+\polishabstract {Celem pracy inżynierskiej jest zaprojektowanie i implementacja systemu magazynowego, który wspiera produkcję pasz dla drobiu oraz zarządzanie surowcami w magazynie. System został stworzony, aby zoptymalizować proces produkcji pasz poprzez precyzyjne monitorowanie dostępności półproduktów, obliczanie rzeczywistych wielkości dostaw oraz kosztów produkcji, a także wprowadzanie receptur na pasze. System umożliwia również automatyczne aktualizowanie stanów magazynowych oraz jest dostępny na różnych platformach, takich jak urządzenia mobilne i komputery, dzięki swojej formie webowej. Kluczowym elementem jest minimalizm i prostota użytkowania, co pozwala na efektywne zarządzanie magazynem i optymalizację kosztów produkcji pasz.}
+\englishabstract{The aim of this engineering thesis is to design and implement a warehouse management system that supports poultry feed production and management of raw materials in the warehouse. The system was developed to optimize the feed production process by precisely monitoring the availability of raw materials, calculating actual delivery volumes and production costs, and inputting feed recipes. The system also allows for automatic inventory updates and is accessible on various platforms, such as mobile devices and computers, due to its web-based format. A key feature is its minimalism and ease of use, enabling effective warehouse management and cost optimization in feed production.}
 % w pracach wielu autorow nazwiska mozna oddzielic poleceniem \and
 \author         {Jakub Kopystiański}
 % w przypadku kilku promotorow, lub koniecznosci podania ich afiliacji, linie
@@ -52,6 +52,8 @@
 	Z takiego systemu również łatwo mógłbym wydedukować, ile przykładowo pszenżyta zebrałem ze swoich pól. System będzie też w stanie obliczyć różnice między deklarowaną a rzeczywistą wielkością dostawy.
 	
 	System powinien również pomóc optymalizować koszty produkcji przy odpowiednim składzie paszy. 
+	
+	Jako odpowiedź na te potrzeby w ramach pracy inżynierskiej powstała aplikacja PaszMix. 
 
 \section {Wymagania od systemu}
 
@@ -61,7 +63,7 @@
   \item Obliczanie wielkości zbiorów: jeśli mam "dostawę"{} z mojego gospodarstwa o nieznanej masie mogę policzyć tę masę uwzględniając zużycie zasobu z tej dostawy oraz poniesione straty.
   \item  Wprowadzanie dostaw.
   \item  Wprowadzanie strat.
-  \item  Obliczanie kosztów wykonania porcji paszy (produktu) w zależności od pochodzenia półproduktów.
+  \item  Obliczanie kosztów wykonania porcji paszy w zależności od pochodzenia półproduktów.
   \item  Wprowadzanie receptur na paszę.
   \item  Automatyczne zdejmowanie produktów ze stanu magazynowego podczas produkcji.
   \item Możliwość używania aplikacji na urządzeniu mobilnym oraz komputerze - system webowy.
@@ -73,7 +75,7 @@
 \chapter{Parametry pokarmowe pasz dla drobiu}
 
 Rozdział powstał w oparciu o książkę "Zalecenia żywieniowe i wartość pokarmowa pasz dla drobiu"{}
-\cite{ZZ}
+\cite{ZZ}.
 
 \section{Istotne parametry pasz}
 
@@ -118,10 +120,11 @@ W tabelach występuje zapotrzebowanie tylko na kwas linolowy, ponieważ zapotrze
 \textbf{Wapń}
 Wapń z produktów innych niż kreda pastewna, skorupki jaj itp. nie wchłania się odpowiednio. Dlatego przy wprowadzaniu produktów innych niż wymienione należy ustawić zawartość wapnia na $0.0$ 
 
+\clearpage
 
 \section{Przykładowy skład paszy}\label{s:pr_sklad}
 
-	Parametry do skomponowania przykładowej$^*$ mieszanki paszowej to:
+	Poniżej w tabeli podaję parametry do skomponowania przykładowej paszy dla kur niosek które dopiero co weszły w okres nieśności (od około $5\%$ nieśności w stadzie do około 45 tygodnia życia). Parametry są wyrażone w jednostce $\frac{g}{\textrm{MJ}}$ Energi metabolicznej. Poziom Energi metabolicznej w paszy powinien wynosić $11,5-11,7$ MJ/kg.
 	
 	\begin{tabular}{|c|c|}
 		\hline
@@ -149,19 +152,12 @@ Wapń z produktów innych niż kreda pastewna, skorupki jaj itp. nie wchłania s
 		\hline
 	\end{tabular}
 	
-	Dane wyrażone są w jednostce g/$1$ MJ EM.
-	
-	Poziom EM w paszy powinien wynosić $11,5-11,7$ MJ/kg paszy
-	
-	
-	*Dla grupy wiekowej kur niosek która dopiero co weszła w okres nieśności (od około $5\%$ nieśności w stadzie do około 45 tygodnia życia)
-	
 
 
 
 \chapter{Projektowanie modeli}
 
-\textbf{Ten rozdział pełni jednocześnie funkcję słownika kluczowych pojęć}
+W tym rozdziale opisuję podstawowe pojęcia wraz z ich reprezentacją w aplikacji PaszMix.
 
 \section{Produkt}\label{s:produkt}
 \textbf{Produkt} jest opisany listą parametrów oraz nazwą własną. \textit{Produkt} jest wykorzystywany do produkcji paszy. Lista kluczowych do optymalizowania składu paszy dla drobiu atrybutów według \cite{ZZ} to:
@@ -186,11 +182,11 @@ Wapń z produktów innych niż kreda pastewna, skorupki jaj itp. nie wchłania s
 
 Z wyżej wymienionych parametrów jedynie białko ogółem oraz kwas linolowy nie bierze udziału w komponowaniu mieszanki. Są jedynie wskaźnikami.
 
-Ze względu na przeznaczenie systemu atrybuty produktu są z góry ustalone i nie są konfigurowalne.
+Ze względu na przeznaczenie systemu atrybuty \textit{Produktu} są z góry ustalone i nie są konfigurowalne.
 
 \section{Dostawa}
-Głównymi obiektami w systemie są \textbf{dostawy.} To \textit{dostawy} są zapisane w bazie danych i na ich podstawie będą obliczane stany magazynowe, których nie przechowujemy w bazie danych.
-Dostawa jest opisana atrybutami:
+Głównymi obiektami w systemie są \textbf{Dostawy}. To \textit{Dostawy} są zapisane w bazie danych i na ich podstawie będą obliczane stany magazynowe, których nie przechowujemy w bazie danych.
+\textit{Dostawa} jest opisana atrybutami:
 \begin{itemize}
 	\item \textit{Produkt},
 	\item cena,
@@ -198,24 +194,24 @@ Dostawa jest opisana atrybutami:
 	\item początkowa ilość,
 	\item zużyta ilość,
 	\item strata,
-	\item wartość boolowska czy dostawa się zakończyła,
+	\item wartość boolowska czy \textit{Dostawa} się zakończyła,
 \end{itemize}
 
-Jeśli dostawa jest wyczerpana, to powinien zachodzić warunek $$ \textrm{strata} + \textrm{zużyta ilość} = \textrm{początkowa ilość} $$
+Jeśli \textit{Dostawa} jest wyczerpana, to powinien zachodzić warunek $$ \textrm{strata} + \textrm{zużyta ilość} = \textrm{początkowa ilość} $$
 
 
 \section{Skład}
 
-\textbf{Skład} jest docelowym zbiorem wartości poszczególnych parametrów dla paszy. Energia metaboliczna jest wyrażona w megadżulach i jako jedyny parametr jest przedstawiony w postaci zakresu. Pozostałe parametry (lizyna, metionina, cystyna+metionina, ..., wapń, fosfor przyswajalny, sód) są wyrażone w gramach na każdy megadżul wartości energetycznej. Różne gatunki, systemy hodowli (wolny wybieg, chów klatkowy) i  grupy wiekowe drobiu wymagają paszy o różnych składach.
+\textbf{Skład} jest docelowym zbiorem wartości poszczególnych parametrów dla paszy. Energia metaboliczna jest wyrażona w megadżulach i jako jedyny parametr jest przedstawiony w postaci zakresu. Pozostałe parametry (lizyna, metionina, cystyna+metionina, itd.) są wyrażone w gramach na każdy megadżul wartości energetycznej. Różne gatunki, systemy hodowli (wolny wybieg, chów klatkowy) i  grupy wiekowe drobiu wymagają paszy o różnych \textit{Składach}.
 
 
 \section{Receptura}
 
-Model \textbf{receptura} to lista par $<$\textit{Produkt}, ilość$>$, gdzie suma ilości zwykle sumuje się do jednej tony. Taka lista może pochodzić z metody optymalizującej skład paszy na podstawie dostępnych produktów lub może zostać wprowadzona ręcznie. Receptura powinna realizować jakiś \textit{skład}. Receptura może mieć nadaną nazwę.
+Model \textbf{Receptura} to lista par $<$\textit{Produkt}, ilość$>$, gdzie suma ilości zwykle sumuje się do jednej tony. Taka lista może pochodzić z metody optymalizującej \textit{Skład} paszy na podstawie dostępnych \textit{Produktów} lub może zostać wprowadzona ręcznie. \textit{Receptura} realizuje wskazany \textit{Skład}. \textit{Receptura} może mieć nadaną nazwę.
 
 \section{Produkcja}
 
-\textbf{Produkcja} realizuje wskazaną \textit{recepturę} korzystając z produktów z konkretnych dostaw. Przy dodawaniu \textit{produkcji}, dla każdego \textit{produktu} z wybranej \textit{receptury} należy wskazać ich pochodzenie, czyli \textit{dostawę}. Można wskazać maksymalnie trzy \textit{dostawy} dla danego \textit{produktu}. W każdej z \textit{dostaw}, z których \textit{produkcja} zaczerpnęła surowiec, zostanie zwiększony atrybut \textit{zużyta ilość} w obiekcie modelu \textit{dostawa}.
+\textbf{Produkcja} realizuje wskazaną \textit{recepturę} korzystając z \textit{Produktów} z konkretnych \textit{Dostaw}. Przy dodawaniu \textit{Produkcji}, dla każdego \textit{Produktu} z wybranej \textit{receptury} należy wskazać ich pochodzenie, czyli \textit{Dostawę}. Można wskazać maksymalnie trzy \textit{Dostawy} dla danego \textit{Produktu}. W każdej z \textit{Dostaw}, z których \textit{Produkcja} zaczerpnęła surowiec, zostanie zwiększony atrybut \textit{zużyta ilość} w obiekcie modelu \textit{Dostawa}.
 
 
 \chapter{Funkcje systemu}
@@ -239,9 +235,9 @@ Należy odpowiednio wypełnić formularz, a następnie kliknąć przycisk: \text
 
 Poniżej podaję scenariusz zwiększenia \textit{Straty} o 10 kg.
 
-	Kroki:
+	Kroki edycji:
 	\begin{enumerate}
-	\item Wybierz dostawę najeżdżając na przycisk \textit{Dostawy} w górnym menu, a następnie klikając w \textit{dostawę} którą chcesz wyedytować.
+	\item Wybierz \textit{Dostawę} najeżdżając na przycisk \textit{Dostawy} w górnym menu, a następnie klikając w \textit{Dostawę} którą chcesz wyedytować.
 	
 		\includegraphics[scale=0.2]{img/EdycjaDostawy1.png}
 	\item Kliknij \textit{Edytuj} na dole formularza. Pola formularza są teraz edytowalne.
@@ -252,28 +248,28 @@ Poniżej podaję scenariusz zwiększenia \textit{Straty} o 10 kg.
 	
 		\includegraphics[scale=0.2]{img/EdycjaDostawy3.png}
 		
-	\item Kliknij \textit{Zapisz zmianę}
+	\item Kliknij \textit{Zapisz zmianę}.
 	
 	\end{enumerate}
 	
 \section{Dodawanie Produkcji}
 
-Istotnym aspektem jest \textbf{automatyczne zdejmowanie} produktów z dostaw podczas dodawania \textit{produkcji}. Zostanie odnotowane każde użycie zasobu który użyjemy w \textit{produkcji}.
+Istotnym aspektem jest \textbf{automatyczne zdejmowanie} \textit{Produktów} z \textit{Dostaw} podczas dodawania \textit{Produkcji}. Zostanie odnotowane każde użycie zasobu który użyjemy w \textit{Produkcji}.
 
 	\begin{enumerate}
-		\item Sprawdź zawartość jednej z dostaw, z której Produkcja zaczerpnie surowiec.
+		\item Sprawdź zawartość jednej z \textit{Dostaw}, z której \textit{Produkcja} zaczerpnie surowiec.
 		
 		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie1.png}
 		
-		\item Przejdź do formularza dodającego nową \textit{produkcję}. Wybierz \textit{recepturę} oraz datę. Przejdź do dodania poszczególnych elementów.
+		\item Przejdź do formularza dodającego nową \textit{Produkcję}. Wybierz \textit{recepturę} oraz datę. Przejdź do dodania poszczególnych elementów.
 		
-		\item Ustaw z których \textit{dostaw} i w jakiej ilości zostaną pobrane surowce.
+		\item Ustaw z których \textit{Dostaw} i w jakiej ilości zostaną pobrane surowce.
 		
 		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie2.png}
 		
-		\item Kliknij \textit{Dodaj Produkcję}
+		\item Kliknij \textit{Dodaj Produkcję}.
 		
-		\item W tym momencie oczekujemy że atrybut \textit{Zużyta Ilość} w \textit{dostawie} z punktu 1. zwiększył się o ilość wpisaną w punkcie 3.
+		\item W tym momencie oczekujemy że atrybut \textit{Zużyta Ilość} w \textit{Dostawie} z punktu 1. zwiększył się o ilość wpisaną w punkcie 3.
 		
 		\includegraphics[scale=0.2]{img/AutomatycznieZmniejszenie3.png}
 		
@@ -284,21 +280,21 @@ Istotnym aspektem jest \textbf{automatyczne zdejmowanie} produktów z dostaw pod
 	
 	\includegraphics[scale=0.2]{img/StanMagazyn.png}
 	
-	\textit{Dostawy} zgrupowane są pod względem \textit{produktów}. Podana jest zarówno całkowita ilość produktu w magazynie jak i ilość pozostała w każdej z \textit{dostaw}.
+	\textit{Dostawy} zgrupowane są pod względem \textit{Produktów}. Podana jest zarówno całkowita ilość \textit{Produktu} w magazynie jak i ilość pozostała w każdej z \textit{Dostaw}.
 
 \section{Obliczanie rzeczywistych wielkości dostawy}
 
-	Funkcja ta jest realizowana za pomocą atrybutów \textit{Ilość początkowa} oraz \textit{Strata} w modelu \textit{dostawy}. Stratę można na bieżąco zmieniać w trakcie pobierania surowca z \textit{Dostawy} (czas od dodania dostawy do jej wyczerpania) jak i na końcu, przed archiwizacją, można stwierdzić ile surowca brakowało. Różnica tych dwóch atrybutówto rzeczywista wielkość dostawy.
+	Funkcja ta jest realizowana za pomocą atrybutów \textit{Ilość początkowa} oraz \textit{Strata} w modelu \textit{Dostawy}. Stratę można na bieżąco zmieniać w trakcie pobierania surowca z \textit{Dostawy} (czas od dodania \textit{Dostawy} do jej wyczerpania) jak i na końcu, przed archiwizacją, można stwierdzić ile surowca brakowało. Różnica tych dwóch atrybutówto rzeczywista wielkość \textit{Dostawy}.
 	
-	Koszt surowca brany jest zawsze jako iloraz \textit{Ceny za dostawę} i różnicy pomiędzy \textit{Wartością Początkową} i \textit{Stratą}.
+	Koszt surowca brany jest zawsze jako iloraz \textit{ceny za dostawę} i różnicy pomiędzy \textit{wartością początkową} i \textit{stratą}.
 	
 
 \section{Komponowanie receptury}
-Komponowanie \textit{receptury} polega na odpowiednim doborze \textit{produktów}, tak aby zrealizować \textit{skład}, czyli zapewnić odpowiednią ilość energii oraz odpowiednie ilości aminokwasów, minerałów itd. 
+Komponowanie \textit{receptury} polega na odpowiednim doborze \textit{Produktów}, tak aby zrealizować \textit{Skład}, czyli zapewnić odpowiednią ilość energii oraz odpowiednie ilości aminokwasów, minerałów itd. 
 
 	\begin{enumerate}
 		\item W lewym menu kliknij: \textit{Skomponuj Recepturę}
-		\item Wybierz skład
+		\item Wybierz \textit{Skład}
 		
 		\includegraphics[scale=0.2]{img/Komponowanie1.png}
 		
@@ -313,9 +309,11 @@ Komponowanie \textit{receptury} polega na odpowiednim doborze \textit{produktów
 
 \subsection{Algorytm optymalizacji receptury:}
 
+\textit{Receptura} realizuje powiązany z nią \textit{Skład}. Celem algorytmu jest znalezienie $n$-elementowej listy liczb, gdzie $n$ to liczba różnych produktów w magazynie. $I$-ty element z listy odpowiada ilości $i$-tego \textit{Produktu} w \textit{Recepturze}. Parametry tak skomponowanej mieszanki mają możliwie bardzo odpowiadać parametrom realizowanego \textit{Składu} przy rozsądnej cenie mieszanki.
+
 \begin{enumerate} 
 
-\item \textbf{Inicjalizacja danych wejściowych:} Na początku algorytmu tworzona jest lista dostępnych produktów. Dla każdego produktu zapisujemy informacje o dostępnej ilości w magazynie oraz średniej cenie za kilogram. Ilość produktu w magazynie oraz średnia cena za kilogram są obliczane jak we wzorach poniżej.
+\item \textbf{Inicjalizacja danych wejściowych:} Na początku algorytmu tworzona jest lista dostępnych \textit{Produktów}. Dla każdego \textit{Produktu} zapisujemy informacje o dostępnej ilości w magazynie oraz średniej cenie za kilogram. Ilość \textit{Produktu} w magazynie oraz średnia cena za kilogram są obliczane jak we wzorach poniżej.
 
 $$\textrm{Icp} = \sum\limits_{\textrm{dp}} \textrm{ip} - \textrm{iz} - \textrm{s} $$
 
@@ -323,9 +321,9 @@ $$ \textrm{Średnia cena} = \frac{\sum\limits_{\textrm{dp}} [\frac{\textrm{cena 
 
 gdzie:
 
-icp to Ilość całkowita produktu,
+icp to Ilość całkowita \textit{Produktu},
 
-dp to dostawa produktu,
+dp to \textit{Dostawa} \textit{Produktu},
 
 ip to ilość początkowa,
 
@@ -337,15 +335,15 @@ s to strata.
 
 
 
-\item \textbf{Losowa generacja początkowej receptury:} Algorytm rozpoczyna od losowej generacji receptury. Przez 100 iteracji losujemy produkt z listy dostępnych produktów. Jeśli dla wybranego produktu można zwiększyć jego ilość w recepturze o 10 kg bez przekroczenia dostępnych zasobów w magazynie, to ilość produktu jest zwiększana. Jeśli nie jest to możliwe, proces losowania jest powtarzany. Ten etap służy do znalezienia początkowego punktu w przestrzeni rozwiązań.
+\item \textbf{Losowa generacja początkowej receptury:} Algorytm rozpoczyna od losowej generacji receptury. Przez 100 iteracji losujemy \textit{Produkt} z listy dostępnych \textit{Produktów}. Jeśli dla wybranego \textit{Produktu} można zwiększyć jego ilość w recepturze o 10 kg bez przekroczenia dostępnych zasobów w magazynie, to ilość \textit{Produktu} jest zwiększana. Jeśli nie jest to możliwe, proces losowania jest powtarzany. Ten etap służy do znalezienia początkowego punktu w przestrzeni rozwiązań.
 
-\item \textbf{Generowanie sąsiadów stanu (receptury):} Dla wylosowanej początkowej receptury generowanych jest 20 sąsiadów, co odpowiada podejściu stosowanemu w algorytmach przeszukiwania lokalnego, takich jak "local search". Generowanie sąsiada polega na losowym wyborze dwóch produktów oraz wartości zmiany (delta). Ilość pierwszego z wybranych produktów jest zwiększana o deltę, a ilość drugiego zmniejszana o tę samą deltę, co zapewnia, że całkowita masa receptury pozostaje stała (1 tona). Jeśli w wyniku tej operacji powstaje receptura, która nie jest wykonalna (np. ilość produktu przekracza dostępne zasoby lub jest ujemna), losowanie jest powtarzane. Ponadto, jeśli wylosowana receptura jest gorsza niż obecna (zgodnie z funkcją oceny), również następuje ponowne losowanie.
+\item \textbf{Generowanie stanów sąsiadujących z wylosowanym stanem (Recepturą):} Dla wylosowanej początkowej receptury generowanych jest 20 stanów sąsiadujących, co odpowiada podejściu stosowanemu w algorytmach przeszukiwania lokalnego, takich jak "local search". Generowanie sąsiada polega na losowym wyborze dwóch \textit{Produktów} oraz wartości zmiany (delta). Ilość pierwszego z wybranych \textit{Produktów} jest zwiększana o deltę, a ilość drugiego zmniejszana o tę samą deltę, co zapewnia, że całkowita masa receptury pozostaje stała (1 tona). Jeśli w wyniku tej operacji powstaje \textit{Receptura}, która nie jest wykonalna (np. ilość \textit{Produktu} przekracza dostępne zasoby lub jest ujemna), losowanie jest powtarzane. Ponadto, jeśli wylosowana \textit{Receptura} jest gorsza niż obecna (zgodnie z funkcją oceny), również następuje ponowne losowanie.
 
-\item \textbf{Ocena receptury:} Każda receptura (stan) jest oceniana za pomocą funkcji oceniającej (funkcji celu), która uwzględnia procentową różnicę zawartości poszczególnych paremetrów pomnożonych przez odpowiednio dobrane wagi.
+\item \textbf{Ocena receptury:} Każda \textit{Receptura} (stan) jest oceniana za pomocą funkcji oceniającej (funkcji celu), która uwzględnia procentową różnicę zawartości poszczególnych paremetrów pomnożonych przez odpowiednio dobrane wagi.
 
-\item \textbf{Selekcja najlepszych sąsiadów:} Spośród 20 wygenerowanych rozwiązań (sąsiadów) wybierane są 3 najlepsze, które posiadają najwyższą ocenę według funkcji oceny. Selekcja ta jest kluczowa dla dalszego przeszukiwania i pozwala na skoncentrowanie się na obiecujących obszarach przestrzeni rozwiązań.
+\item \textbf{Selekcja najlepszych stanów (Receptur):} Spośród 20 wygenerowanych rozwiązań wybierane są 3 najlepsze, które posiadają najwyższą ocenę według funkcji oceny. Selekcja ta jest kluczowa dla dalszego przeszukiwania i pozwala na skoncentrowanie się na obiecujących obszarach przestrzeni rozwiązań.
 
-\item \textbf{Iteracyjne doskonalenie:} Dla każdego z wybranych trzech najlepszych rozwiązań (receptur) generowanych jest ponownie 20 sąsiadów. Po wygenerowaniu sąsiedztwa, rozwiązania są sortowane według funkcji oceny, a następnie wybierane są trzy najlepsze receptury. Proces ten jest iterowany, prowadząc do sukcesywnego doskonalenia jakości rozwiązania.
+\item \textbf{Iteracyjne doskonalenie:} Dla każdego z wybranych trzech najlepszych rozwiązań (receptur) generowanych jest ponownie 20 stanów sąsiadujących. Po wygenerowaniu sąsiedztwa, rozwiązania są sortowane według funkcji oceny, a następnie wybierane są trzy najlepsze receptury. Proces ten jest iterowany, prowadząc do sukcesywnego doskonalenia jakości rozwiązania.
 
 \item \textbf{Kryterium stopu:} Algorytm kontynuuje iteracyjne doskonalenie do momentu, gdy różnica pomiędzy najlepszą recepturą z obecnego zestawu a najlepszą recepturą z poprzedniego zestawu jest mniejsza od zadanego progu $\epsilon$. Ten warunek stopu jest kluczowy dla zapewnienia konwergencji algorytmu oraz zapobiegania nadmiernemu przeszukiwaniu bez znaczącej poprawy wyników.
 
@@ -385,13 +383,13 @@ Proces instalacji systemu jest prosty i wymaga jedynie kilku kroków. Przestrzeg
 \begin{itemize}
 	\item Możliwość wyboru motywów graficznych (wybór dwóch podstawowych kolorów).
 	\item Import danych z wyników badań laboratoryjnych.
-	\item Archiwizacja produktów/dostaw/składów.
-	\item Dodawanie produkcji na podstawie innej, przeszłej produkcji.
+	\item Archiwizacja \textit{Produktów}/\textit{Dostaw}/\textit{Składów}.
+	\item Dodawanie \textit{Produkcji} na podstawie innej, przeszłej \textit{Produkcji}.
 	\item Zrezygnowanie z wielu walidacji które mogłyby bardziej przeszkodzić w użytkowaniu systemu niż ułatwić pracę z nim.
-	\item Możliwość komponowania jednorazowej receptury, która zużyje daną dostawę, partię.
+	\item Możliwość komponowania jednorazowej receptury, która zużyje daną \textit{Dostawę}, partię.
 	\item Większa ilość ustawień w procesie komponowania receptury.
-	\item Realizacja receptury z użyciem dowolnej ilości dostaw na każdy Produkt (obecnie max 3).
-	\item Konfiguracja parametrów produktów i składów
+	\item Realizacja receptury z użyciem dowolnej ilości \textit{Dostaw} na każdy \textit{Produkt} (obecnie max 3).
+	\item Konfiguracja parametrów \textit{Produktów} i \textit{Składów}
 	\item Konfiguracja algorytmu układającego recepturę z poziomu użytkownika. Możliwość zwiększenia lub zmniejszenia dokładności.
 \end{itemize}
 
