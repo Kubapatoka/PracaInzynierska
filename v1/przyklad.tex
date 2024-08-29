@@ -211,7 +211,7 @@ Model \textbf{Receptura} to lista par $<$\textit{Produkt}, ilość$>$, gdzie sum
 
 \section{Produkcja}
 
-\textbf{Produkcja} realizuje wskazaną \textit{recepturę} korzystając z \textit{Produktów} z konkretnych \textit{Dostaw}. Przy dodawaniu \textit{Produkcji}, dla każdego \textit{Produktu} z wybranej \textit{receptury} należy wskazać ich pochodzenie, czyli \textit{Dostawę}. Można wskazać maksymalnie trzy \textit{Dostawy} dla danego \textit{Produktu}. W każdej z \textit{Dostaw}, z których \textit{Produkcja} zaczerpnęła surowiec, zostanie zwiększony atrybut \textit{zużyta ilość} w obiekcie modelu \textit{Dostawa}.
+\textbf{Produkcja} realizuje wskazaną \textit{Recepturę} korzystając z \textit{Produktów} z konkretnych \textit{Dostaw}. Przy dodawaniu \textit{Produkcji}, dla każdego \textit{Produktu} z wybranej \textit{Receptury} należy wskazać ich pochodzenie, czyli \textit{Dostawę}. Można wskazać maksymalnie trzy \textit{Dostawy} dla danego \textit{Produktu}. W każdej z \textit{Dostaw}, z których \textit{Produkcja} zaczerpnęła surowiec, zostanie zwiększony atrybut \textit{zużyta ilość} w obiekcie modelu \textit{Dostawa}.
 
 
 \chapter{Funkcje systemu}
@@ -226,7 +226,7 @@ Dodawanie odbywa się za pomocą formularzy dostępnych po prawej stronie.
 
 \includegraphics[scale=0.2]{img/StronaGlowna.jpg}
 
-Należy odpowiednio wypełnić formularz, a następnie kliknąć przycisk: \textit{Dodaj}.
+Należy odpowiednio wypełnić formularz, a następnie kliknąć przycisk \textit{Dodaj}.
 
 \includegraphics[scale=0.2]{img/DodajProdukt.png}
 
@@ -290,19 +290,19 @@ Istotnym aspektem jest \textbf{automatyczne zdejmowanie} \textit{Produktów} z \
 	
 
 \section{Komponowanie receptury}
-Komponowanie \textit{receptury} polega na odpowiednim doborze \textit{Produktów}, tak aby zrealizować \textit{Skład}, czyli zapewnić odpowiednią ilość energii oraz odpowiednie ilości aminokwasów, minerałów itd. 
+Komponowanie \textit{Receptury} polega na odpowiednim doborze \textit{Produktów}, tak aby zrealizować \textit{Skład}, czyli zapewnić odpowiednią ilość energii oraz odpowiednie ilości aminokwasów, minerałów itd. 
 
 	\begin{enumerate}
-		\item W lewym menu kliknij: \textit{Skomponuj Recepturę}
-		\item Wybierz \textit{Skład}
+		\item W lewym menu kliknij \textit{Skomponuj Recepturę}.
+		\item Wybierz \textit{Skład}/
 		
 		\includegraphics[scale=0.2]{img/Komponowanie1.png}
 		
-		\item Kliknij \textit{Komponuj}
+		\item Kliknij \textit{Komponuj}.
 		
 		\includegraphics[scale=0.2]{img/Komponowanie2.png}
 		
-		\item Opcjonalnie zmień nazwę nowo utworzonej receptury.
+		\item Opcjonalnie zmień nazwę nowo utworzonej Receptury.
 		
 	\end{enumerate}
 	
@@ -335,17 +335,17 @@ s to strata.
 
 
 
-\item \textbf{Losowa generacja początkowej receptury:} Algorytm rozpoczyna od losowej generacji receptury. Przez 100 iteracji losujemy \textit{Produkt} z listy dostępnych \textit{Produktów}. Jeśli dla wybranego \textit{Produktu} można zwiększyć jego ilość w recepturze o 10 kg bez przekroczenia dostępnych zasobów w magazynie, to ilość \textit{Produktu} jest zwiększana. Jeśli nie jest to możliwe, proces losowania jest powtarzany. Ten etap służy do znalezienia początkowego punktu w przestrzeni rozwiązań.
+\item \textbf{Losowa generacja początkowej receptury:} Algorytm rozpoczyna od losowej generacji \textit{Receptury}. Przez 100 iteracji losujemy \textit{Produkt} z listy dostępnych \textit{Produktów}. Jeśli dla wybranego \textit{Produktu} można zwiększyć jego ilość w \textit{Recepturze} o 10 kg bez przekroczenia dostępnych zasobów w magazynie, to ilość \textit{Produktu} jest zwiększana. Jeśli nie jest to możliwe, proces losowania jest powtarzany. Ten etap służy do znalezienia początkowego punktu w przestrzeni rozwiązań.
 
-\item \textbf{Generowanie stanów sąsiadujących z wylosowanym stanem (Recepturą):} Dla wylosowanej początkowej receptury generowanych jest 20 stanów sąsiadujących, co odpowiada podejściu stosowanemu w algorytmach przeszukiwania lokalnego, takich jak "local search". Generowanie sąsiada polega na losowym wyborze dwóch \textit{Produktów} oraz wartości zmiany (delta). Ilość pierwszego z wybranych \textit{Produktów} jest zwiększana o deltę, a ilość drugiego zmniejszana o tę samą deltę, co zapewnia, że całkowita masa receptury pozostaje stała (1 tona). Jeśli w wyniku tej operacji powstaje \textit{Receptura}, która nie jest wykonalna (np. ilość \textit{Produktu} przekracza dostępne zasoby lub jest ujemna), losowanie jest powtarzane. Ponadto, jeśli wylosowana \textit{Receptura} jest gorsza niż obecna (zgodnie z funkcją oceny), również następuje ponowne losowanie.
+\item \textbf{Generowanie stanów sąsiadujących z wylosowanym stanem (\textit{Recepturą}):} Dla wylosowanej początkowej \textit{Receptury} generowanych jest 20 stanów sąsiadujących, co odpowiada podejściu stosowanemu w algorytmach przeszukiwania lokalnego, takich jak "local search". Generowanie sąsiada polega na losowym wyborze dwóch \textit{Produktów} oraz wartości zmiany (delta). Ilość pierwszego z wybranych \textit{Produktów} jest zwiększana o deltę, a ilość drugiego zmniejszana o tę samą deltę, co zapewnia, że całkowita masa \textit{Receptury} pozostaje stała (1 tona). Jeśli w wyniku tej operacji powstaje \textit{Receptura}, która nie jest wykonalna (np. ilość \textit{Produktu} przekracza dostępne zasoby lub jest ujemna), losowanie jest powtarzane. Ponadto, jeśli wylosowana \textit{Receptura} jest gorsza niż obecna (zgodnie z funkcją oceny), również następuje ponowne losowanie.
 
-\item \textbf{Ocena receptury:} Każda \textit{Receptura} (stan) jest oceniana za pomocą funkcji oceniającej (funkcji celu), która uwzględnia procentową różnicę zawartości poszczególnych paremetrów pomnożonych przez odpowiednio dobrane wagi.
+\item \textbf{Ocena \textit{Receptury}:} Każda \textit{Receptura} (stan) jest oceniana za pomocą funkcji oceniającej (funkcji celu), która uwzględnia procentową różnicę zawartości poszczególnych paremetrów pomnożonych przez odpowiednio dobrane wagi.
 
-\item \textbf{Selekcja najlepszych stanów (Receptur):} Spośród 20 wygenerowanych rozwiązań wybierane są 3 najlepsze, które posiadają najwyższą ocenę według funkcji oceny. Selekcja ta jest kluczowa dla dalszego przeszukiwania i pozwala na skoncentrowanie się na obiecujących obszarach przestrzeni rozwiązań.
+\item \textbf{Selekcja najlepszych stanów (\textit{Receptur}):} Spośród 20 wygenerowanych rozwiązań wybierane są 3 najlepsze, które posiadają najwyższą ocenę według funkcji oceny. Selekcja ta jest kluczowa dla dalszego przeszukiwania i pozwala na skoncentrowanie się na obiecujących obszarach przestrzeni rozwiązań.
 
-\item \textbf{Iteracyjne doskonalenie:} Dla każdego z wybranych trzech najlepszych rozwiązań (receptur) generowanych jest ponownie 20 stanów sąsiadujących. Po wygenerowaniu sąsiedztwa, rozwiązania są sortowane według funkcji oceny, a następnie wybierane są trzy najlepsze receptury. Proces ten jest iterowany, prowadząc do sukcesywnego doskonalenia jakości rozwiązania.
+\item \textbf{Iteracyjne doskonalenie:} Dla każdego z wybranych trzech najlepszych rozwiązań (\textit{Receptur}) generowanych jest ponownie 20 stanów sąsiadujących. Po wygenerowaniu sąsiedztwa, rozwiązania są sortowane według funkcji oceny, a następnie wybierane są trzy najlepsze \textit{Receptury}. Proces ten jest iterowany, prowadząc do sukcesywnego doskonalenia jakości rozwiązania.
 
-\item \textbf{Kryterium stopu:} Algorytm kontynuuje iteracyjne doskonalenie do momentu, gdy różnica pomiędzy najlepszą recepturą z obecnego zestawu a najlepszą recepturą z poprzedniego zestawu jest mniejsza od zadanego progu $\epsilon$. Ten warunek stopu jest kluczowy dla zapewnienia konwergencji algorytmu oraz zapobiegania nadmiernemu przeszukiwaniu bez znaczącej poprawy wyników.
+\item \textbf{Kryterium stopu:} Algorytm kontynuuje iteracyjne doskonalenie do momentu, gdy różnica pomiędzy najlepszą \textit{Recepturą} z obecnego zestawu a najlepszą \textit{Recepturą} z poprzedniego zestawu jest mniejsza od zadanego progu $\epsilon$. Ten warunek stopu jest kluczowy dla zapewnienia konwergencji algorytmu oraz zapobiegania nadmiernemu przeszukiwaniu bez znaczącej poprawy wyników.
 
 \end{enumerate}
 
@@ -386,11 +386,11 @@ Proces instalacji systemu jest prosty i wymaga jedynie kilku kroków. Przestrzeg
 	\item Archiwizacja \textit{Produktów}/\textit{Dostaw}/\textit{Składów}.
 	\item Dodawanie \textit{Produkcji} na podstawie innej, przeszłej \textit{Produkcji}.
 	\item Zrezygnowanie z wielu walidacji które mogłyby bardziej przeszkodzić w użytkowaniu systemu niż ułatwić pracę z nim.
-	\item Możliwość komponowania jednorazowej receptury, która zużyje daną \textit{Dostawę}, partię.
-	\item Większa ilość ustawień w procesie komponowania receptury.
-	\item Realizacja receptury z użyciem dowolnej ilości \textit{Dostaw} na każdy \textit{Produkt} (obecnie max 3).
+	\item Możliwość komponowania jednorazowej \textit{Receptury}, która zużyje daną \textit{Dostawę}, partię.
+	\item Większa ilość ustawień w procesie komponowania \textit{Receptury}.
+	\item Realizacja \textit{Receptury} z użyciem dowolnej ilości \textit{Dostaw} na każdy \textit{Produkt} (obecnie max 3).
 	\item Konfiguracja parametrów \textit{Produktów} i \textit{Składów}
-	\item Konfiguracja algorytmu układającego recepturę z poziomu użytkownika. Możliwość zwiększenia lub zmniejszenia dokładności.
+	\item Konfiguracja algorytmu układającego \textit{Recepturę} z poziomu użytkownika. Możliwość zwiększenia lub zmniejszenia dokładności.
 \end{itemize}
 
 \section{Podobne aplikacje}

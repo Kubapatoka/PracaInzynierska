@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  28 AUG 2024 20:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (MiKTeX 24.4) (preloaded format=pdflatex 2024.5.4)  29 AUG 2024 07:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -551,6 +551,13 @@ LaTeX Font Info:    Trying to load font information for OT4+cmtt on input line
 File: ot4cmtt.fd 2008/02/24 v1.2.1 Font defs for fonts PL (MW)
 ) [26{/home/jakub/.miktex/texmfs/install/fonts/enc/dvips/pl/pltt.enc}]
 Rozdzia\l  6..
+
+Overfull \hbox (0.44614pt too wide) in paragraph at lines 391--392
+[]\OT4/cmr/m/n/10.95 Realizacja \OT4/cmr/m/it/10.95 Re-cep-tury \OT4/cmr/m/n/10
+.95 z u»y-ciem do-wol-nej ilo-±ci \OT4/cmr/m/it/10.95 Do-staw \OT4/cmr/m/n/10.9
+5 na ka»dy \OT4/cmr/m/it/10.95 Pro-dukt \OT4/cmr/m/n/10.95 (obec-
+ []
+
 [27
 
 ] [28] [29
@@ -564,13 +571,13 @@ Package rerunfilecheck Info: File `przyklad.out' has not changed.
 (rerunfilecheck)             Checksum: 67F031DF737E5254E6F7FFDA1132A08D;4275.
  ) 
 Here is how much of TeX's memory you used:
- 10902 strings out of 474425
- 172846 string characters out of 5746496
- 1934493 words of memory out of 5000000
- 33019 multiletter control sequences out of 15000+600000
- 569443 words of font info for 64 fonts, out of 8000000 for 9000
+ 10904 strings out of 474425
+ 172873 string characters out of 5746496
+ 1935493 words of memory out of 5000000
+ 33020 multiletter control sequences out of 15000+600000
+ 569990 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,6n,93p,960b,626s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,6n,93p,987b,626s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/jakub/.miktex/texmfs/data/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095
 .pk></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmex10.p
 fb></home/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmmi10.pf
@@ -581,13 +588,14 @@ e/jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy10.pfb></home
 /jakub/.miktex/texmfs/install/fonts/type1/public/amsfonts/cm/cmsy8.pfb></home/j
 akub/.miktex/texmfs/install/fonts/type1/public/pl/plbx10.pfb></home/jakub/.mikt
 ex/texmfs/install/fonts/type1/public/pl/plbx12.pfb></home/jakub/.miktex/texmfs/
-install/fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs/install/fon
-ts/type1/public/pl/plr12.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/pu
-blic/pl/plsl10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/pl
-ti10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/pltt10.pfb>
-Output written on przyklad.pdf (29 pages, 2851121 bytes).
+install/fonts/type1/public/pl/plbxti10.pfb></home/jakub/.miktex/texmfs/install/
+fonts/type1/public/pl/plr10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1
+/public/pl/plr12.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/
+plsl10.pfb></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/plti10.pfb
+></home/jakub/.miktex/texmfs/install/fonts/type1/public/pl/pltt10.pfb>
+Output written on przyklad.pdf (29 pages, 2859129 bytes).
 PDF statistics:
- 423 PDF objects out of 1000 (max. 8388607)
+ 428 PDF objects out of 1000 (max. 8388607)
  83 named destinations out of 1000 (max. 500000)
  288 words of extra memory for PDF output out of 10000 (max. 10000000)
 
