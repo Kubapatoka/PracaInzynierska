@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Tworzenie receptury{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="control2" style="margin: 20px;">
+            <label for="composition" style="width: 400px;">Skład który powinien zostać zrealizowany:</label>
+            <select id="composition" name="composition">
+                {% for c in latest_compositions_list %}
+                <option value={{c.pk}}>{{c.composition_name}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <input class="green_button" type="submit" name="create" value="Komponuj" style="margin: 20px;">
+        <div style="clear:both"></div>
+    </form>
+{% endblock %}

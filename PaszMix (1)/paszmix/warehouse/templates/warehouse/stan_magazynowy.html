@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Stan magazynowy{% endblock %}
+
+{% block content %}
+  {% for item in dict %}
+    <div class="sm_prod">
+        <div class="sm_legend">{{item.product.product_name}} Całkowita Ilość: {{item.quantity}} kg</div>
+        {% for d,q in item.desc %}
+            <a href="/warehouse/delivery/{{ d.id }}/"> {{d.date}} </a> : {{q}} kg<br>
+        {% endfor %}
+    </div>  
+  {% endfor %}
+{% endblock %}

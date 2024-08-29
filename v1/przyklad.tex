@@ -315,21 +315,21 @@ Komponowanie \textit{Receptury} polega na odpowiednim doborze \textit{Produktów
 
 \item \textbf{Inicjalizacja danych wejściowych:} Na początku algorytmu tworzona jest lista dostępnych \textit{Produktów}. Dla każdego \textit{Produktu} zapisujemy informacje o dostępnej ilości w magazynie oraz średniej cenie za kilogram. Ilość \textit{Produktu} w magazynie oraz średnia cena za kilogram są obliczane jak we wzorach poniżej.
 
-$$\textrm{Icp} = \sum\limits_{\textrm{dp}} \textrm{ip} - \textrm{iz} - \textrm{s} $$
+$$\textrm{icp} = \sum\limits_{\textrm{dp}} \textrm{ip} - \textrm{iz} - \textrm{s} $$
 
-$$ \textrm{Średnia cena} = \frac{\sum\limits_{\textrm{dp}} [\frac{\textrm{cena dostawy}}  {(\textrm{ip}-\textrm{s}} * (\textrm{ip}-\textrm{s}-\textrm{iz})]}{\textrm{icp}} $$
+$$ \textrm{Średnia cena} = \frac{\sum\limits_{\textrm{dp}} [\frac{\textrm{cena dostawy}}  {\textrm{ip}-\textrm{s}} * (\textrm{ip}-\textrm{s}-\textrm{iz})]}{\textrm{icp}} $$
 
 gdzie:
 
-icp to Ilość całkowita \textit{Produktu},
+- icp to ilość całkowita \textit{Produktu},
 
-dp to \textit{Dostawa} \textit{Produktu},
+- dp to \textit{Dostawa} \textit{Produktu},
 
-ip to ilość początkowa,
+- ip to ilość początkowa,
 
-iz to ilość zużyta,
+- iz to ilość zużyta,
 
-s to strata.
+- s to strata.
 
 
 
@@ -368,9 +368,9 @@ Pierwszym krokiem jest instalacja odpowiedniej wersji języka Python. Wersję 3.
 
 \section{Uruchamianie systemu}
 
-Po poprawnej instalacji i konfiguracji środowiska, można uruchomić system. W tym celu należy wykonać poniższą komendę w terminalu lub wierszu poleceń:
+Po poprawnej instalacji i konfiguracji środowiska, można uruchomić system. W tym celu należy wypakować plik PaszMix.zip, a następnie po wejściu do katalogu PaszMix wykonać poniższą komendę w terminalu lub wierszu poleceń:
 
-\begin{verbatim}$ python3 program.zip \end{verbatim}
+\begin{verbatim}$ python3 . \end{verbatim}
 
 Po uruchomieniu aplikacji będzie ona dostępna na lokalnym serwerze pod adresem localhost na porcie 8000. Aby uzyskać dostęp do systemu, otwórz przeglądarkę internetową i wprowadź odpowiedni adres URL w pasku adresu. Adres localhost odnosi się do lokalnej maszyny, a port 8000 to domyślny port używany przez serwer Django.
 

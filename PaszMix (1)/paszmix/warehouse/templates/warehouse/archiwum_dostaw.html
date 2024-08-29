@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Archiwalne Dostawy{% endblock %}
+
+{% block content %}
+    {% for d in arch_deliveries %}
+    <div class="sm_prod">
+        <a href="/warehouse/product/{{ d.product.id }}/">{{d.product.product_name}}</a>
+        <a href="/warehouse/delivery/{{ d.id }}/">{{d.date}} {{d.initial_quantity}}</a>
+    </div>
+    {% endfor %}
+{% endblock %}

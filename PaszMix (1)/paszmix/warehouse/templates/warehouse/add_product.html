@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}Dodawanie Produktu{% endblock %}
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+
+    <fieldset><legend>Dane Ogólne</legend>
+
+      <div class="control1">
+        <label for="product_name">Nazwa Produktu:</label>
+        <input type="text" id="product_name" name="product_name" placeholder="Twoja nazwa nowego produktu">
+      </div>
+      
+      <div class="control2">
+        <label for="wilgotnosc">Wilgotność:</label>
+        <input type="number" id="wilgotnosc" name="wilgotnosc" min="0,0" max="100,0" step="0.1" value="12,0">
+        %
+      </div>
+      
+      <div class="control1">
+        <label for="energia_metaboliczna">Energia Metaboliczna:</label>
+        <input type="number" id="energia_metaboliczna" name="energia_metaboliczna" min="0,0"  step="0.01" value="10,00">
+        MJ
+      </div>
+
+      <div class="control2">
+        <label for="bialko_ogolne">Białḱo Ogólne</label>
+        <input type="number" id="bialko_ogolne" name="bialko_ogolne" min="0,0"  step="0.1" value="12,0">
+        %
+      </div>
+    </fieldset>
+    
+    
+
+    <fieldset><legend>Aminokwasy</legend>
+
+      <div class="control1">
+        <label for="lizyna">Lizyna</label>
+        <input type="number" id="lizyna" name="lizyna" min="0,00"  step="0.01" value="2,00">
+        %
+      </div>
+
+      <div class="control2">
+        <label for="metionina">Metionina</label>
+        <input type="number" id="metionina" name="metionina" min="0,00"  step="0.01" value="2,00">
+        %
+      </div>
+
+      <div class="control1">
+        <label for="cystyna">Cystyna</label>
+        <input type="number" id="cystyna" name="cystyna" min="0,00"  step="0.01" value="2,00">
+        %
+      </div>
+
+      <div class="control2">
+        <label for="treonina">Treonina</label>
+        <input type="number" id="treonina" name="treonina" min="0,00"  step="0.01" value="2,00">
+        %
+      </div>
+
+      <div class="control1">
+        <label for="tryptofan">Tryptofan</label>
+        <input type="number" id="tryptofan" name="tryptofan" min="0,00"  step="0.01" value="2,00">
+        %
+      </div>
+
+      <div class="control2">
+        <label for="arginina">Arginina</label>
+        <input type="number" id="arginina" name="arginina" min="0,00"  step="0.01" value="2,00">
+        %
+      </div>
+
+      <div class="control1">
+        <label for="walina">Walina</label>
+        <input type="number" id="walina" name="walina" min="0,00"  step="0.01" value="2,00">
+        %
+      </div>
+
+      <div class="control2">
+        <label for="izoleucyna">Izoleucyna</label>
+        <input type="number" id="izoleucyna" name="izoleucyna" min="0,00"  step="0.01" value="2,00">
+        %
+      </div>
+    </fieldset>
+
+    <fieldset><legend>Składniki Mineralne</legend>
+      <div class="control1">
+        <label for="wapn">Wapń</label>
+        <input type="number" id="wapn" name="wapn" min="0,0"  step="0.1" value="0,0">
+        %
+      </div>
+
+
+      <div class="control2">
+        <label for="fosfor_przyswajalny">Fosfor przyswajalny</label>
+        <input type="number" id="fosfor_przyswajalny" name="fosfor_przyswajalny" min="0,00"  step="0.01" value="0,13">
+        %
+      </div>
+
+      <div class="control1">
+        <label for="sod">Sód</label>
+        <input type="number" id="sod" name="sod" min="0,00"  step="0.01" value="0,01">
+        %
+      </div>
+    </fieldset>
+
+    <fieldset><legend>Witaminy</legend>
+      <div class="control2">
+        <label for="kwas_linolowy">Kwas Linolowy</label>
+        <input type="number" id="kwas_linolowy" name="kwas_linolowy" min="0,0"  step="0.1" value="0,4">
+        %
+      </div>
+    </fieldset>
+
+    <input class="green_button" style="margin: 5px 0 5px 5px;" type="submit" name="submit" value="Dodaj Produkt">
+    <div style="clear: both;"></div>
+
+  </form>
+{% endblock %}

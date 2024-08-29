@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Produkcja{% endblock %}
+
+{% block content %}
+  {% if newly_created %}
+    <div id="success_add">
+      Pomyślnie dodano nową produkcję!
+    </div>
+  {% endif %}
+
+  {% if production %}
+    <div>
+      <fieldset><legend>Podstawowe dane</legend>
+        <div class="control1">
+          <label for="recipe">Realizowana receptura:</label>
+          <select id="recipe" name="recipe" disabled>
+              {% for c in latest_recipes_list %}
+              <option value={{c.pk}}  {% if c.pk == production.recipe.pk %} selected {% endif %}>{{c.name}}</option>
+              {% endfor %}
+          </select>
+        </div>
+        
+        <div class="control2">
+          <label for="date">Data:</label>
+          <input type="date" id="date" name="date" value="{{production.date|date:'Y-m-d'}}" readonly>
+        </div>
+        
+        <div class="control1">
+          <label for="name_of_final_product">Nazwa finalnego produktu:</label>
+          <input type="text" id="name_of_final_product" name="name_of_final_product" placeholder="Typ paszy" readonly value={{production.name_of_final_product}}>
+        </div>
+      </fieldset>
+    </div>
+
+    <div id="rozpiska"><fieldset><legend>Rozpiska</legend>
+      <ul>
+        {% for pe in production_elements %}
+          <li>
+            <a href="/warehouse/delivery/{{ pe.delivery_ref.id }}/">
+                Produkt: {{pe.delivery_ref.product}}
+                w ilości {{pe.quantity}} kg z: {{pe.delivery_ref.date|date:'Y-m-d'}}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </fieldset></div>
+
+    <form method="POST">{% csrf_token %}
+      <input type="submit" class="red_button" name="delete" value="Usuń Produkcję">    
+      <div style="clear:both"></div>
+    </form>
+
+  {% else %}
+  <div id="failed">Produkcja nie istnieje</div>
+  {% endif %}
+{% endblock %}

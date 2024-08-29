@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Receptura{% endblock %}
+
+{% block content %}
+  {% if newly_created %}
+    <div id="success_add">
+      {% if generated %}
+        Pomyślnie wygenerowane nową recepturę!
+      {% else %}
+        Pomyślnie dodano nową recepturę!
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if recipe %}
+    <form method="POST">
+    <fieldset><legend>Receptura - dane podstawowe</legend>
+          {% csrf_token %}
+          <div class="control1">
+            <label for="name">Nazwa Receptury:</label>
+            <input type="text" id="name" name="name" {% if readonly %} readonly {% endif %} value={{recipe.name}}>
+          </div>
+          
+          <div class="control2">
+            <label for="composition">Realizowany skład:</label>
+            <select id="composition" name="composition" {% if readonly %} disabled {% endif %}>
+                {% for c in latest_compositions_list %}
+                <option value={{c.pk}} {% if c.pk == recipe.composition.pk %} selected {% endif %}>{{c.composition_name}}</option>
+                {% endfor %}
+            </select>
+          </div>
+          
+          <div class="control1">
+            <label for="number_of_positions">Liczba pozycji w recepturze</label>
+            <input type="number" id="number_of_positions" name="number_of_positions" value={{recipe.number_of_positions}} min="1" step="1" {% if readonly %} readonly {% endif %}>
+          </div>
+
+          <div class="control2">
+            <label for="type">Typ Receptury:</label>
+            <input type="text" id="type" name="type" {% if readonly %} readonly {% endif %} value={{recipe.type}}>
+          </div>
+    </fieldset>
+
+    <fieldset><legend>Składniki</legend>
+      {% for i in recipe_elems %}
+      <div><fieldset>
+        {% with elem_id=forloop.counter0|stringformat:"d" %}
+        {% with product_name="product"|add:elem_id %}
+
+          <div class="control1">
+            <label for={{product_name}}>Produkt:</label>
+            <select id={{product_name}} name={{product_name}} {% if readonly %} disabled {% endif %}>
+              {% for prod in latest_products_list %}
+                <option value={{prod.pk}} {% if prod.pk == i.product.pk %} selected {% endif %}>{{prod.product_name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endwith %}
+
+        {% with quantity_name="quantity"|add:elem_id %}
+          <div class="control2">
+            <label for={{quantity_name}}>Ilość:</label>
+            <input type="number" id={{quantity_name}} name={{quantity_name}} value={{i.quantity}} step="0.1" {% if readonly %} readonly {% endif %}>
+            kg
+          </div>
+
+        {% endwith %}
+        {% with delete_name="delete"|add:elem_id %}
+          <input class="red_button" type="submit" name={{delete_name}} value="Usuń pozycję"/>
+        {% endwith %}
+        {% endwith %}
+      </fieldset></div>
+      {% endfor %}
+
+      {% if how_many_empty %}
+      {% for i in how_many_empty %}
+            <div><fieldset>
+            {% with elem_id=i|stringformat:"d" %}
+            {% with product_name="product"|add:elem_id %}
+
+              <div class="control1">
+                <label for={{product_name}}>Produkt:</label>
+                <select id={{product_name}} name={{product_name}} {% if readonly %} disabled {% endif %}>
+                    {% for prod in latest_products_list %}
+                    <option value={{prod.pk}} >{{prod.product_name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+            {% endwith %}
+
+            {% with quantity_name="quantity"|add:elem_id %}
+              
+              <div class="control2">
+                <label for={{quantity_name}}>Ilość:</label>
+                <input type="number" id={{quantity_name}} name={{quantity_name}} value="0" step="0.1" {% if readonly %} readonly {% endif %}>
+                kg
+              </div>
+              
+              {% endwith %}{% endwith %}
+          </fieldset></div>
+
+      {% endfor %}
+      {% endif %}
+
+            <br/><br/>
+            {% if not readonly %}
+            <input class="green_button" type="submit" name="save" value="Zapisz zmianę"/>
+            {% endif %}
+    </fieldset>
+    </form>
+
+    {% if readonly %}    
+    <form method="POST">
+      {% csrf_token %}
+      <input class="green_button" type="submit" name="edit" value="Edytuj"/>
+    </form>
+    
+    <div style="width: 50px; height: 10px; float: left;"></div>
+
+    <form method="POST">
+      {% csrf_token %}
+      <input class="red_button" type="submit" name="delete" value="Usuń recepturę"/>
+    </form>
+
+    <div style="clear:both"></div>
+    {% endif %}
+
+
+  {% else %}
+    <div id="failed">
+      {% if generated %}
+          Błąd podczas generowania receptury
+      {% else %}
+          Receptura nie istnieje
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}

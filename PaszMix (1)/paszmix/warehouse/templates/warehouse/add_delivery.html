@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}Dodawanie dostawy{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+
+    <div class="control1">
+      <label for="product">Nazwa Produktu:</label>
+      <select id="product" name="product">
+          {% for prod in latest_products_list %}
+          <option value={{prod.pk}}>{{prod.product_name}}</option>
+          {% endfor %}
+      </select>
+    </div>
+
+    <div class="control2">
+      <label for="price">Cena:</label>
+      <input type="number" id="price" name="price" min="0,00" step="0.01" >
+      zł
+    </div>
+
+    <div class="control1">
+      <label for="date">Data:</label>
+      <input type="date" id="date" name="date">
+    </div>
+
+    <div class="control2">
+      <label for="initial_quantity">Ilość początkowa</label>
+      <input type="number" id="initial_quantity" name="initial_quantity"  step="0.1" min="0.0" value="1000.0">
+      kg
+    </div>
+
+    <div class="control1">
+      <label for="used_quantity">Ilość zużyta</label>
+      <input type="number" id="used_quantity" name="used_quantity"  step="0.1" value="0,0">
+      kg
+    </div>
+
+    <div class="control2">
+      <label for="waste">Strata</label>
+      <input type="number" id="waste" name="waste"  step="0.1" value="0,0">
+      kg
+    </div>
+
+    <div class="control1">
+      <label for="is_finished">Czy dostawa zakończona?</label>
+      <select name="is_finished">
+        <option value="False"  selected >Nie</option>
+        <option value="True">Tak</option>
+      </select>
+    </div>
+
+    <input class="green_button" type="submit" id="submit" name="submit" value="Dodaj Dostawę">
+
+  </form>
+{% endblock %}

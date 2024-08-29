@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Lista Produkcji{% endblock %}
+
+{% block content %}
+    {% for d in dict %}
+    <div class="sm_prod">
+        <a href="/warehouse/production/{{ d.production.id }}/"><div class="sm_legend">{{d.production.date}}</div></a>
+        {% for e in d.elems %}
+            <a href="/warehouse/delivery/{{ e.delivery_ref.id }}/">
+                {{e.delivery_ref.product.product_name}} {{e.delivery_ref.date}} {{e.quantity}}
+            </a>
+            <br>
+        {% endfor %}
+    </div>
+    {% endfor %}
+{% endblock %}

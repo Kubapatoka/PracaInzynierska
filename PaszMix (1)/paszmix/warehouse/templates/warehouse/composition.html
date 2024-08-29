@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+
+{% block title %}Skład{% endblock %}
+
+{% block content %}
+{% if newly_created %}
+<div id="success_add">
+  Pomyślnie dodano nowy skład!
+</div>
+{% endif %}
+
+{% if composition %}
+<div>
+<form method="POST">
+  {% csrf_token %}
+
+  <div class="control1">
+    <label for="composition_name">Nazwa Składu:</label>
+    <input type="text" id="composition_name" name="composition_name" value={{composition.composition_name}} {% if readonly %} readonly {% endif %}>
+  </div>
+
+  <div class="control2">
+    <label for="energia_metaboliczna_min">Energia Metaboliczna Minimalna:</label>
+    <input type="number" id="energia_metaboliczna_min" name="energia_metaboliczna_min" min="0,0"  step="0.01" value={{composition.energia_metaboliczna_min}} {% if readonly %} readonly {% endif %}>
+    MJ
+  </div>
+  
+  <div class="control1">
+    <label for="energia_metaboliczna_max">Energia Metaboliczna Maksymalna:</label>
+    <input type="number" id="energia_metaboliczna_max" name="energia_metaboliczna_max" min="0,0"  step="0.01" value={{composition.energia_metaboliczna_max}} {% if readonly %} readonly {% endif %}>
+    MJ
+  </div>
+
+  <div class="control2">
+    <label for="lizyna">Lizyna</label>
+    <input type="number" id="lizyna" name="lizyna" min="0,00"  step="0.001" value={{composition.lizyna}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+  
+  <div class="control1">
+    <label for="metionina">Metionina</label>
+    <input type="number" id="metionina" name="metionina" min="0,00"  step="0.001" value={{composition.metionina}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+
+  <div class="control2">
+    <label for="cystyna_metionina">Cystyna+Metionina</label>
+    <input type="number" id="cystyna_metionina" name="cystyna_metionina" min="0,00"  step="0.001" value={{composition.cystyna_metionina}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+  
+  <div class="control1">
+    <label for="treonina">Treonina</label>
+    <input type="number" id="treonina" name="treonina" min="0,00"  step="0.001" value={{composition.treonina}} {% if readonly %} readonly {% endif %}> 
+    g/MJ
+  </div>
+
+  <div class="control2">
+    <label for="tryptofan">Tryptofan</label>
+    <input type="number" id="tryptofan" name="tryptofan" min="0,00"  step="0.001" value={{composition.tryptofan}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+  
+  <div class="control1">
+    <label for="arginina">Arginina</label>
+    <input type="number" id="arginina" name="arginina" min="0,00"  step="0.001" value={{composition.arginina}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+
+  <div class="control2">
+    <label for="walina">Walina</label>
+    <input type="number" id="walina" name="walina" min="0,00"  step="0.001" value={{composition.walina}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+  
+  <div class="control1">
+    <label for="izoleucyna">Izoleucyna</label>
+    <input type="number" id="izoleucyna" name="izoleucyna" min="0,00"  step="0.001" value={{composition.izoleucyna}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+
+  <div class="control2">
+    <label for="wapn">Wapń</label>
+    <input type="number" id="wapn" name="wapn" min="0,0"  step="0.001" value={{composition.wapn}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+  
+  <div class="control1">
+    <label for="fosfor_przyswajalny">Fosfor przyswajalny</label>
+    <input type="number" id="fosfor_przyswajalny" name="fosfor_przyswajalny" min="0,00"  step="0.001" value={{composition.fosfor_przyswajalny}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+
+  <div class="control2">
+    <label for="sod">Sód</label>
+    <input type="number" id="sod" name="sod" min="0,00"  step="0.001" value={{composition.sod}} {% if readonly %} readonly {% endif %}>
+    g/MJ
+  </div>
+
+  {% if not readonly %}
+    <input class="green_button" type="submit" name="save" value="Zapisz zmianę"/>
+    <div style="clear:both"></div>
+  {% endif %}
+  </form>
+  </div>
+
+  {% if readonly %}
+
+  <form method="POST">
+  {% csrf_token %}
+  <input class="green_button" type="submit" name="edit" value="Edytuj"/>
+  </form>
+
+  <div style="width: 50px; height: 10px; float: left;"></div>
+
+  <form method="POST">
+  {% csrf_token %}
+  <input class="red_button" type="submit" name="delete" value="Usuń skład"/>
+  </form>
+
+  <div style="clear:both"></div>
+
+  {% endif %}
+
+
+
+{% else %}
+  <div id="failed">Skład nie istnieje</div>
+{% endif %}
+{% endblock %}
